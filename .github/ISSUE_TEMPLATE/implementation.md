@@ -1,19 +1,19 @@
 ---
-name: Implementation
-about: Implement one piece of the specification
+name: Implementación
+about: Implementar una parte de la especificación
 title: "[impl] "
-labels: ["implementation"]
+labels: ["implementación"]
 ---
 
-**Which part of the specification**
-Section of `docs/spec.md`.
+**Qué parte de la especificación**
+Sección de `docs/especificacion.md`.
 
-**Which skipped tests this turns on**
-List them by name from `tests/`.
+**Qué tests omitidos activa**
+Nómbralos tal como aparecen en `tests/`.
 
-**Acceptance criteria**
-- [ ] The matching skip is removed and the test passes.
-- [ ] The function is deterministic for a fixed seed.
-- [ ] Nothing in the implementation changes `thresholds.yaml`.
-- [ ] Any deviation from `docs/spec.md` is documented in the same pull
-      request, with the reason.
+**Criterios de aceptación**
+- [ ] Se quita la omisión correspondiente y el test pasa.
+- [ ] La función es determinista para una semilla fija.
+- [ ] Nada de la implementación modifica `umbrales.yaml`.
+- [ ] Cualquier desviación de `docs/especificacion.md` se documenta en el mismo
+      pull request, con su razón.

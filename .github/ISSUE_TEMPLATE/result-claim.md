@@ -1,20 +1,21 @@
 ---
-name: Result claim
-about: Add or change a number in the README or the report
-title: "[result] "
-labels: ["results", "verification"]
+name: Afirmación de resultado
+about: Agregar o cambiar una cifra en el README o en el informe
+title: "[resultado] "
+labels: ["resultados", "verificación"]
 ---
 
-**The claim**
-The sentence or table cell as it would read.
+**La afirmación**
+La frase o la celda de la tabla tal como quedaría escrita.
 
-**Where the number comes from**
-File in `results/`, scenario, seed, commit hash.
+**De dónde sale la cifra**
+Archivo de `results/`, escenario, semilla y hash del commit.
 
-**Acceptance criteria**
-- [ ] The number is reproducible from a clean clone with the stated seed.
-- [ ] Bias appears next to its standard deviation, never alone.
-- [ ] The scenario is named. A number without its scenario is not published.
-- [ ] `thresholds.yaml` was not edited. An amendment, if any, is in a new file
-      and is cited here.
-- [ ] No claim about accuracy in a person, and no claim about a device.
+**Criterios de aceptación**
+- [ ] La cifra se puede reproducir desde un clon limpio con la semilla indicada.
+- [ ] El sesgo aparece junto a su desviación estándar, nunca solo.
+- [ ] El escenario está nombrado. Una cifra sin su escenario no se publica.
+- [ ] `umbrales.yaml` no se editó. Si hay una enmienda, está en un archivo nuevo
+      y se cita aquí.
+- [ ] Ninguna afirmación sobre la exactitud en una persona, y ninguna afirmación
+      sobre un dispositivo.

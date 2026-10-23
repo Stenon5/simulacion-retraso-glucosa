@@ -1,6 +1,7 @@
-"""Delay estimation from two depths, with no blood measurement.
+"""Estimación del retraso con dos profundidades, sin ninguna medición en sangre.
 
-Specified in docs/spec.md, sections 3 and 4. Not implemented yet.
+Especificado en docs/especificacion.md, secciones 3 y 4. Todavía no está
+implementado.
 """
 
 from __future__ import annotations
@@ -9,15 +10,15 @@ from . import NOT_IMPLEMENTED
 
 
 def estimate_noise_variance(series, dt_min: float) -> float:
-    """Estimate the noise variance from the second difference of the series."""
+    """Estima la varianza del ruido a partir de la segunda diferencia de la serie."""
     raise NotImplementedError(NOT_IMPLEMENTED)
 
 
 def estimate_time_constants(g1, g2, dt_min: float):
-    """Estimate both time constants with the error in variables correction.
+    """Estima ambas constantes de tiempo con la corrección del error en las variables.
 
-    Must return the two time constants, the estimated noise variance and the
-    condition number of the corrected matrix. A negative time constant is a
-    failure and is reported as one, never clipped to zero.
+    Debe devolver las dos constantes de tiempo, la varianza de ruido estimada y
+    el número de condición de la matriz corregida. Una constante de tiempo
+    negativa es una falla y se informa como tal, nunca se recorta a cero.
     """
     raise NotImplementedError(NOT_IMPLEMENTED)

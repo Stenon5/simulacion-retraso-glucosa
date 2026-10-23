@@ -1,10 +1,12 @@
-"""The figure that goes at the top of the README.
+"""La figura que va al inicio del README.
 
-Specified in docs/spec.md, section 9. Not implemented yet.
+Especificado en docs/especificacion.md, sección 9. Todavía no está
+implementado.
 
-Writes figures/delay-recovery.png. The figure is not committed until the run
-that produces it exists, so that no image in this repository shows a result
-that cannot be reproduced from the code next to it.
+Escribe figures/delay-recovery.png. La figura no se sube al repositorio hasta
+que exista la corrida que la produce, para que ninguna imagen de este
+repositorio muestre un resultado que no se pueda reproducir con el código que
+la acompaña.
 """
 
 from __future__ import annotations
@@ -13,9 +15,9 @@ from . import NOT_IMPLEMENTED
 
 
 def delay_recovery_figure(result_dir: str, out_path: str) -> None:
-    """Draw the reconstruction against the true blood glucose for one seed.
+    """Dibuja la reconstrucción frente a la glucosa en sangre real para una semilla.
 
-    The single depth baseline is drawn underneath, and the caption states the
-    seed, the scenario and the noise level.
+    La línea base de una sola profundidad se dibuja debajo, y la leyenda indica
+    la semilla, el escenario y el nivel de ruido.
     """
     raise NotImplementedError(NOT_IMPLEMENTED)

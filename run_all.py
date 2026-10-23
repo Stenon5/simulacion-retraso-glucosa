@@ -1,11 +1,11 @@
-"""Run every scenario and write results, figures and the threshold report.
+"""Corre todos los escenarios y escribe los resultados, las figuras y el informe de umbrales.
 
-Not implemented yet. The specification this script has to follow is in
-docs/spec.md, and the criteria it has to check against are in thresholds.yaml.
+Todavía no está implementado. La especificación que este script tiene que
+seguir está en docs/especificacion.md, y los criterios con los que tiene que
+compararse están en umbrales.yaml.
 
-Running it today prints what is missing and exits with code 0, so that a
-scaffold repository does not pretend to be broken and does not pretend to
-work either.
+Hoy, al ejecutarlo, muestra lo que falta y termina con código 0, para que un
+repositorio en etapa de andamiaje no finja estar roto ni finja funcionar.
 """
 
 from __future__ import annotations
@@ -14,18 +14,20 @@ import argparse
 import sys
 
 MESSAGE = """\
-not implemented yet: the simulation described in docs/spec.md has not been
-written.
+todavía no implementado: la simulación descrita en docs/especificacion.md no
+se ha escrito.
 
-What has to exist before this script does anything:
-  1. src/glucose_delay/model.py      forward model and synthetic data
-  2. src/glucose_delay/estimator.py  integral form with the error in variables
-                                     correction
-  3. src/glucose_delay/reconstruct.py  Kalman reconstruction from past samples
-  4. src/glucose_delay/figures.py    the figure for the README
+Lo que tiene que existir antes de que este script haga algo:
+  1. src/glucose_delay/model.py        modelo directo y datos sintéticos
+  2. src/glucose_delay/estimator.py    forma integral con la corrección del
+                                       error en las variables
+  3. src/glucose_delay/reconstruct.py  reconstrucción de Kalman con muestras
+                                       pasadas
+  4. src/glucose_delay/figures.py      la figura para el README
 
-Criteria are pre-specified in thresholds.yaml and are not edited after a
-result exists. See docs/issues-backlog.md for the order of work.
+Los criterios están fijados de antemano en umbrales.yaml y no se editan
+después de que exista un resultado. El orden de trabajo está en
+docs/backlog-de-issues.md.
 """
 
 
@@ -35,17 +37,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--seed",
         type=int,
         default=1,
-        help="random seed, recorded with every result",
+        help="semilla aleatoria, se registra con cada resultado",
     )
     parser.add_argument(
         "--scenario",
         default="all",
-        help="scenario name from the grid in docs/spec.md, or all",
+        help="nombre de un escenario de la grilla de docs/especificacion.md, o all",
     )
     parser.add_argument(
         "--out",
         default="results",
-        help="directory for result tables",
+        help="carpeta para las tablas de resultados",
     )
     return parser.parse_args(argv)
 

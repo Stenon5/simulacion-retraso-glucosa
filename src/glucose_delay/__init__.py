@@ -1,14 +1,16 @@
-"""Two depth glucose delay estimation, simulation only.
+"""Estimación del retraso de la glucosa con dos profundidades, solo en simulación.
 
-Scaffold package. Nothing is implemented yet. The model and the estimator are
-specified in docs/spec.md, the pass and fail criteria in thresholds.yaml.
+Paquete en etapa de andamiaje. Todavía no hay nada implementado. El modelo y
+el estimador están especificados en docs/especificacion.md, y los criterios de
+aprobado y reprobado en umbrales.yaml.
 
-This is not a medical device and produces nothing clinically actionable.
+Esto no es un dispositivo médico y no produce nada que sirva para tomar
+decisiones clínicas.
 """
 
 __version__ = "0.0.0"
 
 NOT_IMPLEMENTED = (
-    "not implemented yet: see docs/spec.md for the specification and "
-    "docs/issues-backlog.md for the order of work"
+    "todavía no implementado: ver docs/especificacion.md para la especificación y "
+    "docs/backlog-de-issues.md para el orden de trabajo"
 )

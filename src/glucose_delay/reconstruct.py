@@ -1,9 +1,10 @@
-"""Reconstruction of blood glucose from the two depth readings.
+"""Reconstrucción de la glucosa en sangre a partir de las lecturas de las dos profundidades.
 
-Specified in docs/spec.md, section 5. Not implemented yet.
+Especificado en docs/especificacion.md, sección 5. Todavía no está
+implementado.
 
-Causal only. The filter may use past samples and the current one, never
-future samples, because a device cannot.
+Solo causal. El filtro puede usar las muestras pasadas y la actual, nunca
+muestras futuras, porque un dispositivo no puede hacerlo.
 """
 
 from __future__ import annotations
@@ -12,10 +13,10 @@ from . import NOT_IMPLEMENTED
 
 
 def reconstruct(g1, g2, tau1: float, tau2: float, sigma: float, dt_min: float):
-    """Kalman reconstruction with state [blood, slope, depth 1, depth 2]."""
+    """Reconstrucción de Kalman con estado [sangre, pendiente, profundidad 1, profundidad 2]."""
     raise NotImplementedError(NOT_IMPLEMENTED)
 
 
 def alarm_times(series, threshold_mg_dl: float, dt_min: float):
-    """Times at which a low glucose alarm would fire for a given series."""
+    """Momentos en que se activaría una alarma de glucosa baja para una serie dada."""
     raise NotImplementedError(NOT_IMPLEMENTED)

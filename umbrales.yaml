@@ -1,0 +1,112 @@
+# Criterios de aprobado y reprobado fijados de antemano.
+#
+# Quedaron en el repositorio antes de que existiera el código que los revisa.
+#
+# Aclaración: estos criterios se eligieron después de una corrida exploratoria
+# anterior, del 2026-10-16, cuyos scripts no están en este repositorio. Se
+# fijaron antes de la reproducción que hace este repositorio, no antes de que
+# la idea se probara por primera vez. Léanse como la especificación de una
+# replicación, no como criterios fijados de antemano a ciegas.
+#
+# Historial de correcciones, antes de cualquier resultado:
+# - 2026-10-23. El enunciado de noise_requirement decía "como máximo" y el
+#   criterio decía "igual o mayor", lo que se contradecía. Vale el criterio, y
+#   el enunciado ahora dice "como mínimo". Se corrigió porque todavía no existía
+#   ningún resultado.
+#
+# Este archivo no se edita después de ver un resultado. Si un criterio resulta
+# estar mal o mal planteado, la enmienda va en un archivo NUEVO llamado
+# umbrales-enmienda-<AAAA-MM-DD>.yaml que diga qué cambió y por qué, y ambos
+# archivos se quedan en el repositorio. Editar este archivo en su lugar haría
+# que toda afirmación posterior fuera imposible de refutar.
+
+meta:
+  version: 1
+  committed: "2026-10-22"
+  applies_to: datos sintéticos generados con el modelo de docs/especificacion.md
+  status: todavía sin resultados
+
+reporting_rules:
+  - id: bias_with_spread
+    rule: >-
+      Cada sesgo se informa junto con la desviación estándar entre semillas,
+      para cada escenario por separado. Nunca se informa por sí solo un sesgo
+      promediado entre escenarios, porque un promedio pequeño puede esconder
+      una dispersión mucho mayor entre escenarios.
+  - id: per_scenario
+    rule: >-
+      El aprobado o reprobado se decide por escenario. Solo se declara un
+      aprobado global cuando todos los escenarios de la grilla aprueban, y en
+      cualquier caso se nombran los escenarios que reprobaron.
+  - id: counts_not_only_rates
+    rule: >-
+      Los conteos se informan con su denominador. Una tasa nunca aparece sin el
+      conteo del que salió.
+  - id: seeds_fixed
+    rule: >-
+      Cada cifra informada va acompañada de la semilla y la configuración que
+      la produjeron, y volver a correr con esa semilla la reproduce.
+
+criteria:
+  - id: delay_bias
+    statement: >-
+      El sesgo medio de cada constante de tiempo estimada es menor a 1 minuto
+      en todos los escenarios, y la desviación estándar entre semillas se
+      informa junto a él.
+    passes_if: sesgo medio absoluto < 1 minuto por escenario
+    note: >-
+      Cumplir el sesgo mientras la dispersión es varias veces mayor se informa
+      como un incumplimiento del espíritu de este criterio, y se muestra la
+      dispersión.
+
+  - id: noise_requirement
+    statement: >-
+      Se identifica el nivel de ruido por lectura con el que el método todavía
+      supera a la línea base de una sola profundidad, y es de 3 mg/dL como
+      mínimo. Es decir, el método tolera al menos ese ruido.
+    passes_if: el nivel de ruido de cruce es igual o mayor a 3 mg/dL por lectura
+    note: >-
+      Si el cruce queda por debajo de esto, la conclusión honesta es que el
+      límite está en el hardware y no en el algoritmo. Eso es un resultado y
+      se publica como tal.
+
+  - id: earlier_alarm
+    statement: >-
+      La alarma de hipoglucemia se activa antes con dos profundidades y un
+      retraso estimado que con una sola profundidad suavizada, en todos los
+      escenarios.
+    passes_if: la alarma se activa antes en todos los escenarios, mostrando la dispersión de cada escenario
+    note: >-
+      Activarse antes solo sirve si no se activa más veces cuando no
+      corresponde, así que el número de falsas alarmas se informa al lado y un
+      aumento se trata como reprobado.
+
+  - id: beats_fixed_population_delay
+    statement: >-
+      Estimar el retraso es mejor que suponer un retraso poblacional fijo.
+    passes_if: error menor que la línea base de retraso fijo en todos los escenarios
+    note: >-
+      Esta es la línea base a la que recurriría un dispositivo, así que perder
+      contra ella haría inútil el estimador.
+
+  - id: noise_estimate_recovers
+    statement: >-
+      El nivel de ruido estimado a partir de la señal coincide con el ruido que
+      se inyectó.
+    passes_if: ruido estimado dentro del 10 por ciento del ruido inyectado, por escenario
+
+stopping_rules:
+  - id: identifiability
+    rule: >-
+      Si la matriz de diseño corregida está cerca de ser singular en un
+      escenario, ese escenario se informa como no identificable en vez de
+      informar cualquier número que salga de la inversión.
+  - id: negative_time_constant
+    rule: >-
+      Una constante de tiempo estimada negativa es una falla, no un dato. La
+      corrida la informa como falla y no la recorta a cero.
+
+out_of_scope:
+  - Cualquier afirmación sobre la exactitud en una persona.
+  - Cualquier afirmación sobre un dispositivo.
+  - Cualquier comparación con un producto comercial.

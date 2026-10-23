@@ -9,19 +9,19 @@ dist/
 .pytest_cache/
 .ruff_cache/
 
-# Notebooks
+# Cuadernos de Jupyter
 .ipynb_checkpoints/
 
-# Large or scratch output. Reported results are committed on purpose.
+# Salidas grandes o de borrador. Los resultados informados se suben al repositorio a propósito.
 results/scratch/
 *.npz
 
-# Environment and secrets
+# Entorno y secretos
 .env
 *.key
 *.pem
 
-# Editors and operating systems
+# Editores y sistemas operativos
 .vscode/
 .idea/
 .DS_Store

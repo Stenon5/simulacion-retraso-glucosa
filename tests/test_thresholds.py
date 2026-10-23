@@ -1,8 +1,9 @@
-"""Tests that run today.
+"""Tests que corren hoy.
 
-They do not test the simulation, which does not exist. They test that the
-pre-specified criteria file is present, parseable and complete, because that
-file has to be trustworthy before any result is produced.
+No prueban la simulación, que todavía no existe. Prueban que el archivo de
+criterios fijados de antemano esté presente, se pueda leer y esté completo,
+porque ese archivo tiene que ser confiable antes de que se produzca cualquier
+resultado.
 """
 
 from __future__ import annotations
@@ -12,7 +13,7 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parents[1]
-THRESHOLDS = REPO / "thresholds.yaml"
+THRESHOLDS = REPO / "umbrales.yaml"
 
 REQUIRED_CRITERIA = {
     "delay_bias",
@@ -24,7 +25,7 @@ REQUIRED_CRITERIA = {
 
 
 def load() -> dict:
-    yaml = pytest.importorskip("yaml", reason="pyyaml is a declared dependency")
+    yaml = pytest.importorskip("yaml", reason="pyyaml es una dependencia declarada")
     with THRESHOLDS.open(encoding="utf-8") as handle:
         return yaml.safe_load(handle)
 
@@ -47,13 +48,13 @@ def test_every_criterion_has_a_statement_and_a_pass_condition() -> None:
 
 
 def test_the_bias_with_spread_reporting_rule_is_present() -> None:
-    """Bias is never reported without the spread next to it."""
+    """El sesgo nunca se informa sin la dispersión al lado."""
     ids = {item["id"] for item in load()["reporting_rules"]}
     assert "bias_with_spread" in ids
 
 
 def test_results_directory_is_still_empty() -> None:
-    """While the README says no results yet, results/ must hold no data files."""
+    """Mientras el README diga que no hay resultados, results/ no debe tener archivos de datos."""
     results = REPO / "results"
     data_files = [p for p in results.iterdir() if p.name != ".gitkeep"]
-    assert data_files == [], f"README says no results yet but found {data_files}"
+    assert data_files == [], f"el README dice que no hay resultados, pero se encontró {data_files}"

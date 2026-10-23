@@ -3,14 +3,14 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "glucose-delay-simulation"
+name = "simulacion-retraso-glucosa"
 version = "0.0.0"
-description = "Simulation study of blood to tissue glucose delay estimation from two optical depths. Scaffold, no results yet. Not a medical device."
+description = "Estudio de simulación sobre cómo estimar el retraso de la glucosa entre la sangre y el tejido con dos profundidades ópticas. Andamiaje, todavía sin resultados. No es un dispositivo médico."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [{ name = "Stenon5" }]
-keywords = ["simulation", "state estimation", "kalman filter", "reproducibility"]
+keywords = ["simulación", "estimación de estado", "filtro de Kalman", "reproducibilidad"]
 classifiers = [
   "Development Status :: 1 - Planning",
   "Intended Audience :: Science/Research",
@@ -31,7 +31,7 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Stenon5/glucose-delay-simulation"
+Homepage = "https://github.com/Stenon5/simulacion-retraso-glucosa"
 
 [tool.setuptools.packages.find]
 where = ["src"]
