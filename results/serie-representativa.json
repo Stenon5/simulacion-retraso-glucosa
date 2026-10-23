@@ -1,0 +1,12 @@
+{
+  "escenario": "tipico_ruido_medio",
+  "replica": 0,
+  "semilla_maestra": 1,
+  "ruido_mg_dl": 5.0,
+  "tau1_true": 6.0,
+  "tau2_true": 15.0,
+  "tau1_est": 6.31594098557254,
+  "tau2_est": 14.905895589245628,
+  "status": "ok",
+  "umbral_mg_dl": 70.0
+}

@@ -93,6 +93,60 @@ estimación en vez de mejorarla.
 
 **Estado.** Abierta. El supuesto no se ha puesto a prueba.
 
+### 2026-10-23, implementación de la fase 0: un término que no se deriva, una derivación propia equivocada y una replicación que no reprodujo la dispersión
+
+**Qué pasó.** Al implementar la fase 0 aparecieron seis fallas o ambigüedades.
+(1) El término `N σ² Δt (0, 1, 1)` que la especificación suma a `XᵀY` no se
+puede derivar. El ruido de las dos profundidades entra en la integral con
+signos opuestos, y con la integral por trapecio y el intercepto esa covarianza
+se cancela, así que la corrección derivada es cero. (2) Mi primera derivación,
+antes de escribir código, también estaba mal: proponía `-N σ² Δt/2 (0, 1, -1)`
+y olvidaba el centrado que impone el intercepto. (3) Con una suma acumulada
+simple como integral, el estimador corre ambas constantes en -Δt/2 incluso sin
+ruido. (4) La especificación no fija los valores de la grilla, y con un valor
+por etiqueta la persona lenta (12 y 30 min) y la persona rápida (3 y 8 min) de
+la corrida exploratoria quedaban fuera. (5) Errores menores míos: el archivo de
+cifras exploratorias tenía dos puntos sin comillas y la primera ejecución se
+cayó, y los comentarios `noqa: E402` de `run_all.py` los marcó como sobrantes
+ruff 0.17. (6) La replicación no reprodujo la corrida exploratoria. Las DE
+salieron unas 2 veces mayores, 4 de 10 medias de constantes quedaron a más de
+una DE exploratoria, en los escenarios equivalentes el sesgo medio llegó a 3,85
+min y no a 0,8 o menos, y el
+cruce de ruido salió en 5,92 mg/dL y no en 2 a 3.
+
+**Cómo se detectó.** (1) y (2) rederivando la covarianza entre el ruido de los
+regresores y el de la integral antes de escribir el estimador, y confirmándolo
+con un test de Monte Carlo (`test_integral_noise_cross_term_cancels_with_an_intercept`).
+En la corrida, la versión literal y la variante sin el término difieren en
+0,18 min o menos en las medias, porque el término cae en la dirección bien
+condicionada. (3) por álgebra, al elegir la integral. (4) leyendo la sección 7
+contra la lista de situaciones exploratorias. (5) por la traza del error y por
+`ruff check`. (6) por la tabla que genera `run_all.py` en
+`results/comparacion-con-corrida-exploratoria.md`. Una corrida de sensibilidad
+con las semillas maestras 2 y 3, en `results/scratch/` y fuera del control de
+versiones, mostró además que el veredicto de `delay_bias` en las dos personas
+lentas cambia con la semilla maestra. Con 40 réplicas el error estándar de la
+media es de 0,4 a 0,9 min, demasiado cerca del umbral de 1 min.
+
+**Costo.** Sin la segunda derivación se habría implementado como "corrección
+correcta" un término que empuja la estimación en la dirección mal
+condicionada, justo donde sí mueve los resultados. Los errores menores costaron
+una ejecución fallida. Ninguna cifra se publicó mal.
+
+**Qué cambió.** Las decisiones se escribieron en
+`docs/decisiones-de-implementacion.md` antes de correr y no se cambiaron
+después. La fórmula literal quedó como versión primaria porque es la
+registrada, y la variante sin término se informa aparte, rotulada como no
+registrada. Se agregaron dos escenarios de replicación. El test
+`test_results_directory_is_still_empty` ahora falla a propósito, porque el
+README todavía dice que no hay resultados y esta tarea no podía tocarlo. Se
+resuelve con el issue de fase 1 que rellena el README.
+
+**Estado.** Abierta. Falta decidir si la especificación se enmienda por el
+término del lado derecho, y conciliar la entrada pendiente de las cifras. Según
+la regla de esta bitácora, la discrepancia con la corrida exploratoria merece
+su propia entrada cuando se concilie.
+
 ---
 
 ## Entradas pendientes

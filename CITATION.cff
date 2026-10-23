@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 title: simulacion-retraso-glucosa
 message: >-
-  Si usas este repositorio, cítalo como se indica abajo. El repositorio es un
-  andamiaje y todavía no contiene resultados. No es un dispositivo médico.
+  Si usas este repositorio, cítalo como se indica abajo. El repositorio contiene una
+  primera replicación en simulación, con datos sintéticos. No es un dispositivo médico.
 type: software
 authors:
   - given-names: Eddie Andrés
@@ -12,7 +12,7 @@ authors:
     alias: Stenon5
 repository-code: https://github.com/Stenon5/simulacion-retraso-glucosa
 abstract: >-
-  Especificación, criterios fijados de antemano y esqueletos de tests para un
+  Especificación, criterios fijados de antemano, código y resultados de un
   estudio de simulación que pregunta si el retraso de la glucosa entre la
   sangre y el tejido se puede estimar con dos profundidades de medición sin
   ninguna medición en sangre, y qué nivel de ruido del sensor haría falta para
@@ -24,5 +24,5 @@ keywords:
   - replicación
   - reproducibilidad
 license: MIT
-version: 0.0.0
+version: 0.1.0
 date-released: "2026-10-22"

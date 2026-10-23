@@ -1,0 +1,95 @@
+# Grilla de escenarios de docs/especificacion.md, sección 7, con sus valores
+# concretos. Se puede leer sin leer el código. Las razones de cada valor están
+# en docs/decisiones-de-implementacion.md.
+#
+# Este archivo no contiene ninguna cifra de la corrida exploratoria. Esas
+# cifras están aparte, en docs/cifras-corrida-exploratoria.yaml, y solo se usan
+# para escribir la comparación después de correr.
+
+registro:
+  duracion_min: 480
+  dt_min: 1
+  replicas_por_escenario: 40
+
+alarma:
+  umbral_mg_dl: 70
+  ventana_previa_min: 30
+  ventana_posterior_min: 30
+
+estimador:
+  cond_max: 10000
+  correccion_lado_derecho_primaria: spec
+  correccion_lado_derecho_secundaria: none
+
+kalman:
+  ruido_proceso_pendiente: 0.0333333333333333  # 1/30 (mg/dL/min)^2 por minuto
+  de_inicial_glucosa_mg_dl: 20
+  de_inicial_pendiente_mg_dl_min: 1
+  profundidad_linea_base: 1
+
+retraso_poblacional_fijo:
+  tau1_min: 6
+  tau2_min: 15
+
+# Un valor por etiqueta, lectura literal de la sección 7.
+etiquetas:
+  constante_de_tiempo_min:
+    la_mas_corta: 3
+    corta: 6
+    larga: 15
+    mas_larga: 30
+  ruido_mg_dl:
+    bajo: 2
+    medio: 5
+    alto: 8
+
+escenarios:
+  # Grilla de la especificación.
+  - id: tipico_ruido_bajo
+    grupo: grilla
+    descripcion: típico, ruido bajo
+    tau1_min: 6
+    tau2_min: 15
+    ruido_mg_dl: 2
+  - id: tipico_ruido_medio
+    grupo: grilla
+    descripcion: típico, ruido medio
+    tau1_min: 6
+    tau2_min: 15
+    ruido_mg_dl: 5
+  - id: tipico_ruido_alto
+    grupo: grilla
+    descripcion: típico, ruido alto
+    tau1_min: 6
+    tau2_min: 15
+    ruido_mg_dl: 8
+  - id: persona_lenta
+    grupo: grilla
+    descripcion: persona lenta, larga y más larga, ruido medio
+    tau1_min: 15
+    tau2_min: 30
+    ruido_mg_dl: 5
+  - id: persona_rapida
+    grupo: grilla
+    descripcion: persona rápida, la más corta y corta, ruido medio
+    tau1_min: 3
+    tau2_min: 6
+    ruido_mg_dl: 5
+  # Escenarios de replicación. Las situaciones de la corrida exploratoria que
+  # no caen en la grilla con un valor por etiqueta.
+  - id: replica_persona_lenta
+    grupo: replicacion
+    descripcion: persona lenta de la corrida exploratoria, ruido medio
+    tau1_min: 12
+    tau2_min: 30
+    ruido_mg_dl: 5
+  - id: replica_persona_rapida
+    grupo: replicacion
+    descripcion: persona rápida de la corrida exploratoria, ruido medio
+    tau1_min: 3
+    tau2_min: 8
+    ruido_mg_dl: 5
+
+figura:
+  escenario: tipico_ruido_medio
+  replica: 0

@@ -1,0 +1,75 @@
+# Cifras de la corrida exploratoria del 2026-10-16, cuyos scripts se perdieron.
+#
+# Transcritas del documento original del medidor
+# (https://claude.ai/artifact/HH6VpBKTTURwSzmgKUQ9BA), sección "Prototipo en
+# software: tomografía del retraso", tabla "Retrasos estimados sin sangre (40
+# corridas, media ± desviación estándar)". No se usan para correr nada. Solo
+# las lee run_all.py para escribir results/comparacion-con-corrida-exploratoria.md.
+
+fuente: 'documento del medidor, sección "Prototipo en software: tomografía del retraso"'
+corridas_por_situacion: 40
+
+situaciones:
+  - nombre: Persona tipo, ruido 2
+    escenario: tipico_ruido_bajo
+    tau1_real: 6
+    tau1_media: 5.62
+    tau1_de: 0.56
+    tau2_real: 15
+    tau2_media: 14.62
+    tau2_de: 0.60
+    ruido_estimado: 1.98
+    ruido_real: 2
+  - nombre: Persona tipo, ruido 5
+    escenario: tipico_ruido_medio
+    tau1_real: 6
+    tau1_media: 6.01
+    tau1_de: 1.48
+    tau2_real: 15
+    tau2_media: 15.03
+    tau2_de: 1.59
+    ruido_estimado: 4.95
+    ruido_real: 5
+  - nombre: Persona tipo, ruido 8
+    escenario: tipico_ruido_alto
+    tau1_real: 6
+    tau1_media: 6.74
+    tau1_de: 2.69
+    tau2_real: 15
+    tau2_media: 15.83
+    tau2_de: 2.90
+    ruido_estimado: 7.92
+    ruido_real: 8
+  - nombre: Persona lenta, ruido 5
+    escenario: replica_persona_lenta
+    tau1_real: 12
+    tau1_media: 11.69
+    tau1_de: 1.30
+    tau2_real: 30
+    tau2_media: 29.73
+    tau2_de: 1.56
+    ruido_estimado: 4.95
+    ruido_real: 5
+  - nombre: Persona rápida, ruido 5
+    escenario: replica_persona_rapida
+    tau1_real: 3
+    tau1_media: 3.60
+    tau1_de: 1.95
+    tau2_real: 8
+    tau2_media: 8.61
+    tau2_de: 2.00
+    ruido_estimado: 4.95
+    ruido_real: 5
+
+afirmaciones:
+  sesgo_medio_maximo_min: 0.8
+  adelanto_alarma_min_rango: [1.5, 9]
+  requisito_ruido_mg_dl_rango: [2, 3]
+  retraso_poblacional_min: 10
+  error_retraso_poblacional_hipoglucemia_porcentaje_rango: [19, 31]
+  texto_error_general: >-
+    El error general solo baja con ruido de ~2 mg/dL o en personas lentas. Con
+    más ruido, corregir el retraso lo amplifica.
+  texto_tau_estimado_vs_real: >-
+    En los cinco escenarios, esa versión rindió prácticamente igual que si se
+    conociera el τ real.

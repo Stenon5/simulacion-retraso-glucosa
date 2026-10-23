@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "simulacion-retraso-glucosa"
 version = "0.0.0"
-description = "Estudio de simulación sobre cómo estimar el retraso de la glucosa entre la sangre y el tejido con dos profundidades ópticas. Andamiaje, todavía sin resultados. No es un dispositivo médico."
+description = "Estudio de simulación sobre cómo estimar el retraso de la glucosa entre la sangre y el tejido con dos profundidades ópticas. Primera replicación en simulación, con resultados. No es un dispositivo médico."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
@@ -38,6 +38,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100

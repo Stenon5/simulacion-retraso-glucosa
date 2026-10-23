@@ -4,17 +4,19 @@
 tejido usando solo dos profundidades ópticas, sin ninguna muestra de sangre?
 ¿Y conocer ese retraso hace que una alarma de hipoglucemia se active antes?
 
-**Estado: andamiaje, todavía sin resultados.** La especificación del modelo,
-los umbrales y los esqueletos de los tests ya están en el repositorio. La
-simulación en sí no está escrita. `results/` está vacío y no se ha generado
-ninguna figura. En este README las cifras aparecen solo como
-`(rellenar desde la ejecución)`.
+**Estado: primera replicación en simulación, con resultados.** El modelo, el
+estimador y el filtro están implementados, y `python run_all.py --seed 1`
+regenera de forma idéntica todas las cifras de este README. La replicación no
+reproduce las cifras de la corrida exploratoria del 16 de octubre. Los
+detalles están en la sección Resultados.
 
-<!-- figura: figures/delay-recovery.png, la genera src/glucose_delay/figures.py, se agrega aquí cuando run_all.py la produzca -->
+![Registro sintético representativo](figures/delay-recovery.png)
 
-_Espacio para la figura. `figures/delay-recovery.png` va aquí cuando se haya
-ejecutado `run_all.py`. El script que la dibuja es
-`src/glucose_delay/figures.py` y hoy es solo un esqueleto._
+_Un registro sintético del escenario `tipico_ruido_medio` (ruido de 5 mg/dL,
+semilla maestra 1, réplica 0). En negro la glucosa en sangre simulada, en gris
+una sola profundidad suavizada y en azul la reconstrucción con dos
+profundidades, el retraso estimado y el filtro de Kalman. La genera
+`src/glucose_delay/figures.py`._
 
 ## No es un dispositivo médico
 
@@ -32,6 +34,11 @@ un dry lab. Modela un instrumento hipotético que integraría varias mediciones
 simultáneas y haría los cálculos, y estudia si esos cálculos podrían funcionar.
 El modelado matemático lo hace el autor, sin hardware y con ayuda de IA, que se
 registra en [`BITACORA_DE_AGENTES.md`](BITACORA_DE_AGENTES.md).
+
+La idea parte de la revisión de Tang et al. (2020) sobre monitoreo no
+invasivo de glucosa, *Sensors* 20(23):6925,
+[DOI 10.3390/s20236925](https://doi.org/10.3390/s20236925), estudiada para
+un seminario del ramo.
 
 No propone una técnica nueva. Junta conceptos que ya existen, como la selección
 de profundidad, la estimación del retraso entre compartimentos y los filtros de
@@ -100,13 +107,58 @@ al informe y a cualquier figura.
 
 ## Resultados
 
+Cada escenario tiene 40 réplicas. Media y DE sobre las corridas válidas, es
+decir, sin constante negativa ni casos no identificables. Los datos por semilla
+están en `results/` y el resumen completo en [`results/resumen.md`](results/resumen.md).
+
 | Escenario | Retraso real 1 | Retraso estimado 1, media y DE | Retraso real 2 | Retraso estimado 2, media y DE | Nivel de ruido |
 |---|---|---|---|---|---|
-| `(rellenar desde la ejecución)` | | | | | |
+| `tipico_ruido_bajo` | 6 min | 6,21 ± 1,10 min | 15 min | 15,29 ± 1,32 min | 2 mg/dL |
+| `tipico_ruido_medio` | 6 min | 6,73 ± 3,00 min | 15 min | 15,98 ± 3,48 min | 5 mg/dL |
+| `tipico_ruido_alto` | 6 min | 9,24 ± 7,00 min | 15 min | 18,85 ± 7,67 min | 8 mg/dL |
+| `persona_lenta` | 15 min | 16,16 ± 3,85 min | 30 min | 31,58 ± 4,79 min | 5 mg/dL |
+| `persona_rapida` | 3 min | 7,51 ± 9,01 min | 6 min | 10,92 ± 9,33 min | 5 mg/dL |
+| `replica_persona_lenta` | 12 min | 12,71 ± 2,69 min | 30 min | 31,09 ± 3,58 min | 5 mg/dL |
+| `replica_persona_rapida` | 3 min | 5,33 ± 4,13 min | 8 min | 10,65 ± 4,35 min | 5 mg/dL |
 
-Umbrales cumplidos o no cumplidos: `(rellenar desde la ejecución)`
+DE es la desviación estándar entre semillas.
 
-DE es la desviación estándar.
+Lo principal:
+
+* La diferencia entre los dos retrasos se recupera con precisión, por ejemplo
+  9,08 ± 0,40 min frente a 9 reales con ruido de 2 mg/dL. Lo que queda mal
+  identificado es el nivel de cada retraso por separado, con una cola hacia
+  valores altos.
+* En los escenarios difíciles el estimador falla en parte de las corridas, con
+  una constante negativa o un caso no identificable: 3 de 40 con ruido de
+  8 mg/dL, 7 de 40 en la réplica de la persona rápida y 16 de 40 en la persona
+  rápida.
+* La alarma de hipoglucemia se activa antes que con una sola profundidad, en
+  promedio entre 5,2 y 14,8 min según el escenario. Con ruido de 8 mg/dL y en
+  la persona rápida aparecen falsas alarmas.
+* El método supera a una sola profundidad hasta unos 5,9 mg/dL de ruido por
+  lectura. Esa cifra sale de solo tres niveles de ruido y depende del diseño
+  de la línea base.
+
+Umbrales de [`umbrales.yaml`](umbrales.yaml), por escenario, en
+[`results/registro-de-umbrales.json`](results/registro-de-umbrales.json):
+
+* **Sesgo menor a 1 min:** se cumple solo en la persona típica con ruido de 2 y
+  5 mg/dL, y con 5 mg/dL la dispersión es varias veces mayor que el sesgo.
+* **Alarma más temprana sin más falsas alarmas:** 5 de 7 escenarios.
+* **Mejor que un retraso poblacional fijo:** 3 de 7. En la persona típica no se
+  puede ganar, porque ese retraso fijo coincide con el real.
+* **Ruido estimado y requisito de ruido:** se cumplen en todos.
+
+### Frente a la corrida exploratoria
+
+La replicación no reproduce las cifras del 16 de octubre, y manda la
+replicación. Las desviaciones salen entre 2 y 2,6 veces mayores, el sesgo llega
+a 3,85 min en vez de 0,8 o menos, y el requisito de ruido sale en unos
+5,9 mg/dL en vez de 2 a 3. La comparación completa está en
+[`results/comparacion-con-corrida-exploratoria.md`](results/comparacion-con-corrida-exploratoria.md),
+y las decisiones de implementación, escritas antes de correr, en
+[`docs/decisiones-de-implementacion.md`](docs/decisiones-de-implementacion.md).
 
 ## Cómo ejecutarlo
 
@@ -115,10 +167,9 @@ python -m pip install -e ".[dev]"
 python run_all.py --seed 1
 ```
 
-Por ahora `run_all.py` termina con un mensaje que dice que la simulación
-todavía no está implementada. Los tests que la describen se omiten con esa
-misma razón, así que una corrida de tests informa lo que falta construir en
-vez de fallar.
+`run_all.py` escribe un CSV por escenario y el resumen en `results/`, la
+figura en `figures/` y el registro de umbrales. Las pruebas que siguen
+omitidas corresponden a trabajo de fases posteriores.
 
 ## Limitaciones
 
@@ -180,11 +231,11 @@ docs/especificacion.md                    el modelo y el estimador, con detalle 
 docs/barridos-de-mala-especificacion.md   dónde se espera que se rompa el estimador
 docs/backlog-de-issues.md                 la lista de tareas, lista para abrir como issues
 umbrales.yaml                             criterios de aprobado y reprobado, registrados primero
-run_all.py                                punto de entrada (esqueleto)
-src/glucose_delay/                        paquete (esqueleto)
+run_all.py                                punto de entrada, regenera todo
+src/glucose_delay/                        paquete con el modelo, el estimador y el filtro
 tests/                                    tests, omitidos hasta que exista el código
-results/                                  vacío
-figures/                                  vacío
+results/                                  resultados por escenario y resumen
+figures/                                  figura del registro representativo
 informe/factibilidad.md                   la estructura del informe, sin rellenar
 BITACORA_DE_AGENTES.md                    en qué se equivocó el flujo de trabajo asistido por agentes
 ```

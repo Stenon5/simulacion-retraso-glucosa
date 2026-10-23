@@ -1,0 +1,660 @@
+{
+  "corrida": {
+    "semilla_maestra": 1,
+    "replicas": 40,
+    "escenarios_ejecutados": [
+      "tipico_ruido_bajo",
+      "tipico_ruido_medio",
+      "tipico_ruido_alto",
+      "persona_lenta",
+      "persona_rapida",
+      "replica_persona_lenta",
+      "replica_persona_rapida"
+    ],
+    "corrida_completa": true,
+    "configuracion": {
+      "registro": {
+        "duracion_min": 480,
+        "dt_min": 1,
+        "replicas_por_escenario": 40
+      },
+      "alarma": {
+        "umbral_mg_dl": 70,
+        "ventana_previa_min": 30,
+        "ventana_posterior_min": 30
+      },
+      "estimador": {
+        "cond_max": 10000,
+        "correccion_lado_derecho_primaria": "spec",
+        "correccion_lado_derecho_secundaria": "none"
+      },
+      "kalman": {
+        "ruido_proceso_pendiente": 0.0333333333333333,
+        "de_inicial_glucosa_mg_dl": 20,
+        "de_inicial_pendiente_mg_dl_min": 1,
+        "profundidad_linea_base": 1
+      },
+      "retraso_poblacional_fijo": {
+        "tau1_min": 6,
+        "tau2_min": 15
+      },
+      "etiquetas": {
+        "constante_de_tiempo_min": {
+          "la_mas_corta": 3,
+          "corta": 6,
+          "larga": 15,
+          "mas_larga": 30
+        },
+        "ruido_mg_dl": {
+          "bajo": 2,
+          "medio": 5,
+          "alto": 8
+        }
+      },
+      "escenarios": [
+        {
+          "id": "tipico_ruido_bajo",
+          "grupo": "grilla",
+          "descripcion": "típico, ruido bajo",
+          "tau1_min": 6,
+          "tau2_min": 15,
+          "ruido_mg_dl": 2
+        },
+        {
+          "id": "tipico_ruido_medio",
+          "grupo": "grilla",
+          "descripcion": "típico, ruido medio",
+          "tau1_min": 6,
+          "tau2_min": 15,
+          "ruido_mg_dl": 5
+        },
+        {
+          "id": "tipico_ruido_alto",
+          "grupo": "grilla",
+          "descripcion": "típico, ruido alto",
+          "tau1_min": 6,
+          "tau2_min": 15,
+          "ruido_mg_dl": 8
+        },
+        {
+          "id": "persona_lenta",
+          "grupo": "grilla",
+          "descripcion": "persona lenta, larga y más larga, ruido medio",
+          "tau1_min": 15,
+          "tau2_min": 30,
+          "ruido_mg_dl": 5
+        },
+        {
+          "id": "persona_rapida",
+          "grupo": "grilla",
+          "descripcion": "persona rápida, la más corta y corta, ruido medio",
+          "tau1_min": 3,
+          "tau2_min": 6,
+          "ruido_mg_dl": 5
+        },
+        {
+          "id": "replica_persona_lenta",
+          "grupo": "replicacion",
+          "descripcion": "persona lenta de la corrida exploratoria, ruido medio",
+          "tau1_min": 12,
+          "tau2_min": 30,
+          "ruido_mg_dl": 5
+        },
+        {
+          "id": "replica_persona_rapida",
+          "grupo": "replicacion",
+          "descripcion": "persona rápida de la corrida exploratoria, ruido medio",
+          "tau1_min": 3,
+          "tau2_min": 8,
+          "ruido_mg_dl": 5
+        }
+      ],
+      "figura": {
+        "escenario": "tipico_ruido_medio",
+        "replica": 0
+      }
+    },
+    "kalman": {
+      "ruido_proceso_pendiente": 0.0333333333333333,
+      "de_inicial_glucosa_mg_dl": 20,
+      "de_inicial_pendiente_mg_dl_min": 1,
+      "profundidad_linea_base": 1
+    },
+    "episodio_real_min": [
+      274.0,
+      326.0
+    ],
+    "software": {
+      "python": "3.11.9",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "matplotlib": "3.11.2",
+      "pyyaml": "6.0.3"
+    },
+    "git": {
+      "commit": "14367a9e7cf6d086da002f4f5af02c1eb24cea84",
+      "cambios_sin_commit": true
+    },
+    "comando": "python run_all.py --seed 1"
+  },
+  "umbrales_version": 1,
+  "umbrales_committed": "2026-10-22",
+  "criterios": {
+    "delay_bias": {
+      "enunciado": "El sesgo medio de cada constante de tiempo estimada es menor a 1 minuto en todos los escenarios, y la desviación estándar entre semillas se informa junto a él.",
+      "passes_if": "sesgo medio absoluto < 1 minuto por escenario",
+      "por_escenario": {
+        "tipico_ruido_bajo": {
+          "resultado": "cumple",
+          "cumple": true,
+          "sesgo_tau1_min": 0.2123820791695561,
+          "de_tau1_min": 1.1043806105645166,
+          "sesgo_tau2_min": 0.29415344054105574,
+          "de_tau2_min": 1.3172776945523357,
+          "corridas_validas": "40/40",
+          "constantes_negativas": "0/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": false,
+          "razon_de_sobre_sesgo_tau1": 5.199970802069556,
+          "razon_de_sobre_sesgo_tau2": 4.4781991743131755
+        },
+        "tipico_ruido_medio": {
+          "resultado": "cumple",
+          "cumple": true,
+          "sesgo_tau1_min": 0.7262927686059744,
+          "de_tau1_min": 2.998785709114773,
+          "sesgo_tau2_min": 0.977289948555617,
+          "de_tau2_min": 3.484562481958278,
+          "corridas_validas": "40/40",
+          "constantes_negativas": "0/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 4.128893799769695,
+          "razon_de_sobre_sesgo_tau2": 3.565535987664948
+        },
+        "tipico_ruido_alto": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "sesgo_tau1_min": 3.2357159545799696,
+          "de_tau1_min": 6.997636611658387,
+          "sesgo_tau2_min": 3.850995341868675,
+          "de_tau2_min": 7.668471544836916,
+          "corridas_validas": "37/40",
+          "constantes_negativas": "3/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 2.162623885991487,
+          "razon_de_sobre_sesgo_tau2": 1.9912959804090107
+        },
+        "persona_lenta": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "sesgo_tau1_min": 1.1557201500669692,
+          "de_tau1_min": 3.8502318497059664,
+          "sesgo_tau2_min": 1.5819437467577515,
+          "de_tau2_min": 4.7921331486907714,
+          "corridas_validas": "40/40",
+          "constantes_negativas": "0/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 3.331456883816434,
+          "razon_de_sobre_sesgo_tau2": 3.0292689980363803
+        },
+        "persona_rapida": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "sesgo_tau1_min": 4.506680896309493,
+          "de_tau1_min": 9.00736469116307,
+          "sesgo_tau2_min": 4.92349889366298,
+          "de_tau2_min": 9.328858145346826,
+          "corridas_validas": "24/40",
+          "constantes_negativas": "11/40",
+          "no_identificables": "5/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 1.9986692864230025,
+          "razon_de_sobre_sesgo_tau2": 1.8947619054721367
+        },
+        "replica_persona_lenta": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "sesgo_tau1_min": 0.7105782936318068,
+          "de_tau1_min": 2.6923443959657933,
+          "sesgo_tau2_min": 1.091831922778784,
+          "de_tau2_min": 3.57978364582157,
+          "corridas_validas": "40/40",
+          "constantes_negativas": "0/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 3.788948269451161,
+          "razon_de_sobre_sesgo_tau2": 3.2786947982898185
+        },
+        "replica_persona_rapida": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "sesgo_tau1_min": 2.3320257750021884,
+          "de_tau1_min": 4.134054965733813,
+          "sesgo_tau2_min": 2.6491040023713275,
+          "de_tau2_min": 4.353412436087788,
+          "corridas_validas": "33/40",
+          "constantes_negativas": "7/40",
+          "no_identificables": "0/40",
+          "espiritu_incumplido_de_3_min_o_mas": true,
+          "razon_de_sobre_sesgo_tau1": 1.7727312493919298,
+          "razon_de_sobre_sesgo_tau2": 1.643352783503728
+        }
+      },
+      "cumple_en_toda_la_grilla": false,
+      "escenarios_de_la_grilla_que_no_cumplen": [
+        "tipico_ruido_alto",
+        "persona_lenta",
+        "persona_rapida"
+      ],
+      "cumple_en_los_siete_escenarios": false,
+      "escenarios_que_no_cumplen_incluida_replicacion": [
+        "tipico_ruido_alto",
+        "persona_lenta",
+        "persona_rapida",
+        "replica_persona_lenta",
+        "replica_persona_rapida"
+      ]
+    },
+    "earlier_alarm": {
+      "enunciado": "La alarma de hipoglucemia se activa antes con dos profundidades y un retraso estimado que con una sola profundidad suavizada, en todos los escenarios.",
+      "passes_if": "la alarma se activa antes en todos los escenarios, mostrando la dispersión de cada escenario",
+      "por_escenario": {
+        "tipico_ruido_bajo": {
+          "resultado": "cumple",
+          "cumple": true,
+          "adelanto_medio_min": 6.475,
+          "de_adelanto_min": 1.8809094908635327,
+          "corridas_con_alarma_antes": "40/40",
+          "corridas_con_alarma_igual": "0/40",
+          "corridas_con_alarma_despues": "0/40",
+          "falsas_alarmas_metodo": "0 en 40 corridas",
+          "falsas_alarmas_linea_base": "0 en 40 corridas",
+          "episodios_perdidos_metodo": "0/40",
+          "episodios_perdidos_linea_base": "0/40"
+        },
+        "tipico_ruido_medio": {
+          "resultado": "cumple",
+          "cumple": true,
+          "adelanto_medio_min": 6.1,
+          "de_adelanto_min": 3.1033480679371483,
+          "corridas_con_alarma_antes": "39/40",
+          "corridas_con_alarma_igual": "1/40",
+          "corridas_con_alarma_despues": "0/40",
+          "falsas_alarmas_metodo": "0 en 40 corridas",
+          "falsas_alarmas_linea_base": "0 en 40 corridas",
+          "episodios_perdidos_metodo": "0/40",
+          "episodios_perdidos_linea_base": "0/40"
+        },
+        "tipico_ruido_alto": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "adelanto_medio_min": 7.756756756756757,
+          "de_adelanto_min": 5.08486537244162,
+          "corridas_con_alarma_antes": "37/37",
+          "corridas_con_alarma_igual": "0/37",
+          "corridas_con_alarma_despues": "0/37",
+          "falsas_alarmas_metodo": "2 en 37 corridas",
+          "falsas_alarmas_linea_base": "0 en 37 corridas",
+          "episodios_perdidos_metodo": "0/37",
+          "episodios_perdidos_linea_base": "0/37"
+        },
+        "persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "adelanto_medio_min": 14.8,
+          "de_adelanto_min": 3.3756290961644164,
+          "corridas_con_alarma_antes": "40/40",
+          "corridas_con_alarma_igual": "0/40",
+          "corridas_con_alarma_despues": "0/40",
+          "falsas_alarmas_metodo": "0 en 40 corridas",
+          "falsas_alarmas_linea_base": "0 en 40 corridas",
+          "episodios_perdidos_metodo": "0/40",
+          "episodios_perdidos_linea_base": "0/40"
+        },
+        "persona_rapida": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "adelanto_medio_min": 6.75,
+          "de_adelanto_min": 6.442049363362563,
+          "corridas_con_alarma_antes": "22/24",
+          "corridas_con_alarma_igual": "2/24",
+          "corridas_con_alarma_despues": "0/24",
+          "falsas_alarmas_metodo": "1 en 24 corridas",
+          "falsas_alarmas_linea_base": "0 en 24 corridas",
+          "episodios_perdidos_metodo": "0/24",
+          "episodios_perdidos_linea_base": "0/24"
+        },
+        "replica_persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "adelanto_medio_min": 11.975,
+          "de_adelanto_min": 3.5336296440824784,
+          "corridas_con_alarma_antes": "40/40",
+          "corridas_con_alarma_igual": "0/40",
+          "corridas_con_alarma_despues": "0/40",
+          "falsas_alarmas_metodo": "0 en 40 corridas",
+          "falsas_alarmas_linea_base": "0 en 40 corridas",
+          "episodios_perdidos_metodo": "0/40",
+          "episodios_perdidos_linea_base": "0/40"
+        },
+        "replica_persona_rapida": {
+          "resultado": "cumple",
+          "cumple": true,
+          "adelanto_medio_min": 5.181818181818182,
+          "de_adelanto_min": 3.6181361349331636,
+          "corridas_con_alarma_antes": "31/33",
+          "corridas_con_alarma_igual": "1/33",
+          "corridas_con_alarma_despues": "1/33",
+          "falsas_alarmas_metodo": "0 en 33 corridas",
+          "falsas_alarmas_linea_base": "0 en 33 corridas",
+          "episodios_perdidos_metodo": "0/33",
+          "episodios_perdidos_linea_base": "0/33"
+        }
+      },
+      "cumple_en_toda_la_grilla": false,
+      "escenarios_de_la_grilla_que_no_cumplen": [
+        "tipico_ruido_alto",
+        "persona_rapida"
+      ],
+      "cumple_en_los_siete_escenarios": false,
+      "escenarios_que_no_cumplen_incluida_replicacion": [
+        "tipico_ruido_alto",
+        "persona_rapida"
+      ]
+    },
+    "beats_fixed_population_delay": {
+      "enunciado": "Estimar el retraso es mejor que suponer un retraso poblacional fijo.",
+      "passes_if": "error menor que la línea base de retraso fijo en todos los escenarios",
+      "por_escenario": {
+        "tipico_ruido_bajo": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "rmse_tau_estimado_mg_dl": 2.397710471609206,
+          "de_rmse_tau_estimado": 0.32744356553359344,
+          "rmse_tau_poblacional_mg_dl": 2.2188824402959044,
+          "de_rmse_tau_poblacional": 0.16251422317549916,
+          "corridas_donde_gana_el_estimado": "14/40",
+          "tau_poblacional_igual_al_real": true
+        },
+        "tipico_ruido_medio": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "rmse_tau_estimado_mg_dl": 4.59504094077499,
+          "de_rmse_tau_estimado": 1.1576458156211513,
+          "rmse_tau_poblacional_mg_dl": 3.8829691442780403,
+          "de_rmse_tau_poblacional": 0.2866302949882183,
+          "corridas_donde_gana_el_estimado": "13/40",
+          "tau_poblacional_igual_al_real": true
+        },
+        "tipico_ruido_alto": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "rmse_tau_estimado_mg_dl": 7.700287512412619,
+          "de_rmse_tau_estimado": 4.719918151040334,
+          "rmse_tau_poblacional_mg_dl": 5.197014293630787,
+          "de_rmse_tau_poblacional": 0.4222462915999561,
+          "corridas_donde_gana_el_estimado": "9/37",
+          "tau_poblacional_igual_al_real": true
+        },
+        "persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "rmse_tau_estimado_mg_dl": 6.764079001452943,
+          "de_rmse_tau_estimado": 1.510997485703661,
+          "rmse_tau_poblacional_mg_dl": 7.278103980263215,
+          "de_rmse_tau_poblacional": 0.22674176414570338,
+          "corridas_donde_gana_el_estimado": "31/40",
+          "tau_poblacional_igual_al_real": false
+        },
+        "persona_rapida": {
+          "resultado": "no cumple",
+          "cumple": false,
+          "rmse_tau_estimado_mg_dl": 6.346812046777309,
+          "de_rmse_tau_estimado": 7.622235804204426,
+          "rmse_tau_poblacional_mg_dl": 5.099367795426331,
+          "de_rmse_tau_poblacional": 0.31070174011791285,
+          "corridas_donde_gana_el_estimado": "16/24",
+          "tau_poblacional_igual_al_real": false
+        },
+        "replica_persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "rmse_tau_estimado_mg_dl": 5.894615948940119,
+          "de_rmse_tau_estimado": 0.9512875686623654,
+          "rmse_tau_poblacional_mg_dl": 6.114645099366429,
+          "de_rmse_tau_poblacional": 0.2362210288986477,
+          "corridas_donde_gana_el_estimado": "30/40",
+          "tau_poblacional_igual_al_real": false
+        },
+        "replica_persona_rapida": {
+          "resultado": "cumple",
+          "cumple": true,
+          "rmse_tau_estimado_mg_dl": 4.536419962733135,
+          "de_rmse_tau_estimado": 2.6600230954853217,
+          "rmse_tau_poblacional_mg_dl": 4.831733928913952,
+          "de_rmse_tau_poblacional": 0.2835846844783241,
+          "corridas_donde_gana_el_estimado": "25/33",
+          "tau_poblacional_igual_al_real": false
+        }
+      },
+      "cumple_en_toda_la_grilla": false,
+      "escenarios_de_la_grilla_que_no_cumplen": [
+        "tipico_ruido_bajo",
+        "tipico_ruido_medio",
+        "tipico_ruido_alto",
+        "persona_rapida"
+      ],
+      "cumple_en_los_siete_escenarios": false,
+      "escenarios_que_no_cumplen_incluida_replicacion": [
+        "tipico_ruido_bajo",
+        "tipico_ruido_medio",
+        "tipico_ruido_alto",
+        "persona_rapida"
+      ]
+    },
+    "noise_estimate_recovers": {
+      "enunciado": "El nivel de ruido estimado a partir de la señal coincide con el ruido que se inyectó.",
+      "passes_if": "ruido estimado dentro del 10 por ciento del ruido inyectado, por escenario",
+      "por_escenario": {
+        "tipico_ruido_bajo": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 2.0,
+          "ruido_estimado_media_mg_dl": 1.9967542752348861,
+          "ruido_estimado_de_mg_dl": 0.07134339575954468,
+          "error_relativo_de_la_media": 0.0016228623825569333,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "tipico_ruido_medio": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 5.0,
+          "ruido_estimado_media_mg_dl": 4.991795014836032,
+          "ruido_estimado_de_mg_dl": 0.1783618605422091,
+          "error_relativo_de_la_media": 0.0016409970327936562,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "tipico_ruido_alto": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 8.0,
+          "ruido_estimado_media_mg_dl": 7.986855268798718,
+          "ruido_estimado_de_mg_dl": 0.2853796182264725,
+          "error_relativo_de_la_media": 0.0016430914001602792,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 5.0,
+          "ruido_estimado_media_mg_dl": 4.991787679779811,
+          "ruido_estimado_de_mg_dl": 0.1783622008219627,
+          "error_relativo_de_la_media": 0.0016424640440378725,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "persona_rapida": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 5.0,
+          "ruido_estimado_media_mg_dl": 4.99180006699101,
+          "ruido_estimado_de_mg_dl": 0.1783615743753105,
+          "error_relativo_de_la_media": 0.0016399866017980714,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "replica_persona_lenta": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 5.0,
+          "ruido_estimado_media_mg_dl": 4.991788829463056,
+          "ruido_estimado_de_mg_dl": 0.17836213303169332,
+          "error_relativo_de_la_media": 0.0016422341073887737,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        },
+        "replica_persona_rapida": {
+          "resultado": "cumple",
+          "cumple": true,
+          "ruido_inyectado_mg_dl": 5.0,
+          "ruido_estimado_media_mg_dl": 4.991799137002571,
+          "ruido_estimado_de_mg_dl": 0.17836163209393696,
+          "error_relativo_de_la_media": 0.001640172599485723,
+          "corridas_dentro_del_10_por_ciento": "40/40"
+        }
+      },
+      "cumple_en_toda_la_grilla": true,
+      "escenarios_de_la_grilla_que_no_cumplen": [],
+      "cumple_en_los_siete_escenarios": true,
+      "escenarios_que_no_cumplen_incluida_replicacion": []
+    },
+    "noise_requirement": {
+      "enunciado": "Se identifica el nivel de ruido por lectura con el que el método todavía supera a la línea base de una sola profundidad, y es de 3 mg/dL como mínimo. Es decir, el método tolera al menos ese ruido.",
+      "passes_if": "el nivel de ruido de cruce es igual o mayor a 3 mg/dL por lectura",
+      "familias": [
+        {
+          "tau1_min": 6.0,
+          "tau2_min": 15.0,
+          "escenarios": [
+            "tipico_ruido_bajo",
+            "tipico_ruido_medio",
+            "tipico_ruido_alto"
+          ],
+          "ruido_mg_dl": [
+            2.0,
+            5.0,
+            8.0
+          ],
+          "rmse_metodo_menos_rmse_una_profundidad": [
+            -2.2786455167733592,
+            -0.7170894867797015,
+            1.6155297497518424
+          ],
+          "cruce_mg_dl": 5.922254445409575,
+          "cruce_texto": "5.92 mg/dL (interpolado entre 5 y 8)",
+          "cumple": true
+        }
+      ],
+      "cumple": true,
+      "resultado": "cumple"
+    }
+  },
+  "reglas_de_detencion": {
+    "tipico_ruido_bajo": {
+      "constantes_negativas": "0/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    },
+    "tipico_ruido_medio": {
+      "constantes_negativas": "0/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    },
+    "tipico_ruido_alto": {
+      "constantes_negativas": "3/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    },
+    "persona_lenta": {
+      "constantes_negativas": "0/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    },
+    "persona_rapida": {
+      "constantes_negativas": "11/40",
+      "corridas_no_identificables": "5/40",
+      "escenario_no_identificable": false
+    },
+    "replica_persona_lenta": {
+      "constantes_negativas": "0/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    },
+    "replica_persona_rapida": {
+      "constantes_negativas": "7/40",
+      "corridas_no_identificables": "0/40",
+      "escenario_no_identificable": false
+    }
+  },
+  "variante_secundaria_no_registrada_de_antemano": {
+    "descripcion": "Estimador sin el término N sigma^2 dt (0,1,1) del lado derecho. Ver docs/decisiones-de-implementacion.md, sección 5. No decide ningún umbral.",
+    "por_escenario": {
+      "tipico_ruido_bajo": {
+        "corridas_validas": "40/40",
+        "sesgo_tau1_min": 0.20861740289187747,
+        "de_tau1_min": 1.103796967025615,
+        "sesgo_tau2_min": 0.2848693206958721,
+        "de_tau2_min": 1.3167526475564604,
+        "delay_bias_cumpliria": true
+      },
+      "tipico_ruido_medio": {
+        "corridas_validas": "40/40",
+        "sesgo_tau1_min": 0.7006049173362312,
+        "de_tau1_min": 2.9882883281972177,
+        "sesgo_tau2_min": 0.9168735369650935,
+        "de_tau2_min": 3.4745319328964794,
+        "delay_bias_cumpliria": true
+      },
+      "tipico_ruido_alto": {
+        "corridas_validas": "37/40",
+        "sesgo_tau1_min": 3.1448030414568233,
+        "de_tau1_min": 6.931275309457578,
+        "sesgo_tau2_min": 3.669701503658114,
+        "de_tau2_min": 7.600604325856488,
+        "delay_bias_cumpliria": false
+      },
+      "persona_lenta": {
+        "corridas_validas": "40/40",
+        "sesgo_tau1_min": 1.1083016544619895,
+        "de_tau1_min": 3.839477772186979,
+        "sesgo_tau2_min": 1.4893558888269922,
+        "de_tau2_min": 4.780761726542671,
+        "delay_bias_cumpliria": false
+      },
+      "persona_rapida": {
+        "corridas_validas": "24/40",
+        "sesgo_tau1_min": 4.433113229652893,
+        "de_tau1_min": 8.908719374876148,
+        "sesgo_tau2_min": 4.817991777215013,
+        "de_tau2_min": 9.229204311963718,
+        "delay_bias_cumpliria": false
+      },
+      "replica_persona_lenta": {
+        "corridas_validas": "40/40",
+        "sesgo_tau1_min": 0.6802612151119618,
+        "de_tau1_min": 2.6862377953673997,
+        "sesgo_tau2_min": 1.0176334674118834,
+        "de_tau2_min": 3.573429069807055,
+        "delay_bias_cumpliria": false
+      },
+      "replica_persona_rapida": {
+        "corridas_validas": "33/40",
+        "sesgo_tau1_min": 2.2983487873203456,
+        "de_tau1_min": 4.109486139281423,
+        "sesgo_tau2_min": 2.583540612847429,
+        "de_tau2_min": 4.329690558587036,
+        "delay_bias_cumpliria": false
+      }
+    }
+  }
+}

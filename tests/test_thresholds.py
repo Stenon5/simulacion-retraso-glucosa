@@ -53,8 +53,10 @@ def test_the_bias_with_spread_reporting_rule_is_present() -> None:
     assert "bias_with_spread" in ids
 
 
-def test_results_directory_is_still_empty() -> None:
-    """Mientras el README diga que no hay resultados, results/ no debe tener archivos de datos."""
+def test_readme_status_matches_results() -> None:
+    """El README no puede decir que no hay resultados si results/ tiene archivos de datos."""
     results = REPO / "results"
     data_files = [p for p in results.iterdir() if p.name != ".gitkeep"]
-    assert data_files == [], f"el README dice que no hay resultados, pero se encontró {data_files}"
+    readme = (REPO / "README.md").read_text(encoding="utf-8")
+    if data_files:
+        assert "todavía sin resultados" not in readme, "hay resultados, pero el README dice que no"
