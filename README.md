@@ -25,6 +25,25 @@ mediciones en personas, ni validación clínica. Toda cifra que este código
 llegue a producir saldrá de datos sintéticos generados con el modelo descrito
 en `docs/especificacion.md`.
 
+## Para qué sirve
+
+Este repositorio es una evaluación de viabilidad en simulación, lo que se llama
+un dry lab. Modela un instrumento hipotético que integraría varias mediciones
+simultáneas y haría los cálculos, y estudia si esos cálculos podrían funcionar.
+El modelado matemático lo hace el autor, sin hardware y con ayuda de IA, que se
+registra en [`BITACORA_DE_AGENTES.md`](BITACORA_DE_AGENTES.md).
+
+No propone una técnica nueva. Junta conceptos que ya existen, como la selección
+de profundidad, la estimación del retraso entre compartimentos y los filtros de
+estado. Lo que se estudia es qué modelos matemáticos sirven mejor para combinar
+mediciones de distintos aparatos. Hoy el repositorio cubre un primer caso, dos
+profundidades con un estimador y un filtro. Comparar otras familias de modelos
+es el [issue 18](https://github.com/Stenon5/simulacion-retraso-glucosa/issues/18).
+
+Se habla de evaluar la viabilidad y no de validar, porque con datos sintéticos
+generados por el mismo modelo que supone el estimador no hay validación contra
+un cuerpo real.
+
 ## La pregunta, planteada de modo que pueda fallar
 
 Dos profundidades de medición ven la misma señal de glucosa en sangre a través

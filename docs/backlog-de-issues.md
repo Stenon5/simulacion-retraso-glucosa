@@ -82,6 +82,10 @@ Se acepta cuando: se informa la separación bajo la cual el problema no es ident
 Etiquetas: `documentación`, `fase-2`
 Se acepta cuando: el informe dice dónde funciona el método y dónde no, en una sección corta que permita actuar a quien la lea.
 
+**[doc] Revisar qué modelos matemáticos sirven para combinar mediciones de distintos aparatos**
+Etiquetas: `documentación`, `fase-2`
+Se acepta cuando: hay una tabla corta de familias de modelos candidatas para combinar mediciones de distintos aparatos, con los supuestos de cada una, las fuentes que las describen y dónde se espera que fallen. No dice cuál es la mejor antes de probarlas.
+
 ## Fase 3, condicional
 
 Solo si las fases 0 a 2 terminaron. Nada de esto está prometido.
