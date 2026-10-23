@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: glucose-delay-simulation
+message: >-
+  If you use this repository, cite it as below. The repository is a scaffold
+  and contains no results yet. It is not a medical device.
+type: software
+authors:
+  - given-names: Eddie Andrés
+    family-names: Ríos Elgueta
+    orcid: https://orcid.org/0009-0001-9771-5787
+    affiliation: Universidad Tecnológica Metropolitana
+    alias: Stenon5
+repository-code: https://github.com/Stenon5/glucose-delay-simulation
+abstract: >-
+  Specification, pre-specified criteria and test skeletons for a simulation
+  study asking whether the blood to tissue glucose delay can be estimated from
+  two sensing depths without any blood measurement, and what sensor noise
+  level that would require. Synthetic data only, no device and no clinical
+  validation.
+keywords:
+  - simulation
+  - state estimation
+  - kalman filter
+  - replication
+  - reproducibility
+license: MIT
+version: 0.0.0
+date-released: "2026-10-22"
