@@ -12,7 +12,8 @@ detalles están en la sección Resultados.
 
 ## Por dónde empezar
 
-* **Para entender el proyecto en unos 20 minutos**, lee la guía del proyecto en [PDF](docs/guia-del-proyecto.pdf) o en [Word](docs/guia-del-proyecto.docx). Explica el problema, la propuesta, el método y los resultados sin leer código.
+* **Para la profesora o para una lectura de unos 20 minutos**, el resumen en [PDF](docs/resumen-para-la-profesora.pdf) o [Word](docs/resumen-para-la-profesora.docx). Muestra las propuestas que estamos evaluando, lo que hemos desarrollado y las opciones si hay que cambiar de rumbo.
+* **Para sumarte al equipo**, la guía completa en [PDF](docs/guia-del-proyecto.pdf) o [Word](docs/guia-del-proyecto.docx), con el análisis dry lab, los cálculos paso a paso y cómo colaborar.
 * **Para revisar los resultados**, sigue con este README y con [`results/resumen.md`](results/resumen.md).
 * **Para programar o correr un barrido**, lee [`docs/especificacion.md`](docs/especificacion.md), elige uno de los [issues abiertos](https://github.com/Stenon5/simulacion-retraso-glucosa/issues) y mira la sección Cómo ejecutarlo.
 
@@ -237,25 +238,26 @@ código abierto no elimina por sí solo el problema de circularidad.
 
 ```
 Para leer
-README.md                                 la pregunta, los resultados y los límites
-docs/guia-del-proyecto.pdf y .docx        guía para colegas y para la profesora
-docs/especificacion.md                    el modelo y el estimador, con detalle para implementarlos
-docs/decisiones-de-implementacion.md      lo que la especificación dejaba abierto, decidido antes de correr
-docs/barridos-de-mala-especificacion.md   dónde se espera que se rompa el estimador
-informe/factibilidad.md                   la estructura del informe, todavía sin rellenar
-BITACORA_DE_AGENTES.md                    en qué se equivocó el trabajo asistido por IA
+README.md                                   la pregunta, los resultados y los límites
+docs/guia-del-proyecto.pdf y .docx          guía completa del equipo, con el análisis dry lab
+docs/resumen-para-la-profesora.pdf y .docx  propuestas en evaluación y avances, para la profesora
+docs/especificacion.md                      el modelo y el estimador, con detalle para implementarlos
+docs/decisiones-de-implementacion.md        lo que la especificación dejaba abierto, decidido antes de correr
+docs/barridos-de-mala-especificacion.md     dónde se espera que se rompa el estimador
+informe/factibilidad.md                     la estructura del informe, todavía sin rellenar
+BITACORA_DE_AGENTES.md                      en qué se equivocó el trabajo asistido por IA
 
 Para correr
-run_all.py                                punto de entrada, regenera todo
-escenarios.yaml                           los siete escenarios simulados
-umbrales.yaml                             criterios de aprobado y reprobado, registrados primero
-src/glucose_delay/                        el modelo, el estimador y el filtro
-tests/                                    pruebas automáticas
-docs/cifras-corrida-exploratoria.yaml     cifras de la primera prueba, solo para compararlas
+run_all.py                                  punto de entrada, regenera todo
+escenarios.yaml                             los siete escenarios simulados
+umbrales.yaml                               criterios de aprobado y reprobado, registrados primero
+src/glucose_delay/                          el modelo, el estimador y el filtro
+tests/                                      pruebas automáticas
+docs/cifras-corrida-exploratoria.yaml       cifras de la primera prueba, solo para compararlas
 
 Lo genera el código, no se edita a mano
-results/                                  resultados por escenario y resumen
-figures/                                  figura del registro representativo
+results/                                    resultados por escenario y resumen
+figures/                                    figura del registro representativo
 ```
 
 Las tareas pendientes viven en los [issues de GitHub](https://github.com/Stenon5/simulacion-retraso-glucosa/issues). Antes también estaban copiadas en `docs/backlog-de-issues.md`, que se borró para no mantener dos listas.
