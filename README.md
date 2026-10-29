@@ -10,6 +10,12 @@ regenera de forma idéntica todas las cifras de este README. La replicación no
 reproduce las cifras de la corrida exploratoria del 16 de octubre. Los
 detalles están en la sección Resultados.
 
+## Por dónde empezar
+
+* **Para entender el proyecto en unos 20 minutos**, lee la guía del proyecto en [PDF](docs/guia-del-proyecto.pdf) o en [Word](docs/guia-del-proyecto.docx). Explica el problema, la propuesta, el método y los resultados sin leer código.
+* **Para revisar los resultados**, sigue con este README y con [`results/resumen.md`](results/resumen.md).
+* **Para programar o correr un barrido**, lee [`docs/especificacion.md`](docs/especificacion.md), elige uno de los [issues abiertos](https://github.com/Stenon5/simulacion-retraso-glucosa/issues) y mira la sección Cómo ejecutarlo.
+
 ![Registro sintético representativo](figures/delay-recovery.png)
 
 _Un registro sintético del escenario `tipico_ruido_medio` (ruido de 5 mg/dL,
@@ -163,13 +169,16 @@ y las decisiones de implementación, escritas antes de correr, en
 ## Cómo ejecutarlo
 
 ```
+# Instala el paquete y sus herramientas de desarrollo
 python -m pip install -e ".[dev]"
+# Corre los siete escenarios y regenera results/ y figures/
 python run_all.py --seed 1
+# Corre las pruebas automáticas
+python -m pytest
 ```
 
 `run_all.py` escribe un CSV por escenario y el resumen en `results/`, la
-figura en `figures/` y el registro de umbrales. Las pruebas que siguen
-omitidas corresponden a trabajo de fases posteriores.
+figura en `figures/` y el registro de umbrales. Con la semilla 1 la corrida reproduce las mismas cifras de este README.
 
 ## Limitaciones
 
@@ -227,18 +236,29 @@ código abierto no elimina por sí solo el problema de circularidad.
 ## Estructura del repositorio
 
 ```
-docs/especificacion.md                    el modelo y el estimador, con detalle suficiente para implementarlos
+Para leer
+README.md                                 la pregunta, los resultados y los límites
+docs/guia-del-proyecto.pdf y .docx        guía para colegas y para la profesora
+docs/especificacion.md                    el modelo y el estimador, con detalle para implementarlos
+docs/decisiones-de-implementacion.md      lo que la especificación dejaba abierto, decidido antes de correr
 docs/barridos-de-mala-especificacion.md   dónde se espera que se rompa el estimador
-docs/backlog-de-issues.md                 la lista de tareas, lista para abrir como issues
-umbrales.yaml                             criterios de aprobado y reprobado, registrados primero
+informe/factibilidad.md                   la estructura del informe, todavía sin rellenar
+BITACORA_DE_AGENTES.md                    en qué se equivocó el trabajo asistido por IA
+
+Para correr
 run_all.py                                punto de entrada, regenera todo
-src/glucose_delay/                        paquete con el modelo, el estimador y el filtro
-tests/                                    tests, omitidos hasta que exista el código
+escenarios.yaml                           los siete escenarios simulados
+umbrales.yaml                             criterios de aprobado y reprobado, registrados primero
+src/glucose_delay/                        el modelo, el estimador y el filtro
+tests/                                    pruebas automáticas
+docs/cifras-corrida-exploratoria.yaml     cifras de la primera prueba, solo para compararlas
+
+Lo genera el código, no se edita a mano
 results/                                  resultados por escenario y resumen
 figures/                                  figura del registro representativo
-informe/factibilidad.md                   la estructura del informe, sin rellenar
-BITACORA_DE_AGENTES.md                    en qué se equivocó el flujo de trabajo asistido por agentes
 ```
+
+Las tareas pendientes viven en los [issues de GitHub](https://github.com/Stenon5/simulacion-retraso-glucosa/issues). Antes también estaban copiadas en `docs/backlog-de-issues.md`, que se borró para no mantener dos listas.
 
 ## Licencia
 

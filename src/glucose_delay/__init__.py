@@ -11,8 +11,3 @@ decisiones clínicas.
 """
 
 __version__ = "0.0.0"
-
-NOT_IMPLEMENTED = (
-    "todavía no implementado: ver docs/especificacion.md para la especificación y "
-    "docs/backlog-de-issues.md para el orden de trabajo"
-)
