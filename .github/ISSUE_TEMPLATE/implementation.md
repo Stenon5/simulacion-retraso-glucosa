@@ -8,11 +8,11 @@ labels: ["implementación"]
 **Qué parte de la especificación**
 Sección de `docs/especificacion.md`.
 
-**Qué tests omitidos activa**
-Nómbralos tal como aparecen en `tests/`.
+**Qué pruebas agrega o activa**
+Nómbralas tal como aparecen en `tests/`.
 
 **Criterios de aceptación**
-- [ ] Se quita la omisión correspondiente y el test pasa.
+- [ ] Las pruebas nuevas o activadas pasan.
 - [ ] La función es determinista para una semilla fija.
 - [ ] Nada de la implementación modifica `umbrales.yaml`.
 - [ ] Cualquier desviación de `docs/especificacion.md` se documenta en el mismo
