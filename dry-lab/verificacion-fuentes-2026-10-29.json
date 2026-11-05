@@ -1,0 +1,181 @@
+{
+ "afirmaciones": [
+  {
+   "id": 1,
+   "veredicto": "respalda",
+   "cita": "\"Current prototypes and early stage systems typically report MARD values between 15% and 25%.\" ... \"substantially higher than the 4%–9% range observed in invasive and minimally invasive devices.\"",
+   "cifra_en_fuente": "Prototipos no invasivos 15%-25% MARD; invasivos/mínimamente invasivos 4%-9% (en otro pasaje la misma página da 4.5%-9% para invasivos)",
+   "referencia_apa": "Lux Research. (2026, 29 de enero). The innovator's guide to noninvasive glucose monitoring [Entrada de blog]. Lux Research. https://luxresearchinc.com/nl/blog/the-innovators-guide-to-noninvasive-glucose-monitoring/",
+   "url_usada": "https://luxresearchinc.com/nl/blog/the-innovators-guide-to-noninvasive-glucose-monitoring/"
+  },
+  {
+   "id": 2,
+   "veredicto": "respalda",
+   "cita": "\"Dexcom's G7 previously demonstrated a MARD of 8.2%, while Abbott's FreeStyle Libre 3 came in at 7.6%.\" (Texto leído en la copia del mismo artículo en Drug Delivery Business, mismo autor; la URL de MassDevice devolvió 403 y un resumen de búsqueda sobre MassDevice reporta las mismas cifras.)",
+   "cifra_en_fuente": "Dexcom G7 8.2%; FreeStyle Libre 3 7.6%",
+   "referencia_apa": "Whooley, S. (2024, 8 de marzo). Know Labs has positive accuracy data for non-invasive glucose monitor. Drug Delivery Business (publicado también en MassDevice). https://www.drugdeliverybusiness.com/know-labs-positive-accuracy-data-sensor/",
+   "url_usada": "https://www.drugdeliverybusiness.com/know-labs-positive-accuracy-data-sensor/"
+  },
+  {
+   "id": 3,
+   "veredicto": "respalda",
+   "cita": "\"With this method, Know Labs predicted blood glucose in the test set with a MARD of 11.3%.\" ... \"This predicted blood glucose values using 3,311 observations (or reference device values) from more than 330 hours of data.\"",
+   "cifra_en_fuente": "MARD 11.3%; 3,311 observaciones (más de 330 horas de datos)",
+   "referencia_apa": "Whooley, S. (2023, 26 de julio). Know Labs has more positive data for its non-invasive glucose monitor. Drug Delivery Business. https://www.drugdeliverybusiness.com/know-labs-more-positive-data-glucose-monitor/",
+   "url_usada": "https://www.drugdeliverybusiness.com/know-labs-more-positive-data-glucose-monitor/"
+  },
+  {
+   "id": 4,
+   "veredicto": "respalda",
+   "cita": "\"Know Labs said its study resulted in a mean absolute relative difference (MARD) of 20.6%.\" (Artículo del 5 mayo 2023, anterior al de 11.3% del 26 julio 2023.)",
+   "cifra_en_fuente": "MARD 20.6%",
+   "referencia_apa": "Whooley, S. (2023, 5 de mayo). Study supports feasibility of Know Labs non-invasive CGM. Drug Delivery Business. https://www.drugdeliverybusiness.com/study-feasibility-know-labs-non-invasive-cgm/",
+   "url_usada": "https://www.drugdeliverybusiness.com/study-feasibility-know-labs-non-invasive-cgm/"
+  },
+  {
+   "id": 5,
+   "veredicto": "respalda",
+   "cita": "Resumen en PubMed: MARD of \"14.5%\" and \"96.5% of the paired glucose data points in the A plus B zones of the Diabetes Technology Society (DTS) error grid\"; 20 adultos (15 desarrollo, 5 validación), modelo sin calibración invasiva por sujeto.",
+   "cifra_en_fuente": "MARD 14.5%; 96.5% en zonas A+B (rejilla de error DTS)",
+   "referencia_apa": "Rothenbühler, M., Lizoain, A., Rebeaud, F., Perotte, A., Stoffel, M., & DeVries, J. H. (2026). A prospective pilot study demonstrating noninvasive calibration-free glucose measurement. Journal of Diabetes Science and Technology, 20(3), 922–929. https://doi.org/10.1177/19322968251313811",
+   "url_usada": "https://pubmed.ncbi.nlm.nih.gov/39881452/"
+  },
+  {
+   "id": 6,
+   "veredicto": "respalda",
+   "cita": "\"We find that (1) there is no evidence that the true physiologic ISF glucose delay is longer than 5-10 min and that the values longer than this can be explained by delays in CGM filtering routines\"",
+   "cifra_en_fuente": "5-10 min",
+   "referencia_apa": "Rebrin, K., Sheppard, N. F., Jr., & Steil, G. M. (2010). Use of subcutaneous interstitial fluid glucose to estimate blood glucose: Revisiting delay and sensor offset. Journal of Diabetes Science and Technology, 4(5), 1087–1098. https://doi.org/10.1177/193229681000400507",
+   "url_usada": "https://pubmed.ncbi.nlm.nih.gov/20920428/"
+  },
+  {
+   "id": 7,
+   "veredicto": "respalda",
+   "cita": "\"Studies show the glucose lag times between blood plasma 420 and ISF vary between 0 to 30 minutes.\" (Texto de la patente; los números '420' son referencias a la figura.)",
+   "cifra_en_fuente": "0 a 30 minutos",
+   "referencia_apa": "Mastrototaro, J. J., Yoon, R. K., & Keenan, D. B. (2014). Method and system for providing sensor redundancy (U.S. Patent No. 8,679,016 B2). U.S. Patent and Trademark Office. https://patents.google.com/patent/US8679016",
+   "url_usada": "https://patents.google.com/patent/US8679016"
+  },
+  {
+   "id": 8,
+   "veredicto": "respalda con matiz",
+   "cita": "\"In 2007, Animas announced the discontinuation of the GlucoWatch G2 Biographer system, effective July 31 of that year, with support ending in 2008.\" (La fuente habla de descontinuación efectiva el 31 de julio de 2007, no dice literalmente que las ventas cesaron esa fecha.)",
+   "cifra_en_fuente": "Descontinuación efectiva 31 de julio de 2007; soporte hasta 2008",
+   "referencia_apa": "DiabetesNet. (2026, 21 de septiembre). GlucoWatch: The first non-invasive glucose monitor and its legacy in diabetes tech [Fecha de última actualización; sin fecha original ni autor]. DiabetesNet.com. https://www.diabetesnet.com/diabetes-technology/meters-monitors/animas-glucowatch/",
+   "url_usada": "https://www.diabetesnet.com/diabetes-technology/meters-monitors/animas-glucowatch/"
+  },
+  {
+   "id": 9,
+   "veredicto": "no se pudo abrir",
+   "cita": "",
+   "cifra_en_fuente": "",
+   "referencia_apa": "Relias Media. (s. f.). New monitor reduces reliance on fingersticks. Relias Media. https://www.reliasmedia.com/articles/61550-new-monitor-reduces-reliance-on-fingersticks (autor y fecha no verificados)",
+   "url_usada": "https://www.reliasmedia.com/articles/61550-new-monitor-reduces-reliance-on-fingersticks"
+  },
+  {
+   "id": 10,
+   "veredicto": "respalda con matiz",
+   "cita": "\"more than half of 240 nighttime alarms incorrectly warned children with diabetes of dangerously high or low glucose\" (el artículo lo atribuye a un estudio de 2005). Sobre la FDA, cita al Dr. Mark J. Rice (Vanderbilt): \"become a little gun shy about approving anything. It made it even harder to approve something.\"",
+   "cifra_en_fuente": "Más de la mitad de 240 alarmas nocturnas en niños incorrectas; la reticencia de la FDA es opinión de un médico citado, no declaración de la FDA",
+   "referencia_apa": "Dotinga, R. (2022, 3 de mayo). Hope and hype: Inside the push for wearable diabetes technology. MDedge. https://www.mdedge.com/endocrinology/article/162275/diabetes/hope-and-hype-inside-push-wearable-diabetes-technology",
+   "url_usada": "https://community.the-hospitalist.org/content/hope-and-hype-inside-push-wearable-diabetes-technology (copia del mismo artículo; la URL de MDedge solo devolvió el título)"
+  },
+  {
+   "id": 11,
+   "veredicto": "respalda",
+   "cita": "\"the concentration is generally in the micromolar range, while that of blood glucose is in the millimolar range.\" (Sección 'Reverse iontophoresis used in Glucowatch'; leído del PDF de arXiv.)",
+   "cifra_en_fuente": "Micromolar (fluido extraído) vs milimolar (sangre); el mismo pasaje menciona un retraso de 20 minutos",
+   "referencia_apa": "Poddar, R., Andrews, J. T., Shukla, P., & Sen, P. (2008). Non-invasive glucose monitoring techniques: A review and current trends. arXiv. https://arxiv.org/abs/0810.5755",
+   "url_usada": "https://arxiv.org/pdf/0810.5755 (PDF de la ficha https://arxiv.org/abs/0810.5755)"
+  },
+  {
+   "id": 12,
+   "veredicto": "respalda",
+   "cita": "Resumen (vía Europe PMC): noise-equivalent concentration \"as low as 4 mg/dL was achieved at an average power of 1.8 mW\", integration time of 50 seconds; transmisión MIR in vitro con quantum cascade laser y fibra de haluro de plata. La página del editor (RSC) devolvió 403.",
+   "cifra_en_fuente": "4 mg/dL a 1,8 mW y 50 s de integración",
+   "referencia_apa": "Vrančić, C., Fomichova, A., Gretz, N., Herrmann, C., Neudecker, S., Pucci, A., & Petrich, W. (2011). Continuous glucose monitoring by means of mid-infrared transmission laser spectroscopy in vitro. Analyst, 136(6), 1192–1198. https://doi.org/10.1039/C0AN00537A",
+   "url_usada": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1039/C0AN00537A&resultType=core&format=json"
+  },
+  {
+   "id": 13,
+   "veredicto": "respalda",
+   "cita": "\"the raw signal has been measured at 65 microvolts with a pulse amplitude of 1% of the DC signal.\"",
+   "cifra_en_fuente": "Amplitud de pulso 1% de la señal DC (señal cruda 65 microvoltios)",
+   "referencia_apa": "Braig, J. R., Goldberger, D. S., Herrera, R. O., & Sterling, B. B. (1996). Self-emission noninvasive infrared spectrophotometer (U.S. Patent No. 5,515,847). U.S. Patent and Trademark Office. https://patents.google.com/patent/US5515847",
+   "url_usada": "https://patents.google.com/patent/US5515847"
+  },
+  {
+   "id": 14,
+   "veredicto": "respalda con matiz",
+   "cita": "Resumen (vía Europe PMC): \"The data from 5 diabetic subjects were used for this study.\" Los canales ear-ear ipsilaterales \"did not exceed chance level\"; los canales con referencia contralateral lograron sensibilidad media ≥90% y especificidad ≥82%. Es un preprint de Research Square (no revisado por pares); la página directa solo mostró el título.",
+   "cifra_en_fuente": "5 sujetos; canales ipsilaterales en el oído no superaron el azar (sin valores numéricos); canales contralaterales: sensibilidad ≥90%, especificidad ≥82%",
+   "referencia_apa": "Cabrera, A. F., Kappel, S. L., Remvig, L. S., Toft, H. O., Madsen, R. E., Kildmose, P., & Rank, M. L. (2020). Hypoglycemia detection based on ear-EEG [Preprint]. Research Square. https://doi.org/10.21203/rs.3.rs-122971/v1",
+   "url_usada": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Hypoglycemia%20Detection%20Based%20on%20ear-EEG%22&resultType=core&format=json (ficha de la URL https://www.researchsquare.com/article/rs-122971/v1)"
+  },
+  {
+   "id": 15,
+   "veredicto": "respalda con matiz",
+   "cita": "Resumen: QDA \"achieving the best results (accuracy 0.96212, macro-F1 0.96201)\"; los autores afirman que \"All reported classification metrics (accuracy, macro-F1) reflect within-subject performance\". Solo 2 participantes con DT1; es el mejor de varias configuraciones (ventana de 6 s sin solapamiento) y los autores lo describen como prueba de concepto.",
+   "cifra_en_fuente": "Exactitud 0,96212 (macro-F1 0,96201), intra-sujeto, 2 participantes",
+   "referencia_apa": "Kubaščík, M., Aggarwal, S., Karpiš, O., Tupý, A., Šarafín, P., & Chochul, M. (2026). EEG-based hypoglycemia detection in type 1 diabetes: Proof-of-concept study. Frontiers in Human Neuroscience, 20, Article 1852403. https://doi.org/10.3389/fnhum.2026.1852403",
+   "url_usada": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13518557/"
+  },
+  {
+   "id": 16,
+   "veredicto": "respalda",
+   "cita": "Título: \"Non-invasive measurements of blood glucose levels by time-gating mid-infrared optoacoustic signals\". Resumen (parafraseado por la herramienta de lectura, no literal): DIROS es un sensor optoacústico de infrarrojo medio con selección de profundidad (depth-gated) que localiza la lectura en capas de piel ricas en sangre; probado en orejas de ratones hembra; límite declarado: solo ratones.",
+   "cifra_en_fuente": "RMSE 34 mg/dL en la ubicación rica en sangre vs 47 mg/dL en tejido global; r = 0,92 a 97,5 µm de profundidad",
+   "referencia_apa": "Uluç, N., Glasl, S., Gasparin, F., Yuan, T., He, H., Jüstel, D., Pleitez, M. A., & Ntziachristos, V. (2024). Non-invasive measurements of blood glucose levels by time-gating mid-infrared optoacoustic signals. Nature Metabolism, 6(4), 678–686. https://doi.org/10.1038/s42255-024-01016-9",
+   "url_usada": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11052715/"
+  },
+  {
+   "id": 17,
+   "veredicto": "respalda",
+   "cita": "\"clinically accurate predictions 84% of the time, on average\"; QCL de 8-10 µm, 3 sujetos sanos, retrodispersión medida en la palma (entre pulgar e índice).",
+   "cifra_en_fuente": "84% de predicciones clínicamente exactas en promedio; 3 sujetos; más de 70% para cualquier individuo; rango 8-10 µm",
+   "referencia_apa": "Liakat, S., Bors, K. A., Xu, L., Woods, C. M., Doyle, J., & Gmachl, C. F. (2014). Noninvasive in vivo glucose sensing on human subjects using mid-infrared light. Biomedical Optics Express, 5(7), 2397–2404. https://doi.org/10.1364/BOE.5.002397",
+   "url_usada": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4102373/"
+  },
+  {
+   "id": 18,
+   "veredicto": "no se pudo abrir",
+   "cita": "",
+   "cifra_en_fuente": "",
+   "referencia_apa": "PMC4667339 (identificado solo por búsqueda como Howsmon & Bequette, 2015, Journal of Diabetes Science and Technology, doi 10.1177/1932296815583507; no verificado al abrir). https://pmc.ncbi.nlm.nih.gov/articles/PMC4667339/",
+   "url_usada": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4667339/"
+  },
+  {
+   "id": 19,
+   "veredicto": "respalda con matiz",
+   "cita": "\"The FDA said it has not authorized any such device.\" El aviso de errores peligrosos aparece en el artículo atribuido a Dr. Robert Gabbay (ADA), no a la FDA: \"Using the unapproved smartwatch and smart ring devices could result in inaccurate blood sugar measurements.\"",
+   "cifra_en_fuente": "Sin cifra; FDA: ningún dispositivo de este tipo autorizado",
+   "referencia_apa": "Associated Press. (2024, 22 de febrero). FDA warns against smartwatches, rings that claim to measure blood sugar without needles. CBS News. https://www.cbsnews.com/news/fda-warns-against-smartwatches-rings-claim-measure-blood-sugar-without-needles/",
+   "url_usada": "https://www.cbsnews.com/news/fda-warns-against-smartwatches-rings-claim-measure-blood-sugar-without-needles/"
+  },
+  {
+   "id": 20,
+   "veredicto": "no se pudo abrir",
+   "cita": "",
+   "cifra_en_fuente": "",
+   "referencia_apa": "American Diabetes Association Professional Practice Committee. (2024). 6. Glycemic goals and hypoglycemia: Standards of Care in Diabetes—2024. Diabetes Care, 47(Supplement_1), S111–S125. https://diabetesjournals.org/care/article/47/Supplement_1/S111/153951/6-Glycemic-Goals-and-Hypoglycemia-Standards-of",
+   "url_usada": "https://diabetesjournals.org/care/article/47/Supplement_1/S111/153951/6-Glycemic-Goals-and-Hypoglycemia-Standards-of"
+  },
+  {
+   "id": 21,
+   "veredicto": "respalda",
+   "cita": "Epidermis: \"It does not have any blood vessels within it (i.e., it is avascular).\" Dermis: \"It contains blood and lymph vessels, nerves, and other structures, such as hair follicles and sweat glands.\"",
+   "cifra_en_fuente": "Epidermis avascular; dermis con vasos sanguíneos y linfáticos",
+   "referencia_apa": "Betts, J. G., Young, K. A., Wise, J. A., Johnson, E., Poe, B., Kruse, D. H., Korol, O., Johnson, J. E., Womble, M., & DeSaix, P. (2022). Layers of the skin. En Anatomy and physiology 2e (sección 5.1). OpenStax. https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+   "url_usada": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin"
+  },
+  {
+   "id": 22,
+   "veredicto": "respalda",
+   "cita": "\"This simulator is a python implementation of the FDA-approved UVa/Padova Simulator (2008 version) for research purpose only.\" Licencia: MIT.",
+   "cifra_en_fuente": "Versión 2008 del simulador UVa/Padova; licencia MIT",
+   "referencia_apa": "jxx123. (s. f.). simglucose: A Type-1 Diabetes simulator implemented in Python [Software]. GitHub. https://github.com/jxx123/simglucose (nombre real del autor no confirmado en la lectura)",
+   "url_usada": "https://github.com/jxx123/simglucose"
+  }
+ ],
+ "notas": "Sin abrir (id 9, 18, 20):\n- Id 9: reliasmedia.com redirige a clinician.com, que devuelve 403. Un intento de abrir la versión ?v=preview fue bloqueado por el sistema de permisos (contenido de pago) y no lo reintenté. Un resumen de WebSearch dice que en un estudio de 92 pacientes las lecturas iontoforéticas iban 18 minutos por detrás del pinchazo, pero no vi esa frase en la página. No lo uso como cita.\n- Id 18: PMC4667339 muestra un captcha (reCAPTCHA) y la API de Europe PMC dio 500 o sin resultados. Una búsqueda no encontró \"Diabalert\" ni las cifras 12,6 y 37,8 mg/dL en ninguna fuente. La búsqueda sugiere que el artículo es Howsmon & Bequette (2015), pero no lo verifiqué.\n- Id 20: diabetesjournals.org devuelve 403 y PMC10725815 mostró un captcha. Resúmenes secundarios (infografía de la ADA basada en los Standards 2024 y referencias clínicas) dan nivel 1 como <70 mg/dL y ≥54 mg/dL, pero no vi el texto oficial de la sección 6 y no lo cuento como respaldo.\n\nOtros puntos:\n- Id 2: MassDevice devolvió 403. Leí la copia del mismo artículo en Drug Delivery Business (Sean Whooley, 8 mar 2024). Un resumen de búsqueda sobre MassDevice da las mismas cifras de Dexcom y Libre 3. Ese mismo resumen dice que el resultado de Know Labs en ese artículo es 11,1% (distinto de 11,3% del id 3, que sale de otro artículo de julio 2023).\n- Id 5: PubMed muestra año 2026, vol. 20(3), pp. 922-929, con publicación electrónica el 29 de enero de 2025. Usé 2026 en la referencia APA.\n- Id 6: abrí la ficha de PubMed (PMID 20920428). El DOI redirige a SAGE, que devuelve 403.\n- Id 10: la reticencia de la FDA es una opinión del Dr. Mark J. Rice citada por el autor, no una declaración de la FDA. La cifra de 240 alarmas viene de un estudio de 2005 citado en el artículo.\n- Id 12: la página del editor (RSC) devuelve 403. Leí el resumen vía Europe PMC.\n- Id 14: es un preprint de Research Square. La página directa solo mostró el título. El resumen salió de Europe PMC.\n- Id 15: PMC13518557 es un estudio de Frontiers 2026 con 2 participantes. El 96% es el mejor resultado de varias configuraciones, dentro de cada sujeto.\n- Id 16: el resumen del artículo de Nature Metabolism llegó parafraseado por la herramienta de lectura, sin cita literal. Por eso la cita es el título y una nota.\n- Id 11 y 13: la herramienta de lectura solo leyó parte del texto de la patente del id 13 (primeros 100.000 caracteres). La frase del 1% sí apareció. Id 11 se leyó del PDF de arXiv con pdftotext."
+}

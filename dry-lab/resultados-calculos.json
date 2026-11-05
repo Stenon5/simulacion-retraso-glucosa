@@ -1,0 +1,2374 @@
+{
+ "meta": {
+  "descripcion": "Resultados de calculos_dry_lab.py. Solo papel y simulacion.",
+  "fecha_criterios": "2026-10-29",
+  "simulador": "simulacion-retraso-glucosa (model, reconstruct, metrics), semilla maestra 1"
+ },
+ "a_difusion": {
+  "formula": "t = L^2 / (2 D), tiempo en que el desplazamiento cuadratico medio de la glucosa alcanza L (difusion 1-D). Control: constante de tiempo de una losa con una cara abierta, tau = 4 L^2 / (pi^2 D), cerca de un 20 % menor",
+  "entradas": {
+   "epidermis_viable_um": "56,6 (antebrazo dorsal), H41, Sandby-Moller 2003, biopsias",
+   "estrato_corneo_um": "18,3, H41",
+   "D_dermis_cm2_s": "2,64e-6, H40, Khalil 2006, piel de cadaver in vitro a 32 C",
+   "D_epidermis_viable_cm2_s": "1,0e-6, 0,075e-6 y 0,037e-6 segun el metodo, H40",
+   "penetracion_IR_medio_um": "~45 (hasta 100), O14, Kottmann 2016",
+   "ventana_DIROS_um": "97,5 (40 a 150), solo en ratones, O1, Uluc 2024",
+   "retraso_dermico": "0 a 2 min en 93 % de los casos, H38, dato de la empresa Laxmi",
+   "retraso_subcutaneo": "5 a 10 min (H36 Rebrin 2010), medianas 5,3 a 6,8 min por trazador (H33, H34)"
+  },
+  "filas_difusion": [
+   {
+    "capa": "epidermis viable (D = 1,0e-6)",
+    "L_um": 56.6,
+    "D_cm2_s": 0.0,
+    "t_min": 0.267,
+    "tau_losa_min": 0.2164
+   },
+   {
+    "capa": "epidermis viable (D = 0,075e-6)",
+    "L_um": 56.6,
+    "D_cm2_s": 0.0,
+    "t_min": 3.5595,
+    "tau_losa_min": 2.8852
+   },
+   {
+    "capa": "epidermis viable (D = 0,037e-6)",
+    "L_um": 56.6,
+    "D_cm2_s": 0.0,
+    "t_min": 7.2152,
+    "tau_losa_min": 5.8484
+   },
+   {
+    "capa": "dermis, 100 um",
+    "L_um": 100.0,
+    "D_cm2_s": 0.0,
+    "t_min": 0.3157,
+    "tau_losa_min": 0.2559
+   }
+  ],
+  "separacion": [
+   {
+    "D": "epidermis viable (D = 1,0e-6)",
+    "t_epidermis_completa_min": 0.267,
+    "separacion_epidermis_completa_vs_dermis_min": 0.2508,
+    "t_hasta_45um_min": 0.075,
+    "separacion_45um_vs_dermis_min": 0.0589,
+    "regla4_epidermis_completa": "no viable",
+    "regla4_45um": "no viable"
+   },
+   {
+    "D": "epidermis viable (D = 0,075e-6)",
+    "t_epidermis_completa_min": 3.5595,
+    "separacion_epidermis_completa_vs_dermis_min": 3.5434,
+    "t_hasta_45um_min": 1.0,
+    "separacion_45um_vs_dermis_min": 0.9839,
+    "regla4_epidermis_completa": "no viable",
+    "regla4_45um": "no viable"
+   },
+   {
+    "D": "epidermis viable (D = 0,037e-6)",
+    "t_epidermis_completa_min": 7.2152,
+    "separacion_epidermis_completa_vs_dermis_min": 7.1991,
+    "t_hasta_45um_min": 2.027,
+    "separacion_45um_vs_dermis_min": 2.0109,
+    "regla4_epidermis_completa": "marginal",
+    "regla4_45um": "no viable"
+   }
+  ],
+  "t_dermis_superior_min": 0.0161,
+  "mejor_separacion_min": 7.1991,
+  "peor_separacion_min": 0.2508,
+  "regla4_mejor_caso": "marginal",
+  "regla4_umbrales": "9 min o mas viable, 5 a 9 marginal, menos de 5 no viable",
+  "comparacion_retraso_dermico_min": [
+   0,
+   2
+  ],
+  "comparacion_retraso_subcutaneo_min": [
+   5,
+   10
+  ],
+  "nota": "La glucosa de piel de cadaver a 32 C no es piel viva a 37 C, y la particion tejido/tampon es menor que 1 en todas las capas (H40). El calculo ignora el flujo capilar, que acorta los retrasos reales, y la fuente real esta algo mas profunda que la union."
+ },
+ "b_fusion": {
+  "formulas": {
+   "sensores_iguales": "sigma_f / sigma = raiz((1 + (N - 1) rho) / N), limite raiz(rho) cuando N crece",
+   "estimar_rho": "con N = 2 y MARD proporcional a sigma: rho = 2 r^2 - 1, r = MARD fusionado / promedio de los MARD individuales",
+   "gls": "pesos w = S^-1 1 / (1' S^-1 1), varianza fusionada = 1 / (1' S^-1 1), S_ij = s_i s_j rho_ij, con MARD en lugar de sigma"
+  },
+  "entradas": {
+   "dos_electrodos": "MARD 10,1 % (redundante) frente a 11,4 % y 12,0 % (dias 1 a 7, 3.297 pares, 23 adultos DT1), E20, Sharifi 2016",
+   "dos_electrodos_YSI": "MARD 9,4 % frente a 9,6 % y 9,9 % contra YSI dias 4 y 7, 1.237 pares, diferencia no significativa, E20",
+   "mejor_no_invasivo": "Raman sin calibrar por persona 14,5 % (O28 Rothenbuhler 2025, O29 Zhang 2025), IR medio 19,6 % y 20,7 % (O8 Kaluza 2025), tercera 25 % (supuesto de la tarea, cerca de RSP en casa 25,8 %, O22)"
+  },
+  "rho_estimado": {
+   "todos_los_dias": 0.4904,
+   "razon_todos": 0.8632,
+   "contra_YSI_dias_4_y_7": 0.859,
+   "razon_YSI": 0.9641
+  },
+  "curvas_N": {
+   "0.0": {
+    "1": 1.0,
+    "2": 0.7071,
+    "3": 0.5774,
+    "4": 0.5,
+    "6": 0.4082,
+    "10": 0.3162,
+    "20": 0.2236,
+    "100": 0.1,
+    "limite": 0.0
+   },
+   "0.3": {
+    "1": 1.0,
+    "2": 0.8062,
+    "3": 0.7303,
+    "4": 0.6892,
+    "6": 0.6455,
+    "10": 0.6083,
+    "20": 0.5788,
+    "100": 0.5541,
+    "limite": 0.5477
+   },
+   "0.5": {
+    "1": 1.0,
+    "2": 0.866,
+    "3": 0.8165,
+    "4": 0.7906,
+    "6": 0.7638,
+    "10": 0.7416,
+    "20": 0.7246,
+    "100": 0.7106,
+    "limite": 0.7071
+   },
+   "0.7": {
+    "1": 1.0,
+    "2": 0.922,
+    "3": 0.8944,
+    "4": 0.8803,
+    "6": 0.866,
+    "10": 0.8544,
+    "20": 0.8456,
+    "100": 0.8385,
+    "limite": 0.8367
+   }
+  },
+  "gls": {
+   "Raman 14,5 / IR medio 20 / tercera 25": {
+    "0.0": {
+     "mard_fusionado": 10.6261,
+     "pesos": [
+      0.537,
+      0.2823,
+      0.1807
+     ],
+     "pesos_negativos": false
+    },
+    "0.3": {
+     "mard_fusionado": 13.0377,
+     "pesos": [
+      0.6558,
+      0.2452,
+      0.099
+     ],
+     "pesos_negativos": false
+    },
+    "0.5": {
+     "mard_fusionado": 14.0338,
+     "pesos": [
+      0.7939,
+      0.202,
+      0.0041
+     ],
+     "pesos_negativos": false
+    },
+    "0.7": {
+     "mard_fusionado": 14.2095,
+     "pesos": [
+      1.049,
+      0.1223,
+      -0.1714
+     ],
+     "pesos_negativos": true
+    }
+   },
+   "Raman 14,5 / IR medio 20": {
+    "0.0": {
+     "mard_fusionado": 11.7394,
+     "pesos": [
+      0.6555,
+      0.3445
+     ],
+     "pesos_negativos": false
+    },
+    "0.3": {
+     "mard_fusionado": 13.245,
+     "pesos": [
+      0.7175,
+      0.2825
+     ],
+     "pesos_negativos": false
+    },
+    "0.5": {
+     "mard_fusionado": 14.0341,
+     "pesos": [
+      0.7963,
+      0.2037
+     ],
+     "pesos_negativos": false
+    },
+    "0.7": {
+     "mard_fusionado": 14.4911,
+     "pesos": [
+      0.9645,
+      0.0355
+     ],
+     "pesos_negativos": false
+    }
+   },
+   "tres sensores de 20": {
+    "0.0": {
+     "mard_fusionado": 11.547,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.3": {
+     "mard_fusionado": 14.6059,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.5": {
+     "mard_fusionado": 16.3299,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.7": {
+     "mard_fusionado": 17.8885,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    }
+   },
+   "tres sensores de 25": {
+    "0.0": {
+     "mard_fusionado": 14.4338,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.3": {
+     "mard_fusionado": 18.2574,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.5": {
+     "mard_fusionado": 20.4124,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    },
+    "0.7": {
+     "mard_fusionado": 22.3607,
+     "pesos": [
+      0.3333,
+      0.3333,
+      0.3333
+     ],
+     "pesos_negativos": false
+    }
+   }
+  },
+  "rho_maximo_12": 0.1548,
+  "rho_maximo_10": null,
+  "rho_limite_sensores_de_14_5_para_12": 0.6849,
+  "rho_limite_sensores_de_14_5_para_10": 0.4756,
+  "realidad": {
+   "GlucoTrack_DF_F": "ARD media 22,3 % en 172 adultos DT2 (E2), 29,9 % en la primera etapa (E1), 25,5 % en casa (E3, Smith)",
+   "Solianis_Biovotion": "MARD 18,0 % visita 1 y 27,3 % visita 2 con los mismos coeficientes (E10), 21,1 % global (E12), 35,4 % en casa (E13)",
+   "sensor_ortogonal_Medtronic": "10,5 % frente a 11,0 % en la semana, P = 0,34 (E19)"
+  },
+  "nota": "Los errores de dos electrodos del mismo sensor comparten tejido, retraso y referencia, asi que 0,49 es una cota alta para sensores de principios distintos. No hay estudio que mida la correlacion de errores entre dos modalidades de glucosa (vacio de E). Con pesos de minimos cuadrados, rho mayor que s_menor / s_mayor deja pesos negativos, que son frágiles."
+ },
+ "c_ruido": {
+  "formula": "sigma = MARD x glucosa / 0,798, porque para un error normal E|X| = sigma raiz(2/pi) = 0,798 sigma",
+  "mard_equivalente_porcentaje": {
+   "5": {
+    "70": 5.6992,
+    "85": 4.6934,
+    "100": 3.9894
+   },
+   "8": {
+    "70": 9.1187,
+    "85": 7.5095,
+    "100": 6.3831
+   },
+   "13": {
+    "70": 14.8179,
+    "85": 12.2029,
+    "100": 10.3725
+   },
+   "18": {
+    "70": 20.517,
+    "85": 16.8964,
+    "100": 14.3619
+   },
+   "25": {
+    "70": 28.4959,
+    "85": 23.4672,
+    "100": 19.9471
+   },
+   "35": {
+    "70": 39.8942,
+    "85": 32.8541,
+    "100": 27.926
+   }
+  },
+  "sigma_equivalente_mg_dl": {
+   "8.0": {
+    "70": 7.0186,
+    "85": 8.5225,
+    "100": 10.0265
+   },
+   "10.0": {
+    "70": 8.7732,
+    "85": 10.6532,
+    "100": 12.5331
+   },
+   "12.0": {
+    "70": 10.5278,
+    "85": 12.7838,
+    "100": 15.0398
+   },
+   "14.5": {
+    "70": 12.7211,
+    "85": 15.4471,
+    "100": 18.1731
+   },
+   "20.0": {
+    "70": 17.5464,
+    "85": 21.3063,
+    "100": 25.0663
+   },
+   "25.0": {
+    "70": 21.933,
+    "85": 26.6329,
+    "100": 31.3329
+   }
+  },
+  "sigma_de_30_mg_dl_al_90": 18.2371,
+  "sigma_max_para_separar_70_de_54_90": 6.2422,
+  "sigma_max_para_separar_70_de_54_95": 4.8635,
+  "simulacion": {
+   "descripcion": "Curva de sangre del repositorio (comida a los 90 min y episodio de hipoglucemia con minimo de 50 mg/dL a los 300 min), profundidad 1 con tau = 6 min, suavizada con el filtro de una profundidad del repositorio con el sigma conocido, alarma al cruzar 70 mg/dL, 40 replicas, semilla maestra 1.",
+   "filas": [
+    {
+     "sigma": 0.0,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 6.0,
+     "atraso_mediano_min": 6.0,
+     "atraso_p10_p90_min": [
+      6.0,
+      6.0
+     ],
+     "rmse_suavizado_vs_sangre": 4.458,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 5,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 6.2,
+     "atraso_mediano_min": 6.0,
+     "atraso_p10_p90_min": [
+      4.8,
+      8.0
+     ],
+     "rmse_suavizado_vs_sangre": 5.3122,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 8,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 6.3,
+     "atraso_mediano_min": 6.5,
+     "atraso_p10_p90_min": [
+      3.0,
+      10.0
+     ],
+     "rmse_suavizado_vs_sangre": 6.0991,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 13,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 6.325,
+     "atraso_mediano_min": 6.5,
+     "atraso_p10_p90_min": [
+      3.0,
+      11.0
+     ],
+     "rmse_suavizado_vs_sangre": 7.5133,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.05
+     }
+    },
+    {
+     "sigma": 18,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 6.825,
+     "atraso_mediano_min": 7.0,
+     "atraso_p10_p90_min": [
+      1.9,
+      12.0
+     ],
+     "rmse_suavizado_vs_sangre": 8.9362,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 1.15
+     }
+    },
+    {
+     "sigma": 25,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 7.15,
+     "atraso_mediano_min": 8.0,
+     "atraso_p10_p90_min": [
+      1.0,
+      12.2
+     ],
+     "rmse_suavizado_vs_sangre": 10.8723,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 7.625
+     }
+    },
+    {
+     "sigma": 35,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.1,
+     "atraso_medio_min": 8.2,
+     "atraso_mediano_min": 9.0,
+     "atraso_p10_p90_min": [
+      0.9,
+      15.2
+     ],
+     "rmse_suavizado_vs_sangre": 13.5204,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 21.9
+     }
+    }
+   ],
+   "sigma_0_es_referencia": "sigma 0 deja solo el retraso de 6 min de la capa y el suavizado"
+  },
+  "simulacion_error_lento": {
+   "descripcion": "Igual que la simulacion anterior, pero el error es AR(1) con correlacion de 60 min y desviacion estandar sigma, sin ruido blanco. Supuesto del analista (Propuesta) para acercarse a la deriva y al sesgo de los sensores reales. Los estudios no entregan la forma del error.",
+   "filas": [
+    {
+     "sigma": 5,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 1.0,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 7.25,
+     "atraso_mediano_min": 6.0,
+     "atraso_p10_p90_min": [
+      3.0,
+      12.1
+     ],
+     "rmse_suavizado_vs_sangre": 7.0233,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 8,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 0.975,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 7.4103,
+     "atraso_mediano_min": 6.0,
+     "atraso_p10_p90_min": [
+      1.8,
+      16.0
+     ],
+     "rmse_suavizado_vs_sangre": 9.7948,
+     "lectura_cruda": {
+      "fraccion_detectada": 1.0,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 13,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 0.925,
+     "falsas_alarmas_por_registro": 0.0,
+     "atraso_medio_min": 7.2162,
+     "atraso_mediano_min": 5.0,
+     "atraso_p10_p90_min": [
+      -3.4,
+      21.4
+     ],
+     "rmse_suavizado_vs_sangre": 14.8712,
+     "lectura_cruda": {
+      "fraccion_detectada": 0.95,
+      "falsas_alarmas_por_registro": 0.0
+     }
+    },
+    {
+     "sigma": 18,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 0.925,
+     "falsas_alarmas_por_registro": 0.1,
+     "atraso_medio_min": 8.5946,
+     "atraso_mediano_min": 4.0,
+     "atraso_p10_p90_min": [
+      -5.2,
+      28.2
+     ],
+     "rmse_suavizado_vs_sangre": 20.1234,
+     "lectura_cruda": {
+      "fraccion_detectada": 0.925,
+      "falsas_alarmas_por_registro": 0.2
+     }
+    },
+    {
+     "sigma": 25,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 0.9,
+     "falsas_alarmas_por_registro": 0.35,
+     "atraso_medio_min": 4.9167,
+     "atraso_mediano_min": 4.0,
+     "atraso_p10_p90_min": [
+      -21.5,
+      28.5
+     ],
+     "rmse_suavizado_vs_sangre": 27.5554,
+     "lectura_cruda": {
+      "fraccion_detectada": 0.9,
+      "falsas_alarmas_por_registro": 0.925
+     }
+    },
+    {
+     "sigma": 35,
+     "episodio_sangre_min": [
+      274.0,
+      326.0
+     ],
+     "alarma_sangre_min": 274.0,
+     "fraccion_detectada": 0.7,
+     "falsas_alarmas_por_registro": 0.925,
+     "atraso_medio_min": 7.1786,
+     "atraso_mediano_min": 4.0,
+     "atraso_p10_p90_min": [
+      -15.0,
+      32.2
+     ],
+     "rmse_suavizado_vs_sangre": 38.1981,
+     "lectura_cruda": {
+      "fraccion_detectada": 0.875,
+      "falsas_alarmas_por_registro": 3.425
+     }
+    }
+   ],
+   "noches_sin_hipoglucemia": {
+    "13": {
+     "120": {
+      "sigma": 13,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.0,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.0,
+      "noches_con_alguna_falsa_alarma": 0.0
+     },
+     "100": {
+      "sigma": 13,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 0.45,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.425,
+      "noches_con_alguna_falsa_alarma": 0.35
+     },
+     "90": {
+      "sigma": 13,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 1.675,
+      "falsas_alarmas_por_noche_con_silencio_30min": 1.425,
+      "noches_con_alguna_falsa_alarma": 0.8
+     }
+    },
+    "18": {
+     "120": {
+      "sigma": 18,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.075,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.075,
+      "noches_con_alguna_falsa_alarma": 0.075
+     },
+     "100": {
+      "sigma": 18,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 1.25,
+      "falsas_alarmas_por_noche_con_silencio_30min": 1.025,
+      "noches_con_alguna_falsa_alarma": 0.675
+     },
+     "90": {
+      "sigma": 18,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 2.625,
+      "falsas_alarmas_por_noche_con_silencio_30min": 2.3,
+      "noches_con_alguna_falsa_alarma": 0.95
+     }
+    },
+    "25": {
+     "120": {
+      "sigma": 25,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.6,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.55,
+      "noches_con_alguna_falsa_alarma": 0.425
+     },
+     "100": {
+      "sigma": 25,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 2.15,
+      "falsas_alarmas_por_noche_con_silencio_30min": 1.9,
+      "noches_con_alguna_falsa_alarma": 0.9
+     },
+     "90": {
+      "sigma": 25,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 2.8,
+      "falsas_alarmas_por_noche_con_silencio_30min": 2.65,
+      "noches_con_alguna_falsa_alarma": 0.975
+     }
+    },
+    "35": {
+     "120": {
+      "sigma": 35,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 1.325,
+      "falsas_alarmas_por_noche_con_silencio_30min": 1.225,
+      "noches_con_alguna_falsa_alarma": 0.7
+     },
+     "100": {
+      "sigma": 35,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 2.6,
+      "falsas_alarmas_por_noche_con_silencio_30min": 2.45,
+      "noches_con_alguna_falsa_alarma": 0.975
+     },
+     "90": {
+      "sigma": 35,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 3.15,
+      "falsas_alarmas_por_noche_con_silencio_30min": 2.975,
+      "noches_con_alguna_falsa_alarma": 0.975
+     }
+    }
+   }
+  },
+  "noches_sin_hipoglucemia": {
+   "descripcion": "Noche de 8 h sin hipoglucemia, glucosa media g0 con oscilacion de 8 mg/dL cada 180 min, mismo suavizado, 40 replicas. Un silencio de 30 min tras cada alarma evita contar el rebote en el umbral. Calculo del analista, no esta en el repositorio.",
+   "filas": {
+    "13": {
+     "120": {
+      "sigma": 13,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.0,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.0,
+      "noches_con_alguna_falsa_alarma": 0.0
+     },
+     "100": {
+      "sigma": 13,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 0.05,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.05,
+      "noches_con_alguna_falsa_alarma": 0.05
+     },
+     "90": {
+      "sigma": 13,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 0.35,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.3,
+      "noches_con_alguna_falsa_alarma": 0.275
+     }
+    },
+    "18": {
+     "120": {
+      "sigma": 18,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.05,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.05,
+      "noches_con_alguna_falsa_alarma": 0.05
+     },
+     "100": {
+      "sigma": 18,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 0.05,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.05,
+      "noches_con_alguna_falsa_alarma": 0.05
+     },
+     "90": {
+      "sigma": 18,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 1.225,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.85,
+      "noches_con_alguna_falsa_alarma": 0.575
+     }
+    },
+    "25": {
+     "120": {
+      "sigma": 25,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.05,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.05,
+      "noches_con_alguna_falsa_alarma": 0.05
+     },
+     "100": {
+      "sigma": 25,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 0.3,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.275,
+      "noches_con_alguna_falsa_alarma": 0.275
+     },
+     "90": {
+      "sigma": 25,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 2.925,
+      "falsas_alarmas_por_noche_con_silencio_30min": 1.725,
+      "noches_con_alguna_falsa_alarma": 0.8
+     }
+    },
+    "35": {
+     "120": {
+      "sigma": 35,
+      "glucosa_media": 120,
+      "falsas_alarmas_por_noche_cruces": 0.075,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.075,
+      "noches_con_alguna_falsa_alarma": 0.075
+     },
+     "100": {
+      "sigma": 35,
+      "glucosa_media": 100,
+      "falsas_alarmas_por_noche_cruces": 1.025,
+      "falsas_alarmas_por_noche_con_silencio_30min": 0.75,
+      "noches_con_alguna_falsa_alarma": 0.6
+     },
+     "90": {
+      "sigma": 35,
+      "glucosa_media": 90,
+      "falsas_alarmas_por_noche_cruces": 5.725,
+      "falsas_alarmas_por_noche_con_silencio_30min": 2.9,
+      "noches_con_alguna_falsa_alarma": 0.95
+     }
+    }
+   }
+  },
+  "aviso": "El ruido es blanco, independiente entre lecturas y sin deriva, y el filtro conoce sigma. En sensores reales el error es lento y correlacionado, y el sesgo entre personas domina. Por eso esta simulacion es optimista."
+ },
+ "d_alarmas": {
+  "formulas": {
+   "vpp": "VPP = Se x B / (Se x B + FA), con B = 0,54 eventos nocturnos por semana",
+   "OR": "Se = 1 - (1 - Se1)(1 - Se2), FA = FA1 + FA2",
+   "AND": "Se = Se1 Se2, FA = FA1 FA2 (2 w) / T, con w = 0,5 h y T = 56 h nocturnas por semana (procesos de Poisson independientes)",
+   "2de3": "Se = Se1Se2 + Se1Se3 + Se2Se3 - 2 Se1Se2Se3, FA = suma de las coincidencias por pares (el triple es despreciable)",
+   "dependencia": "Con dependencia moderada rho = 0,3 se interpola entre el caso independiente y el limite de dependencia total: Se_AND entre Se1 Se2 y min(Se1, Se2), FA_AND entre FA1 FA2 (2w)/T y min(FA1, FA2)"
+  },
+  "base_semanal": 0.54,
+  "fuente_base": "H17 (Mitter 2025): mediana 0,54 eventos nocturnos por semana en 3.696 personas con DT1, RIC 0,0 a 1,5. Muchas personas tienen cero.",
+  "ventana_coincidencia_min": 30,
+  "canales": {
+   "GlucoWatch G2": {
+    "nombre": "GlucoWatch G2",
+    "se": 0.77,
+    "fa_semana": 3.3502,
+    "vpp": 0.1104,
+    "tp_semana": 0.4158,
+    "fuente": "H9 y E39 (DirecNet 2004): Se nocturna 0,77 con la alerta de caida, falsos positivos 62 %",
+    "nota": "FA/semana = (0,62/0,38) x 0,88 x 7 x (8/24), con el supuesto de un episodio inducido por persona y dia en el estudio",
+    "evidencia_valida": true,
+    "cumple_RB": false
+   },
+   "Dexcom G7": {
+    "nombre": "Dexcom G7",
+    "se": 0.882,
+    "fa_semana": 0.0874,
+    "vpp": 0.845,
+    "tp_semana": 0.4763,
+    "fuente": "H1 y H2 (Garg 2022, Welsh 2024): deteccion 87,6 a 88,9 %, alerta verdadera 82,1 a 86,9 % a 70 mg/dL",
+    "nota": "Optimista: se mantiene la razon falsas/verdaderas del estudio, que indujo excursiones y tenia las alertas apagadas",
+    "evidencia_valida": true,
+    "cumple_RB": true
+   },
+   "Dexcom G7 (pesimista)": {
+    "nombre": "Dexcom G7 (pesimista)",
+    "se": 0.882,
+    "fa_semana": 0.2621,
+    "vpp": 0.645,
+    "tp_semana": 0.4763,
+    "fuente": "H1 y H2 con un supuesto del analista: el triple de falsas alertas",
+    "nota": "Supuesto Propuesta: el estudio indujo excursiones, la vida real tiene menos hipoglucemias por falsa alerta contada",
+    "evidencia_valida": true,
+    "cumple_RB": false
+   },
+   "EEG subcutaneo": {
+    "nombre": "EEG subcutaneo",
+    "se": 0.9,
+    "fa_semana": 0.2,
+    "vpp": 0.7085,
+    "tp_semana": 0.486,
+    "fuente": "H20 y H21 (Blaabjerg 2019, Snogdal 2012): 9 de 10 durmiendo, 0,2 falsas detecciones por semana de noche",
+    "nota": "7 y 10 personas con percepcion alterada, ya no es no invasivo",
+    "evidencia_valida": false,
+    "cumple_RB": true
+   },
+   "Reloj inteligente": {
+    "nombre": "Reloj inteligente",
+    "se": 0.78,
+    "fa_semana": 2.0462,
+    "vpp": 0.1707,
+    "tp_semana": 0.4212,
+    "fuente": "H29 (Mendez 2026): Se 0,78, Sp 0,64, VPP 0,25 con 351 noches de 36 adultos",
+    "nota": "FA/semana = 7 x (1 - Sp) x (1 - prevalencia de noches con hipoglucemia 66/351). Se tomo Sp como especificidad por noche",
+    "evidencia_valida": true,
+    "cumple_RB": false
+   },
+   "EEG en el oido (hipotetico)": {
+    "nombre": "EEG en el oido (hipotetico)",
+    "se": 0.9,
+    "fa_semana": 1.0231,
+    "vpp": 0.3221,
+    "tp_semana": 0.486,
+    "fuente": "Preprint de 5 personas, Se de 90 % o mas y Sp de 82 % o mas solo en canales contralaterales (Cabrera 2020, verificacion id 14)",
+    "nota": "Sin evidencia valida por la regla 1. Los canales del mismo oido no superaron el azar. Sp tomada por noche",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   },
+   "Via optica sigma 13": {
+    "nombre": "Via optica sigma 13",
+    "se": 1.0,
+    "fa_semana": 0.0,
+    "vpp": 1.0,
+    "tp_semana": 0.54,
+    "fuente": "Calculo c: ruido blanco, sigma 13 mg/dL, deteccion 1.00, 0.00 falsas alarmas por registro",
+    "nota": "Ruido blanco, optimista. FA/semana = 7 x falsas alarmas por registro",
+    "evidencia_valida": false,
+    "cumple_RB": true
+   },
+   "Via optica sigma 13 (error lento)": {
+    "nombre": "Via optica sigma 13 (error lento)",
+    "se": 0.925,
+    "fa_semana": 2.975,
+    "vpp": 0.1438,
+    "tp_semana": 0.4995,
+    "fuente": "Calculo c con error lento (AR(1), 60 min), sigma 13: deteccion 0.93, noches a 100 mg/dL con 0.42 falsas alarmas",
+    "nota": "Supuesto del analista (Propuesta). FA/semana = 7 x falsas alarmas por noche a 100 mg/dL con silencio de 30 min",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   },
+   "Via optica sigma 18": {
+    "nombre": "Via optica sigma 18",
+    "se": 1.0,
+    "fa_semana": 0.0,
+    "vpp": 1.0,
+    "tp_semana": 0.54,
+    "fuente": "Calculo c: ruido blanco, sigma 18 mg/dL, deteccion 1.00, 0.00 falsas alarmas por registro",
+    "nota": "Ruido blanco, optimista. FA/semana = 7 x falsas alarmas por registro",
+    "evidencia_valida": false,
+    "cumple_RB": true
+   },
+   "Via optica sigma 18 (error lento)": {
+    "nombre": "Via optica sigma 18 (error lento)",
+    "se": 0.925,
+    "fa_semana": 7.175,
+    "vpp": 0.0651,
+    "tp_semana": 0.4995,
+    "fuente": "Calculo c con error lento (AR(1), 60 min), sigma 18: deteccion 0.93, noches a 100 mg/dL con 1.02 falsas alarmas",
+    "nota": "Supuesto del analista (Propuesta). FA/semana = 7 x falsas alarmas por noche a 100 mg/dL con silencio de 30 min",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   },
+   "Via optica sigma 25": {
+    "nombre": "Via optica sigma 25",
+    "se": 1.0,
+    "fa_semana": 0.0,
+    "vpp": 1.0,
+    "tp_semana": 0.54,
+    "fuente": "Calculo c: ruido blanco, sigma 25 mg/dL, deteccion 1.00, 0.00 falsas alarmas por registro",
+    "nota": "Ruido blanco, optimista. FA/semana = 7 x falsas alarmas por registro",
+    "evidencia_valida": false,
+    "cumple_RB": true
+   },
+   "Via optica sigma 25 (error lento)": {
+    "nombre": "Via optica sigma 25 (error lento)",
+    "se": 0.9,
+    "fa_semana": 13.3,
+    "vpp": 0.0353,
+    "tp_semana": 0.486,
+    "fuente": "Calculo c con error lento (AR(1), 60 min), sigma 25: deteccion 0.90, noches a 100 mg/dL con 1.90 falsas alarmas",
+    "nota": "Supuesto del analista (Propuesta). FA/semana = 7 x falsas alarmas por noche a 100 mg/dL con silencio de 30 min",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   },
+   "Via optica sigma 35": {
+    "nombre": "Via optica sigma 35",
+    "se": 1.0,
+    "fa_semana": 0.7,
+    "vpp": 0.4355,
+    "tp_semana": 0.54,
+    "fuente": "Calculo c: ruido blanco, sigma 35 mg/dL, deteccion 1.00, 0.10 falsas alarmas por registro",
+    "nota": "Ruido blanco, optimista. FA/semana = 7 x falsas alarmas por registro",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   },
+   "Via optica sigma 35 (error lento)": {
+    "nombre": "Via optica sigma 35 (error lento)",
+    "se": 0.7,
+    "fa_semana": 17.15,
+    "vpp": 0.0216,
+    "tp_semana": 0.378,
+    "fuente": "Calculo c con error lento (AR(1), 60 min), sigma 35: deteccion 0.70, noches a 100 mg/dL con 2.45 falsas alarmas",
+    "nota": "Supuesto del analista (Propuesta). FA/semana = 7 x falsas alarmas por noche a 100 mg/dL con silencio de 30 min",
+    "evidencia_valida": false,
+    "cumple_RB": false
+   }
+  },
+  "versiones": {
+   "con EEG subcutaneo": [
+    {
+     "nombre": "Via optica sigma 13 O EEG subcutaneo",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 0.2,
+     "vpp": 0.7297,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 Y EEG subcutaneo",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 Y EEG subcutaneo (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 2.0462,
+     "vpp": 0.2088,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13, EEG subcutaneo, Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 0.0073,
+     "vpp": 0.9864,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13, EEG subcutaneo, Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9546,
+     "fa_semana": 0.0651,
+     "vpp": 0.8878,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) O EEG subcutaneo",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9925,
+     "fa_semana": 3.175,
+     "vpp": 0.1444,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y EEG subcutaneo",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.8325,
+     "fa_semana": 0.0106,
+     "vpp": 0.9769,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y EEG subcutaneo (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8528,
+     "fa_semana": 0.0674,
+     "vpp": 0.8723,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9835,
+     "fa_semana": 5.0212,
+     "vpp": 0.0957,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7215,
+     "fa_semana": 0.1087,
+     "vpp": 0.7819,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.739,
+     "fa_semana": 0.6899,
+     "vpp": 0.3665,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13 (error lento), EEG subcutaneo, Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9573,
+     "fa_semana": 0.1266,
+     "vpp": 0.8032,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13 (error lento), EEG subcutaneo, Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9401,
+     "fa_semana": 0.7025,
+     "vpp": 0.4195,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 O EEG subcutaneo",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 0.2,
+     "vpp": 0.7297,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 Y EEG subcutaneo",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 Y EEG subcutaneo (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 2.0462,
+     "vpp": 0.2088,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18, EEG subcutaneo, Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 0.0073,
+     "vpp": 0.9864,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18, EEG subcutaneo, Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9546,
+     "fa_semana": 0.0651,
+     "vpp": 0.8878,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) O EEG subcutaneo",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9925,
+     "fa_semana": 7.375,
+     "vpp": 0.0677,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y EEG subcutaneo",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.8325,
+     "fa_semana": 0.0256,
+     "vpp": 0.9461,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y EEG subcutaneo (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8528,
+     "fa_semana": 0.0779,
+     "vpp": 0.8552,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9835,
+     "fa_semana": 9.2212,
+     "vpp": 0.0545,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7215,
+     "fa_semana": 0.2622,
+     "vpp": 0.5978,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.739,
+     "fa_semana": 0.7974,
+     "vpp": 0.3336,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18 (error lento), EEG subcutaneo, Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9573,
+     "fa_semana": 0.2951,
+     "vpp": 0.6366,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18 (error lento), EEG subcutaneo, Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9401,
+     "fa_semana": 0.8204,
+     "vpp": 0.3823,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 O EEG subcutaneo",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9882,
+     "fa_semana": 0.2874,
+     "vpp": 0.65,
+     "canales": [
+      "Dexcom G7",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y EEG subcutaneo",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7938,
+     "fa_semana": 0.0003,
+     "vpp": 0.9993,
+     "canales": [
+      "Dexcom G7",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y EEG subcutaneo (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8203,
+     "fa_semana": 0.0264,
+     "vpp": 0.9437,
+     "canales": [
+      "Dexcom G7",
+      "EEG subcutaneo"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.974,
+     "fa_semana": 2.1335,
+     "vpp": 0.1978,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.688,
+     "fa_semana": 0.0032,
+     "vpp": 0.9915,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.7156,
+     "fa_semana": 0.0284,
+     "vpp": 0.9314,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Dexcom G7, EEG subcutaneo, Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9454,
+     "fa_semana": 0.0108,
+     "vpp": 0.9793,
+     "canales": [
+      "Dexcom G7",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Dexcom G7, EEG subcutaneo, Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9264,
+     "fa_semana": 0.0676,
+     "vpp": 0.881,
+     "canales": [
+      "Dexcom G7",
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "EEG subcutaneo O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 2.2462,
+     "vpp": 0.1904,
+     "canales": [
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "EEG subcutaneo Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.702,
+     "fa_semana": 0.0073,
+     "vpp": 0.9811,
+     "canales": [
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "EEG subcutaneo Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.7254,
+     "fa_semana": 0.0651,
+     "vpp": 0.8575,
+     "canales": [
+      "EEG subcutaneo",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    }
+   ],
+   "con EEG en el oido": [
+    {
+     "nombre": "Via optica sigma 13 O EEG en el oido (hipotetico)",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 1.0231,
+     "vpp": 0.3455,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 Y EEG en el oido (hipotetico)",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 Y EEG en el oido (hipotetico) (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 13 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 2.0462,
+     "vpp": 0.2088,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 13",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13, EEG en el oido (hipotetico), Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 0.0374,
+     "vpp": 0.9339,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13, EEG en el oido (hipotetico), Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9546,
+     "fa_semana": 0.3331,
+     "vpp": 0.6075,
+     "canales": [
+      "Via optica sigma 13",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) O EEG en el oido (hipotetico)",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9925,
+     "fa_semana": 3.9981,
+     "vpp": 0.1182,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y EEG en el oido (hipotetico)",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.8325,
+     "fa_semana": 0.0544,
+     "vpp": 0.8921,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y EEG en el oido (hipotetico) (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8528,
+     "fa_semana": 0.345,
+     "vpp": 0.5717,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9835,
+     "fa_semana": 5.0212,
+     "vpp": 0.0957,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7215,
+     "fa_semana": 0.1087,
+     "vpp": 0.7819,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 13 (error lento) Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.739,
+     "fa_semana": 0.6899,
+     "vpp": 0.3665,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13 (error lento), EEG en el oido (hipotetico), Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9573,
+     "fa_semana": 0.2004,
+     "vpp": 0.7206,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 13 (error lento), EEG en el oido (hipotetico), Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9401,
+     "fa_semana": 0.7542,
+     "vpp": 0.4023,
+     "canales": [
+      "Via optica sigma 13 (error lento)",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 O EEG en el oido (hipotetico)",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 1.0231,
+     "vpp": 0.3455,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 Y EEG en el oido (hipotetico)",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 Y EEG en el oido (hipotetico) (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.9,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "Via optica sigma 18 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 1.0,
+     "fa_semana": 2.0462,
+     "vpp": 0.2088,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.78,
+     "fa_semana": 0.0,
+     "vpp": 1.0,
+     "canales": [
+      "Via optica sigma 18",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18, EEG en el oido (hipotetico), Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 0.0374,
+     "vpp": 0.9339,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18, EEG en el oido (hipotetico), Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9546,
+     "fa_semana": 0.3331,
+     "vpp": 0.6075,
+     "canales": [
+      "Via optica sigma 18",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) O EEG en el oido (hipotetico)",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9925,
+     "fa_semana": 8.1981,
+     "vpp": 0.0614,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y EEG en el oido (hipotetico)",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.8325,
+     "fa_semana": 0.1311,
+     "vpp": 0.7742,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y EEG en el oido (hipotetico) (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8528,
+     "fa_semana": 0.3987,
+     "vpp": 0.536,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9835,
+     "fa_semana": 9.2212,
+     "vpp": 0.0545,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7215,
+     "fa_semana": 0.2622,
+     "vpp": 0.5978,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Via optica sigma 18 (error lento) Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.739,
+     "fa_semana": 0.7974,
+     "vpp": 0.3336,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18 (error lento), EEG en el oido (hipotetico), Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9573,
+     "fa_semana": 0.4306,
+     "vpp": 0.5455,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Via optica sigma 18 (error lento), EEG en el oido (hipotetico), Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9401,
+     "fa_semana": 0.9153,
+     "vpp": 0.3568,
+     "canales": [
+      "Via optica sigma 18 (error lento)",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 O EEG en el oido (hipotetico)",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.9882,
+     "fa_semana": 1.1104,
+     "vpp": 0.3246,
+     "canales": [
+      "Dexcom G7",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y EEG en el oido (hipotetico)",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.7938,
+     "fa_semana": 0.0016,
+     "vpp": 0.9963,
+     "canales": [
+      "Dexcom G7",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y EEG en el oido (hipotetico) (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.8203,
+     "fa_semana": 0.0273,
+     "vpp": 0.9419,
+     "canales": [
+      "Dexcom G7",
+      "EEG en el oido (hipotetico)"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.974,
+     "fa_semana": 2.1335,
+     "vpp": 0.1978,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.688,
+     "fa_semana": 0.0032,
+     "vpp": 0.9915,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "Dexcom G7 Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.7156,
+     "fa_semana": 0.0284,
+     "vpp": 0.9314,
+     "canales": [
+      "Dexcom G7",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "2 de 3: Dexcom G7, EEG en el oido (hipotetico), Reloj inteligente",
+     "regla": "2de3",
+     "dependencia": 0.0,
+     "se": 0.9454,
+     "fa_semana": 0.0422,
+     "vpp": 0.9237,
+     "canales": [
+      "Dexcom G7",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": true
+    },
+    {
+     "nombre": "2 de 3: Dexcom G7, EEG en el oido (hipotetico), Reloj inteligente (dependencia 0,3)",
+     "regla": "2de3",
+     "dependencia": 0.3,
+     "se": 0.9264,
+     "fa_semana": 0.3364,
+     "vpp": 0.5979,
+     "canales": [
+      "Dexcom G7",
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "EEG en el oido (hipotetico) O Reloj inteligente",
+     "regla": "OR",
+     "dependencia": 0.0,
+     "se": 0.978,
+     "fa_semana": 3.0692,
+     "vpp": 0.1468,
+     "canales": [
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "EEG en el oido (hipotetico) Y Reloj inteligente",
+     "regla": "AND",
+     "dependencia": 0.0,
+     "se": 0.702,
+     "fa_semana": 0.0374,
+     "vpp": 0.9102,
+     "canales": [
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    },
+    {
+     "nombre": "EEG en el oido (hipotetico) Y Reloj inteligente (dependencia 0,3)",
+     "regla": "AND",
+     "dependencia": 0.3,
+     "se": 0.7254,
+     "fa_semana": 0.3331,
+     "vpp": 0.5404,
+     "canales": [
+      "EEG en el oido (hipotetico)",
+      "Reloj inteligente"
+     ],
+     "cumple_RB": false
+    }
+   ]
+  },
+  "linea_base_glucowatch": {
+   "se": 0.77,
+   "fa_semana": 3.3502,
+   "vpp": 0.1104
+  },
+  "umbral_regla_0_y_RB": {
+   "se_min": 0.85,
+   "vpp_min": 0.7
+  },
+  "aviso": "Estos numeros mezclan estudios con eventos inducidos, pocas personas y definiciones distintas de falsa alarma. Sirven para comparar ordenes de magnitud, no para predecir un dispositivo."
+ },
+ "e_limites": {
+  "ir_medio": {
+   "formula": "razon senal/ruido = 2 mAU / 5 uAU = 400 por 100 mg/dL, limite de ruido = 100 / 400 mg/dL",
+   "entradas": "2 mAU por 100 mg/dL y ruido rms de 5 uAU: O13, Delbeck y Heise 2021",
+   "snr": 400.0,
+   "limite_por_ruido_electronico_mg_dl": 0.25,
+   "interpretacion": "El ruido del instrumento no es el limite. Lo es la variacion de la piel y los otros solutos, que la fuente no cuantifica (vacio de O)"
+  },
+  "fotoacustico": {
+   "limites_de_deteccion_mg_dl": [
+    100.0,
+    57.0,
+    25.0,
+    12.5
+   ],
+   "fuente": "100 (2012, ex vivo, O15), 57 (2013), 25 (QCL unico, 2022), 12,5 (doble laser) segun la revision O17. In vivo: +-30 mg/dL al 90 % (O16)",
+   "brecha_70_54_mg_dl": 16.0,
+   "bajo_la_brecha": [
+    12.5
+   ],
+   "sobre_la_brecha": [
+    100.0,
+    57.0,
+    25.0
+   ],
+   "sigma_de_30_al_90": 18.2371
+  },
+  "polarimetria": {
+   "formula": "rotacion = 0,0056 grados por 10 mg/dL y por mm, rotacion de la brecha = 0,0056 x 16 / 10",
+   "rotacion_por_10_mg_dl_y_mm": 0.0056,
+   "rotacion_de_la_brecha_por_mm": 0.009,
+   "fuente": "O40, Smith 2023, calculo del autor del libro"
+  },
+  "agua_rf": {
+   "coeficiente_pct_por_K": -0.45,
+   "fuente": "O80/E35: derivada del ajuste de Malmberg y Maryott 1956 a 25 C, calculo del catalogador, valido bajo 100 kHz, a GHz difiere",
+   "brecha_mmol_L": 0.8881,
+   "efecto_glucosa_pct_por_mmol_L": [
+    0.01,
+    0.02
+   ],
+   "efecto_glucosa_fuente": "SIN VERIFICAR: resultado de busqueda de una revision sin identificar (vacio de E)",
+   "temperatura_equivalente_K": [
+    0.0197,
+    0.0395
+   ]
+  },
+  "laser": {
+   "formulas": "limite = 0,1 W/cm2 para 2,6 a 1000 um y 0,2 x CA W/cm2 para 0,4 a 1,4 um, con CA = 10^(0,002 (lambda - 700 nm)), area minima = potencia / limite. Apertura de promediado de 3,5 mm (O44, manual de Auburn 2007 basado en ANSI Z136.1 de 2000)",
+   "CA_785": 1.4791,
+   "CA_830": 1.8197,
+   "filas": [
+    {
+     "sistema": "DiaMonTech QCL 8-10 um, ~10 mW promedio (O9)",
+     "potencia_W": 0.01,
+     "limite_W_cm2": 0.1,
+     "area_minima_cm2": 0.1,
+     "diametro_minimo_mm": 3.5682,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 0.1039,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 1.0394,
+     "nota": "La irradiancia medida por los autores es 1373 W/m2 = 0,137 W/cm2. Ellos la comparan con 5000 W/m2 (27 %). La tabla de piel para 2,6 a 1000 um del manual leido da 0,1 W/cm2 (1000 W/m2). Discrepancia sin resolver: no se abrio IEC 60825-1 ni ANSI Z136.1-2022",
+     "irradiancia_con_spot_informado_W_cm2": 0.1373,
+     "veces_el_limite_con_spot_informado": 1.373
+    },
+    {
+     "sistema": "Kottmann QCL fotoacustico, 2 mW tras reducir de 8 mW (O16)",
+     "potencia_W": 0.002,
+     "limite_W_cm2": 0.1,
+     "area_minima_cm2": 0.02,
+     "diametro_minimo_mm": 1.5958,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 0.0208,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 0.2079,
+     "nota": ""
+    },
+    {
+     "sistema": "Raman RSP 830 nm, 300 mW (O22)",
+     "potencia_W": 0.3,
+     "limite_W_cm2": 0.3639,
+     "area_minima_cm2": 0.8243,
+     "diametro_minimo_mm": 10.2447,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 3.1181,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 8.5677,
+     "nota": "Tamano del haz no informado en la fuente leida. Formula CA no verificada en fuente abierta (O44)"
+    },
+    {
+     "sistema": "Raman Kang 2020 830 nm, 250 mW, punto de 1 x 2 mm en cerdos (O27)",
+     "potencia_W": 0.25,
+     "limite_W_cm2": 0.3639,
+     "area_minima_cm2": 0.6869,
+     "diametro_minimo_mm": 9.3521,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 2.5984,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 7.1398,
+     "nota": "Dato en cerdos con punto informado",
+     "irradiancia_con_spot_informado_W_cm2": 12.5,
+     "veces_el_limite_con_spot_informado": 34.3463
+    },
+    {
+     "sistema": "Raman Liom, menos de 100 mW (O28)",
+     "potencia_W": 0.1,
+     "limite_W_cm2": 0.2958,
+     "area_minima_cm2": 0.338,
+     "diametro_minimo_mm": 6.5605,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 1.0394,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 3.5135,
+     "nota": "Longitud de onda no informada, se supone 785 nm para el limite"
+    },
+    {
+     "sistema": "Raman 785 nm, 400 mW (Scholtes-Timmerman 2014, O26)",
+     "potencia_W": 0.4,
+     "limite_W_cm2": 0.2958,
+     "area_minima_cm2": 1.3522,
+     "diametro_minimo_mm": 13.1211,
+     "irradiancia_si_cabe_en_apertura_de_3_5_mm_W_cm2": 4.1575,
+     "veces_el_limite_si_cabe_en_apertura_3_5_mm": 14.0541,
+     "nota": ""
+    }
+   ],
+   "aviso": "Fuente secundaria. La formula CA se vio en un fragmento de otro manual. No se abrio IEC 60825-1 ni ANSI Z136.1-2022"
+  },
+  "referencia_iso15197": {
+   "formula": "sigma_ref = 15 / 1,96 mg/dL bajo 100 mg/dL, MARD de la referencia = 0,798 sigma_ref / glucosa, error combinado en cuadratura",
+   "fuente": "M3, ISO 15197:2013 citada en Sharif-Nia 2025. La proporcion de 95 % no se confirmo en fuente abierta. Los CGM se comparan con YSI, mejor que el limite de la norma",
+   "sigma_ref_mg_dl": 7.6531,
+   "mard_de_la_referencia_en_el_limite_pct": {
+    "54": 11.3079,
+    "70": 8.7232,
+    "100": 6.1063,
+    "150": 6.1063
+   },
+   "mard_visto_con_dispositivo_perfecto_a_70": 8.7232,
+   "mard_observado_si_el_real_a_70_es": {
+    "8.0": 11.8362,
+    "12.0": 14.8356,
+    "14.5": 16.9217,
+    "20.0": 21.8196
+   }
+  }
+ },
+ "f_rango": {
+  "mard_via_optica": {
+   "optimista": 12.8,
+   "esperado": 20.0,
+   "pesimista": 25.8,
+   "fuente": "12,8 % RSP con calibracion de 4 h (O24), 19,6 a 20,7 % DiaMonTech y 20,3 % NIR (O8, O35), 25,8 % RSP en casa (O22)"
+  },
+  "mard_fusionado": {
+   "optimista": 13.0377,
+   "esperado": 18.4115,
+   "pesimista": 25.0,
+   "supuestos": "optimista GLS de 14,5 / 20 / 25 con rho = 0,3, esperado GLS de 20 / 25 / 25 con rho = 0,5 (cerca del 0,49 estimado), pesimista sin ganancia, como GlucoTrack (22 a 30 %) y Biovotion (21 a 27 %)"
+  },
+  "retraso_total_min": {
+   "optimista": 5.0,
+   "esperado": 7.5595,
+   "pesimista": 15.2152,
+   "supuestos": "retraso fisiologico mas tiempo por medicion. Optimista: dermis 2 min (H38) y Raman de 3 min (O22). Esperado: epidermis con D = 0,075e-6, 3,6 min, y 4 min por lectura de DiaMonTech (O9). Pesimista: epidermis con D = 0,037e-6, 7,2 min, y 8 min por medicion del muSORS (O31). No incluye el suavizado del filtro (unos 6 min en la simulacion c)",
+   "glucowatch": 20.0
+  },
+  "alarma_nocturna": {
+   "optimista": {
+    "se": 0.8325,
+    "fa_semana": 0.0544,
+    "vpp": 0.8921,
+    "supuestos": "optica sigma 13 con error lento Y EEG del oido (preprint de 5 personas), independientes"
+   },
+   "esperado": {
+    "se": 0.8528,
+    "fa_semana": 0.3987,
+    "vpp": 0.536,
+    "supuestos": "optica sigma 18 con error lento Y EEG del oido, dependencia 0,3"
+   },
+   "pesimista": {
+    "se": 0.9,
+    "fa_semana": 13.3,
+    "vpp": 0.0353,
+    "supuestos": "el EEG del oido no aporta (los canales del mismo oido no superaron el azar) y queda la via optica sola con sigma 25"
+   }
+  },
+  "glucowatch": {
+   "se": 0.77,
+   "fa_semana": 3.3502,
+   "vpp": 0.1104
+  },
+  "dexcom_g7": {
+   "se": 0.882,
+   "fa_semana": 0.0874,
+   "vpp": 0.845
+  }
+ }
+}
