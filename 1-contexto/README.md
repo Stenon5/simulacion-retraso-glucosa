@@ -2,6 +2,8 @@
 
 De dónde nace el proyecto: el problema de salud, el paper del seminario y lo que aprendimos al leerlo con lupa.
 
+En el Challenge, de aquí salen las tres primeras casillas de la cadena de trazabilidad: el problema de salud, el mecanismo fisiológico y el contenido de la asignatura donde se vio.
+
 ## El problema de salud
 
 Según el Atlas de Diabetes de la Federación Internacional de Diabetes (IDF), en 2017 había unos 451 millones de adultos con diabetes en el mundo, y podrían llegar a 693 millones en 2045 (Cho et al., 2018).
