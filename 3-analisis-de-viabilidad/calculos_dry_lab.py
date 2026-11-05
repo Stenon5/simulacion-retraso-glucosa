@@ -1,7 +1,7 @@
 """Calculos del analisis dry lab del medidor no invasivo de glucosa.
 
 Solo papel y simulacion. Usa numpy y el simulador del repositorio
-simulacion-retraso-glucosa (model, reconstruct, metrics).
+simulacion-retraso-glucosa, carpeta 2-simulacion (model, reconstruct, metrics).
 Cada calculo guarda su formula, las entradas con su fuente y el resultado.
 
 Fuentes: investigacion-2026-10-29.json, en esta misma carpeta
@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO / "2-simulacion" / "src"))
 from glucose_delay import metrics, model, reconstruct  # noqa: E402
 
 SALIDA = Path(__file__).parent / "resultados-calculos.json"

@@ -17,10 +17,10 @@ Análisis hecho solo con papel, literatura y cálculo, sin laboratorio. Las guí
 ## Cómo rehacer las cifras
 
 ```bash
-# Instala el paquete del repositorio, porque el script usa su simulador
-python -m pip install -e .
+# Instala el simulador de 2-simulacion/, que el script necesita
+python -m pip install -e 2-simulacion
 # Entra a esta carpeta
-cd analisis-de-viabilidad
+cd 3-analisis-de-viabilidad
 # Corre los cálculos y reescribe resultados-calculos.json
 python calculos_dry_lab.py
 ```

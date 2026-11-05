@@ -13,7 +13,7 @@ dist/
 .ipynb_checkpoints/
 
 # Salidas grandes o de borrador. Los resultados informados se suben al repositorio a propósito.
-results/scratch/
+2-simulacion/results/scratch/
 *.npz
 
 # Entorno y secretos

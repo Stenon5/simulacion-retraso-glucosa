@@ -8,7 +8,7 @@ version = "0.0.0"
 description = "Estudio de simulación sobre cómo estimar el retraso de la glucosa entre la sangre y el tejido con dos profundidades ópticas. Primera replicación en simulación, con resultados. No es un dispositivo médico."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { file = "LICENSE" }
+license = { text = "MIT" }
 authors = [{ name = "Stenon5" }]
 keywords = ["simulación", "estimación de estado", "filtro de Kalman", "reproducibilidad"]
 classifiers = [
