@@ -2,7 +2,7 @@
 
 De dónde nace el proyecto: el problema de salud, el paper del seminario y lo que aprendimos al leerlo con lupa.
 
-En el Challenge, de aquí salen las tres primeras casillas de la cadena de trazabilidad: el problema de salud, el mecanismo fisiológico y el contenido de la asignatura donde se vio.
+En el Challenge, de aquí sale la primera casilla de la cadena de trazabilidad, el problema de salud. El mecanismo fisiológico y el contenido de la asignatura donde se vio están en [`../4-challenge/01-problema.md`](../4-challenge/01-problema.md).
 
 ## El problema de salud
 
