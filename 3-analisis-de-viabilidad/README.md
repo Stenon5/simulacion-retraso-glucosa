@@ -2,7 +2,7 @@
 
 Análisis hecho solo con papel, literatura y cálculo, sin laboratorio. Las guías del proyecto lo llaman "análisis dry lab". Responde si mezclar biomarcadores distintos permite superar a GlucoWatch, el primer monitor no invasivo aprobado por la FDA, y si eso tiene sentido frente a los monitores continuos (CGM) actuales.
 
-**Veredicto (29 de octubre de 2026):** el diseño propuesto, con infrarrojo medio, dos profundidades y EEG en el oído, no supera a GlucoWatch ni tiene sentido hoy frente a los CGM. El detalle y los cálculos paso a paso están en la guía completa, [`docs/guia-del-proyecto.pdf`](../docs/guia-del-proyecto.pdf), secciones 3.5 a 3.9 y anexo D.
+**Veredicto (29 de octubre de 2026):** el diseño propuesto, con infrarrojo medio, dos profundidades y EEG en el oído, no supera a GlucoWatch ni tiene sentido hoy frente a los CGM. El detalle y los cálculos paso a paso están en la guía completa, [`docs/guia-del-proyecto.pdf`](../docs/guia-del-proyecto.pdf), secciones 3.5 a 3.9 y anexo D. Lo que podría cambiar este veredicto, como un modelo óptico de la piel o datos reales, está en la sección 13 de [`2-simulacion/informe/factibilidad.md`](../2-simulacion/informe/factibilidad.md).
 
 ## Archivos
 
