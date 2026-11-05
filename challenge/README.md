@@ -18,4 +18,4 @@ Lo que se evalúa del proyecto en el ramo Fisiología y Anatomía Humana. Vale 1
 
 - Cada hito tiene su archivo. Se escribe directo en él, y GitHub guarda cada versión.
 - Las dudas y comentarios van en un issue que nombre el hito en su título, para no perderlos en el chat.
-- Las cifras y fuentes salen del análisis en [`../dry-lab/`](../dry-lab/) y de la guía completa en [`../docs/`](../docs/). Si una cifra no está ahí, se verifica antes de usarla.
+- Las cifras y fuentes salen del análisis en [`../analisis-de-viabilidad/`](../analisis-de-viabilidad/) y de la guía completa en [`../docs/`](../docs/). Si una cifra no está ahí, se verifica antes de usarla.

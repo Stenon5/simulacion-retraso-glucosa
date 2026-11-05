@@ -17,7 +17,7 @@ detalles están en la sección Resultados.
 | **El Challenge del ramo**, lo que se entrega y cuándo | [`challenge/`](challenge/) |
 | **La revisión de la profesora**, unos 20 minutos | El resumen en [PDF](docs/resumen-para-la-profesora.pdf) o [Word](docs/resumen-para-la-profesora.docx): propuestas en evaluación, lo desarrollado y las opciones si hay que cambiar de rumbo |
 | **Sumarte al equipo** | La guía completa en [PDF](docs/guia-del-proyecto.pdf) o [Word](docs/guia-del-proyecto.docx), con el análisis dry lab y cómo colaborar |
-| **El veredicto y sus cálculos** | [`dry-lab/`](dry-lab/), con los criterios, las fuentes y el script que rehace las cifras |
+| **El veredicto y sus cálculos** | [`analisis-de-viabilidad/`](analisis-de-viabilidad/), con los criterios, las fuentes y el script que rehace las cifras |
 | **La simulación y sus resultados** | Este README y [`results/resumen.md`](results/resumen.md) |
 | **Programar o correr un barrido** | [`docs/especificacion.md`](docs/especificacion.md), los [issues abiertos](https://github.com/Stenon5/simulacion-retraso-glucosa/issues) y la sección Cómo ejecutarlo |
 
@@ -246,7 +246,7 @@ challenge/                                  los tres hitos del Challenge del ram
 
 Para leer
 README.md                                   la pregunta, los resultados y los límites
-dry-lab/                                    criterios, fuentes y cálculos del veredicto
+analisis-de-viabilidad/                     criterios, fuentes y cálculos del veredicto
 docs/guia-del-proyecto.pdf y .docx          guía completa del equipo, con el análisis dry lab
 docs/resumen-para-la-profesora.pdf y .docx  propuestas en evaluación y avances, para la profesora
 docs/especificacion.md                      el modelo y el estimador, con detalle para implementarlos
