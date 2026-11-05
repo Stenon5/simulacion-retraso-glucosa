@@ -2,7 +2,7 @@
 
 Escritos el 29 de octubre de 2026, antes de reunir los datos de mercado y de literatura del análisis. No se editan después de ver resultados. Una enmienda va en un archivo nuevo con su razón.
 
-Estado: **Propuesta** de Claude, pendiente de revisión del equipo, salvo la meta de la regla 0, que la **decidió** el equipo. Los umbrales numéricos son juicio de diseño y se justifican en la columna de razón.
+Estado: **Propuesta** de Claude, pendiente de revisión del equipo, salvo la meta de la regla 0, que la **decidió** el equipo. Los umbrales numéricos son juicio de diseño y se justifican en la columna de razón. Al 5 de noviembre de 2026 los criterios siguen pendientes de revisión del equipo y en consulta con la profesora. Una nota sobre la razón de la regla 3 está en el [README de la carpeta](README.md#nota-sobre-una-razón-de-las-reglas).
 
 Historial, antes de ver cualquier dato:
 - 29 de octubre de 2026. El equipo pidió que el éxito se mida contra lo que GlucoWatch logró por sí solo, mezclando mediciones de biomarcadores distintos. Se agregó la regla 0, se ajustaron las reglas 1 y 3, y el veredicto pasó a tener dos preguntas.

@@ -7,7 +7,7 @@ Cada calculo guarda su formula, las entradas con su fuente y el resultado.
 Fuentes: investigacion-2026-10-29.json, en esta misma carpeta
 (los codigos O, E, H y M de las entradas son hallazgos de ese archivo).
 
-Correr desde esta carpeta con: py -3.11 calculos_dry_lab.py
+Correr desde esta carpeta con: python calculos_dry_lab.py
 Escribe resultados-calculos.json en esta misma carpeta.
 """
 from __future__ import annotations
