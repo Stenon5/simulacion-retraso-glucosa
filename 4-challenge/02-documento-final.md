@@ -1,6 +1,6 @@
 # Documento de una página
 
-**Cuándo:** se sube al aula virtual antes del inicio de la Feria del Challenge (ver fecha en el [README de esta carpeta](README.md)). **Peso:** 5 %.
+**Cuándo:** se sube al aula virtual antes del inicio de la Feria del Challenge. **Peso:** 5 %. Fechas, requisitos y pauta en el [README de esta carpeta](README.md).
 
 ## Qué pide la pauta
 
@@ -10,6 +10,8 @@ Una página con:
 2. La base fisiológica.
 3. La solución propuesta.
 4. Al menos dos referencias.
+
+Antes de escribirlo, completar las seis casillas de la cadena de trazabilidad (están en [`01-problema.md`](01-problema.md), con las tres primeras listas).
 
 ## Borrador
 
