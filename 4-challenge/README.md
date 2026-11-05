@@ -16,7 +16,7 @@ Resumen de cómo se desarrolla y se evalúa el Challenge del ramo Fisiología y 
 
 | Hito | Fecha para la sección 572 (viernes) | Peso | Qué se entrega | Archivo | Estado |
 |---|---|---|---|---|---|
-| Entrega del problema | Viernes 6 de noviembre, bloque 4, en clase | Formativa, sin nota | Media página: qué problema y qué mecanismo lo explica. Se devuelve con comentarios | [`01-problema.md`](01-problema.md) | Borrador listo |
+| Entrega del problema | Viernes 6 de noviembre, bloque 4, en clase | Formativa, sin nota | Media página: qué problema y qué mecanismo lo explica. Se devuelve con comentarios | [`01-problema.md`](01-problema.md), con [PDF](01-problema-entrega.pdf) y [Word](01-problema-entrega.docx) | Lista para entregar |
 | Documento de una página | Antes de la feria, en el aula virtual | 5 % | Problema, base fisiológica y solución, con al menos dos referencias | [`02-documento-final.md`](02-documento-final.md) | Por hacer |
 | Pitch de 3 minutos | Feria del Challenge, viernes 4 de diciembre (por confirmar) | 5 % | Presentación oral ante el curso y un panel, con una sola diapositiva | [`03-pitch.md`](03-pitch.md) | Por hacer |
 

@@ -11,7 +11,7 @@ Una página con:
 3. La solución propuesta.
 4. Al menos dos referencias.
 
-Antes de escribirlo, completar las seis casillas de la cadena de trazabilidad (están en [`01-problema.md`](01-problema.md), con las tres primeras listas).
+Antes de escribirlo, completar las seis casillas de la cadena de trazabilidad (están en [`01-problema.md`](01-problema.md), con las casillas 01 a 04 y 06 listas y la 05 en evaluación).
 
 ## Borrador
 
