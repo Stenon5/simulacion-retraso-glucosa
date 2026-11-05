@@ -244,7 +244,7 @@ README.md                                   la pregunta, los resultados y los l�
 docs/especificacion.md                      el modelo y el estimador, con detalle para implementarlos
 docs/decisiones-de-implementacion.md        lo que la especificación dejaba abierto, decidido antes de correr
 docs/barridos-de-mala-especificacion.md     dónde se espera que se rompa el estimador
-informe/factibilidad.md                     la estructura del informe, todavía sin rellenar
+informe/factibilidad.md                     el informe: secciones 1 a 12 por rellenar, la 13 con las extensiones posibles
 
 Para correr
 pyproject.toml                              el paquete y sus dependencias
