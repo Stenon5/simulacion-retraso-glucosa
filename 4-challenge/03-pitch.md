@@ -1,6 +1,6 @@
 # Pitch de 3 minutos
 
-**Cuándo:** Feria del Challenge. **Peso:** 5 %. El guion que pide la pauta, las reglas de la feria y los criterios de evaluación están en el [README de esta carpeta](README.md).
+**Cuándo:** Feria del Challenge. **Peso:** 5 %. La fecha de la feria, el resumen del guion y los pesos generales están en el [README de esta carpeta](README.md). La pauta completa del curso no es pública y no se reproduce en el repositorio.
 
 ## Nuestro guion
 

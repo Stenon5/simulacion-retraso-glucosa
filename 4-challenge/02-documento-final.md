@@ -1,6 +1,6 @@
 # Documento de una página
 
-**Cuándo:** se sube al aula virtual antes del inicio de la Feria del Challenge. **Peso:** 5 %. Fechas, requisitos y pauta en el [README de esta carpeta](README.md).
+**Cuándo:** se sube al aula virtual antes del inicio de la Feria del Challenge. **Peso:** 5 %. Fechas y requisitos en el [README de esta carpeta](README.md).
 
 ## Qué pide la pauta
 

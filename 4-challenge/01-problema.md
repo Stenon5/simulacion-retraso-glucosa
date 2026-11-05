@@ -2,7 +2,7 @@
 
 **Cuándo:** viernes 6 de noviembre, bloque 4, en clase. **Peso:** formativa, sin nota. Se devuelve con comentarios.
 
-**Versión para entregar:** [PDF](01-problema-entrega.pdf) y [Word](01-problema-entrega.docx). Es una hoja carta por ambos lados: la página 1 es la entrega y la página 2 es un anexo con el modelo y los algoritmos. Abajo está el mismo texto, para leerlo en GitHub.
+**Versión para entregar:** [PDF](01-problema-entrega.pdf) y [Word](01-problema-entrega.docx). Es una hoja carta por ambos lados: la página 1 es la entrega y la página 2 es un anexo con el modelo y los algoritmos. Abajo está el mismo texto, para leerlo en GitHub. El documento se regenera con [`generador/`](generador/).
 
 ## Qué pide la pauta
 
@@ -19,7 +19,7 @@ _Texto redactado con apoyo de IA (Claude) a partir del análisis del repositorio
 
 ### 1. El problema
 
-La hipoglucemia nocturna en personas con diabetes que usan insulina. Según el Atlas de Diabetes de la IDF, en 2017 había unos 451 millones de adultos con diabetes en el mundo, y podrían llegar a 693 millones en 2045 (Cho et al., 2018). Mientras duerme, la persona no percibe los síntomas de una glucosa baja y depende de una alarma. Los monitores continuos (CGM) miden la glucosa del líquido intersticial, que va atrasada respecto de la sangre, así que la alarma puede sonar cuando la glucosa en sangre ya bajó. El único monitor no invasivo aprobado por la FDA, GlucoWatch, fracasó en sus alarmas: con la alerta de caída activada, 62 de cada 100 fueron falsas en niños y adolescentes (Tsalikian et al., 2004).
+La hipoglucemia nocturna en personas con diabetes que usan insulina. Según el Atlas de Diabetes de la IDF, en 2017 había unos 451 millones de adultos con diabetes en el mundo, y podrían llegar a 693 millones en 2045 (Cho et al., 2018). Mientras duerme, la persona no percibe los síntomas de una glucosa baja y depende de una alarma. Los monitores continuos (CGM) miden la glucosa del líquido intersticial, que va atrasada respecto de la sangre, así que la alarma puede sonar cuando la glucosa en sangre ya bajó. El primer monitor no invasivo aprobado por la FDA, GlucoWatch, retirado en 2007, fracasó en sus alarmas: con la alerta de caída activada, 62 de cada 100 fueron falsas en niños y adolescentes (Tsalikian et al., 2004).
 
 ### 2. El mecanismo fisiológico
 
@@ -31,8 +31,8 @@ La hipoglucemia nocturna en personas con diabetes que usan insulina. Según el A
 
 **Idea original.** Medir la glucosa con luz infrarroja media en dos capas de la piel. Como cada capa sigue a la sangre con su propio τ, comparar las dos lecturas permite estimar el retraso de cada persona sin pinchazos y adelantar la alarma. Una segunda vía, el EEG desde el oído, confirmaría la alarma para bajar las falsas, porque la falta de glucosa altera la actividad del cerebro y no depende del sudor.
 
-- **Simulación reproducible, con código público.** La alarma llega entre 5,2 y 14,8 min antes que midiendo una sola capa, siempre que el sensor tenga menos de unos 5,9 mg/dL de ruido por lectura.
-- **Análisis de viabilidad sin laboratorio, con criterios fijados antes de ver los datos.** La luz infrarroja media penetra solo unos 45 µm en la piel (Kottmann et al., 2016), y las capas a su alcance separan sus retrasos apenas 0,25 a 7,2 min, cuando el método necesita 9. La alarma combinada con EEG del oído acertaría 54 a 57 de cada 100 veces, bajo las 70 que nos fijamos.
+- **Simulación reproducible, con código público.** Según el escenario, la alarma llega entre 5,2 y 14,8 min antes que midiendo una sola capa. En la persona típica, el método supera a una sola capa mientras el ruido del sensor sea menor a unos 5,9 mg/dL por lectura.
+- **Análisis de viabilidad sin laboratorio, con criterios fijados antes de ver los datos.** La luz infrarroja media penetra solo unos 45 µm en la piel (Kottmann et al., 2016), y las capas a su alcance separan sus retrasos apenas 0,25 a 7,2 min, cuando el método necesita 9. La alarma combinada con EEG del oído acertaría 54 a 57 de cada 100 veces, bajo las 70 que nos fijamos, si el error del sensor es lento, un supuesto que ningún estudio midió. Con ruido blanco llegaría a 100.
 - **Veredicto.** Tal como está, el diseño no supera a GlucoWatch ni a los CGM actuales. Lo presentamos como un resultado del trabajo: sabemos qué falla y por qué.
 
 ### 4. Cadena de trazabilidad, estado actual
@@ -75,7 +75,7 @@ La hipoglucemia nocturna en personas con diabetes que usan insulina. Según el A
 3. **Filtro de Kalman.** Su estado es [sangre, pendiente, G1, G2]. Cada minuto predice con el modelo y corrige con las dos lecturas, pesadas según el ruido estimado. Usa solo lecturas pasadas, aunque en la simulación los τ se estimaron antes con la noche completa.
 4. **Alarma.** Suena cuando la sangre estimada baja de 70 mg/dL. De aquí sale el adelanto de 5,2 a 14,8 min de la página 1. Con una persona rápida, de retrasos 3 y 6 min, el método falló en 16 de 40 corridas, porque los dos retrasos se parecen demasiado.
 
-**Cómo se integran varias señales.** Hay dos niveles. Al promediar lecturas de glucosa de N sensores, el ruido baja según σf/σ = √((1 + (N − 1)ρ)/N), donde ρ es la correlación entre sus errores, y nunca baja de √ρ. Dos electrodos de un mismo sensor ya tienen ρ ≈ 0,49, así que combinar Raman, infrarrojo medio y una tercera señal dejaría el error medio (MARD) en 13 a 14 %, sobre el 12 % fijado. El segundo nivel combina decisiones con la regla Y, O o 2 de 3 de la figura 2. Como la mediana es de 0,54 hipoglucemias nocturnas por semana, cada falsa alarma pesa mucho, y por eso la vía óptica con EEG del oído, con errores algo dependientes entre sí, acertaría solo 54 a 57 de cada 100 alarmas. Las fuentes y los cálculos de cada cifra están en el repositorio.
+**Cómo se integran varias señales.** Hay dos niveles. Al promediar lecturas de glucosa de N sensores, el ruido baja según σf/σ = √((1 + (N − 1)ρ)/N), donde ρ es la correlación entre sus errores, y nunca baja de √ρ. Dos electrodos de un mismo sensor ya tienen ρ ≈ 0,49, así que combinar Raman, infrarrojo medio y una tercera señal dejaría el error medio (MARD) en 13 a 14 %, sobre el 12 % fijado. El segundo nivel combina decisiones con la regla Y, O o 2 de 3 de la figura 2. Como la mediana es de 0,54 hipoglucemias nocturnas por semana, cada falsa alarma pesa mucho, y por eso la vía óptica con EEG del oído, con errores algo dependientes entre sí, acertaría solo 54 a 57 de cada 100 alarmas con error lento supuesto. Las fuentes y los cálculos de cada cifra están en el repositorio.
 
 **Límites.** Los datos simulados salen del mismo modelo que supone el estimador, así que la simulación prueba que el algoritmo resuelve sus ecuaciones, no que el cuerpo funcione así. Además supone un retraso constante y ruido blanco. Las cifras de alarmas mezclan estudios distintos y sirven para comparar órdenes de magnitud.
 

@@ -1,0 +1,9 @@
+{
+  "name": "generador-entrega-problema",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Genera el docx de la entrega del problema del Challenge",
+  "dependencies": {
+    "docx": "^9.15.0"
+  }
+}

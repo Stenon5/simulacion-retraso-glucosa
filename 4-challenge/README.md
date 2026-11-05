@@ -1,6 +1,6 @@
 # Challenge de Ingeniería Biomédica
 
-Resumen de cómo se desarrolla y se evalúa el Challenge del ramo Fisiología y Anatomía Humana (Ingeniería Civil Biomédica, UTEM, 2026). Está escrito con palabras propias a partir de los documentos del curso, que se citan al final. Si la profesora cambia algo, se corrige aquí, que es el único lugar del repositorio con esta información.
+Resumen de cómo se desarrolla el Challenge del ramo Fisiología y Anatomía Humana (Ingeniería Civil Biomédica, UTEM, 2026). Está escrito con palabras propias a partir de los documentos del curso, que no son públicos y se citan al final. Si la profesora cambia algo, se corrige aquí. Las fechas del Challenge viven solo en este archivo, y los demás enlazan en vez de repetirlas.
 
 ## En una mirada
 
@@ -41,77 +41,11 @@ La herramienta para ordenarlo es la **cadena de trazabilidad**, de seis casillas
 
 ## El pitch
 
-**Guion de los tres minutos**
-
-| Tiempo | Momento | Qué debe quedar claro |
-|---|---|---|
-| 0:00 a 0:30 | El problema | A quién afecta, con qué magnitud y por qué importa. Basta una cifra |
-| 0:30 a 1:15 | La base fisiológica | El mecanismo del cuerpo que explica el problema. Es el núcleo del pitch y lo que más pesa |
-| 1:15 a 2:15 | La solución de ingeniería | Qué variable se mide o se modula, con qué principio de transducción y con qué tecnología |
-| 2:15 a 2:45 | Viabilidad y evidencia | Qué haría falta para probar que funciona y qué limitaciones reconoce el equipo |
-| 2:45 a 3:00 | Cierre | Una frase que resuma la propuesta y a quién va dirigida |
-
-**Reglas de la feria**
-
-- El guion equivale a unas 450 palabras a ritmo normal.
-- El tiempo es estricto: a los tres minutos se corta la presentación.
-- Una sola diapositiva de apoyo, legible desde el fondo de la sala. No se admiten videos ni material impreso.
-- Después vienen dos minutos de preguntas del curso y de un panel invitado, formado por la jefatura de carrera y docentes del Departamento de Informática y Computación.
-- La feria ocupa el bloque 3 de esa clase, con unos diez equipos en noventa minutos.
-- El documento de una página se sube al aula virtual antes de que empiece la feria.
+El guion de los tres minutos recorre el problema, la base fisiológica (el núcleo del pitch y lo que más pesa), la solución de ingeniería, la viabilidad con su evidencia y un cierre de una frase. Se apoya en una sola diapositiva.
 
 ## Cómo se evalúa
 
-**Pauta del pitch**
-
-| Criterio | Peso | Qué se mira |
-|---|---|---|
-| Pertinencia fisiológica y anatómica | 30 % | El problema y la solución se explican con mecanismos vistos en el curso, usados correctamente |
-| Calidad de la solución de ingeniería | 25 % | La variable es medible o modulable, y el principio de transducción es plausible y está identificado |
-| Claridad y estructura | 20 % | Respeta los tres minutos, sigue una secuencia lógica y usa una sola diapositiva |
-| Evidencia y viabilidad | 15 % | Se apoya en al menos dos fuentes y declara sus limitaciones |
-| Respuesta a preguntas | 10 % | Responde con precisión al curso y al panel |
-
-**Documento de una página.** Los documentos del curso fijan su contenido (problema, base fisiológica, solución y al menos dos referencias) y su peso, pero no traen una pauta propia con criterios y pesos.
-
-**De puntaje a nota.** El curso usa la escala de 1 a 7 con 60 % de exigencia: el caso de ejemplo de la pauta saca 90 de 100 puntos y la pauta dice que equivale a un 6,3. Con la fórmula habitual de esa escala, 60 puntos son un 4,0, y cada punto sobre 60 suma 0,075 de nota (90 puntos dan 6,25, que se redondea a 6,3). La fórmula no está escrita en los documentos del curso: se deduce del ejemplo.
-
-**Peso del Challenge en la nota final del ramo**
-
-| Componente | Peso |
-|---|---|
-| Certamen 1 (unidades I y II) | 25 % |
-| Certamen 2 (unidad III) | 20 % |
-| Examen final integrador | 25 % |
-| Seminarios bibliográficos (tres mejores quizzes de cuatro y la presentación del equipo) | 20 % |
-| **Challenge de Ingeniería Biomédica** | **10 %** |
-
-La recalendarización aclara que estas ponderaciones todavía deben validarse con la jefatura de carrera.
-
-## Ejemplos que dio el curso
-
-**Caso de referencia: "Un sensor que avisa antes del mareo".** Según la pauta, sacaría 90 de 100 puntos.
-
-| Casilla | Contenido |
-|---|---|
-| Problema | Caídas de adultos mayores al ponerse de pie |
-| Mecanismo | Reflejo barorreceptor enlentecido: menos retorno venoso, caída de presión y respuesta simpática tardía |
-| Contenido | Sistema nervioso autónomo (núcleo 6) y sistema cardiovascular (núcleo 9) |
-| Variable | Frecuencia cardíaca latido a latido en los 30 segundos después de pararse |
-| Transducción | Fotopletismografía, con un acelerómetro que marca el instante en que la persona se para |
-| Salida | Una alerta que vibra cuando la frecuencia cardíaca no sube como se espera |
-
-**Segundo ejemplo (Tema 7, sistema visual).** Ceguera progresiva por retinitis pigmentosa, por degeneración de los fotorreceptores. La variable son los potenciales de acción de las células ganglionares que quedan, y la transducción, un microimplante retiniano que convierte la imagen de una cámara externa en pulsos eléctricos.
-
-**Propuestas que no cumplen, según la pauta**
-
-| Propuesta | Por qué falla |
-|---|---|
-| Una app con inteligencia artificial que predice caídas | No nombra un mecanismo del cuerpo, ni una variable medida, ni un sensor |
-| Una prótesis de rodilla impresa en 3D con un material más liviano | Es un problema de materiales y biomecánica, sin relación con los núcleos del curso |
-| Un robot que llama a emergencias si la persona se cae | Actúa después del evento, sin variable fisiológica medida ni mecanismo explicado |
-
-Las tres pasan directo a la tecnología sin pasar por el organismo. La pregunta de control que propone la pauta es: ¿qué le está ocurriendo al organismo de esa persona?
+El documento de una página y el pitch pesan 5 % cada uno en la nota del ramo, 10 % en total. En el pitch, la pertinencia fisiológica y anatómica es el criterio de mayor peso. La pauta completa, los casos de ejemplo del curso y la composición de la nota del ramo no se reproducen aquí porque los documentos del curso no son públicos. Se citan sus páginas en Fuentes.
 
 ## Cómo se trabaja en esta carpeta
 
@@ -124,6 +58,6 @@ Las tres pasan directo a la tecnología sin pasar por el organismo. La pregunta 
 
 Documentos del curso, publicados en su aula virtual. No se enlazan porque no son públicos.
 
-- *Presentación de la asignatura*, Fisiología y Anatomía Humana, UTEM 2026. Páginas 14 a 21: peso del Challenge, descripción y requisito, cadena de trazabilidad, guion del pitch, pauta, caso de referencia y feria.
-- *RE-Calendarización de Fisiología y Anatomía Humana*, versión 3, 26 de octubre de 2026. Páginas 2 a 8: fechas nuevas, hitos y ponderación, guion, pauta, reglas de la feria y esquema de evaluación del ramo. Rige sobre la presentación en lo que cambie.
-- *Tema 5, Excitabilidad, células y sinapsis*, página 23, y *Tema 7*, página 13: diapositivas que relacionan los contenidos con el Challenge.
+- *Presentación de la asignatura*, Fisiología y Anatomía Humana, UTEM 2026. Páginas 14 a 21. Lo que este README no reproduce está en la página 14 (esquema de evaluación del ramo y peso del Challenge), la 18 (guion del pitch y reglas de tiempo y diapositiva), la 19 (pauta del pitch con sus pesos), la 20 (caso de referencia, propuestas que no cumplen y equivalencia a nota) y la 21 (feria). Los requisitos y la cadena de trazabilidad están en las páginas 16 y 17.
+- *RE-Calendarización de Fisiología y Anatomía Humana*, versión 3, 26 de octubre de 2026. Páginas 2 a 8: fechas nuevas, hitos y ponderación (p. 7), guion (p. 7), pauta y reglas de la feria (p. 8) y esquema de evaluación del ramo (p. 8). Rige sobre la presentación en lo que cambie.
+- *Tema 5, Excitabilidad, células y sinapsis*, página 23, y *Tema 7*, página 13: diapositivas que relacionan los contenidos con el Challenge. El segundo ejemplo que dio el curso, de ceguera por retinitis pigmentosa, está en el Tema 7.
