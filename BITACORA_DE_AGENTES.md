@@ -147,6 +147,46 @@ término del lado derecho, y conciliar la entrada pendiente de las cifras. Segú
 la regla de esta bitácora, la discrepancia con la corrida exploratoria merece
 su propia entrada cuando se concilie.
 
+### 2026-11-05, errores de la fase de viabilidad y aclaraciones sobre entradas anteriores
+
+**Qué pasó.** Esta entrada no corrige las anteriores, que quedan como estaban,
+sino que las completa con cuatro puntos.
+(1) En la fase de viabilidad hubo dos errores del trabajo asistido. Primero, el
+documento de trabajo del 16 de octubre decía que las lecturas del GlucoWatch iban
+18 minutos atrasadas, pero esa cifra no se pudo verificar en su fuente: la página
+devolvió un error 403 y solo se vio un resumen de buscador (afirmación 9 de
+`3-analisis-de-viabilidad/verificacion-fuentes-2026-10-29.json`). La guía la
+marca como no verificada y usa la cifra de unos 20 minutos de Poddar et al.
+(2008). Segundo, la cifra de personas con diabetes se atribuía a la OMS, cuando
+es del IDF Diabetes Atlas 2017 (451 millones de adultos). El error venía de
+Tang et al. (2020), que a su vez lo copió de otro artículo.
+(2) Las entradas anteriores usan la primera persona ("Mi primera derivación",
+"errores menores míos"). Quien habla en ellas es el asistente de IA, no
+el autor humano del repositorio.
+(3) La frase del comienzo, "El proyecto de armonización todavía no tiene una",
+se refiere a un proyecto que está fuera de este repositorio.
+(4) La entrada del 2026-10-23 dice que la prueba
+`test_results_directory_is_still_empty` falla a propósito. Esa prueba hoy se
+llama `test_readme_status_matches_results` y pasa, porque el README ya informa
+los resultados.
+
+**Cómo se detectó.** (1) Con la verificación de fuentes del 2026-10-29, que dejó
+la cifra de 18 minutos como "no se pudo abrir", y con la fe de erratas del
+paper (`1-contexto/fe-de-erratas-tang-2020.md`), que rastreó la cifra de
+diabetes hasta su fuente primaria. (2) a (4) En la revisión editorial del
+2026-11-05.
+
+**Costo.** La cifra de 18 minutos habría quedado como dato si no se hubiera
+intentado abrir su fuente. La de diabetes estuvo en la guía y en el resumen para
+la profesora hasta que se regeneraron los PDF y Word.
+
+**Qué cambió.** Toda cifra de la fase de viabilidad se contrasta con su fuente
+abierta, y las que no se pudieron abrir se marcan como tales. La cifra de
+diabetes se cita con su fuente primaria, Cho et al. (2018), desde el commit
+`aa3e204` del 2026-11-04.
+
+**Estado.** Cerrada.
+
 ---
 
 ## Entradas pendientes

@@ -12,6 +12,9 @@ dist/
 # Cuadernos de Jupyter
 .ipynb_checkpoints/
 
+# Node (los generadores de figuras usan npm)
+node_modules/
+
 # Salidas grandes o de borrador. Los resultados informados se suben al repositorio a propósito.
 2-simulacion/results/scratch/
 *.npz
