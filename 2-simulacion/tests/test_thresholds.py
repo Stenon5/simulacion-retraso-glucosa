@@ -1,9 +1,10 @@
-"""Tests que corren hoy.
+"""Pruebas del archivo de criterios y del estado del README.
 
-No prueban la simulación, que todavía no existe. Prueban que el archivo de
-criterios fijados de antemano esté presente, se pueda leer y esté completo,
-porque ese archivo tiene que ser confiable antes de que se produzca cualquier
-resultado.
+No prueban la simulación, que tiene sus propias pruebas en otros archivos.
+Prueban que el archivo de criterios fijados de antemano esté presente, se
+pueda leer y esté completo, porque ese archivo tiene que ser confiable. Además
+comprueban que el README no diga que no hay resultados cuando results/ ya
+tiene archivos de datos.
 """
 
 from __future__ import annotations

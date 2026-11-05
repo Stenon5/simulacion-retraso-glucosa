@@ -1,7 +1,9 @@
 # Informe de factibilidad
 
-**Estructura vacía. No se ha ejecutado nada.** Cada sección de abajo es un
-espacio por llenar. Una sección se rellena solo a partir de archivos de
+**Borrador: las secciones 1 a 12 están pendientes (issue 10). La sección 13 está completa.**
+Las cifras de la simulación ya existen y están en
+[`results/resumen.md`](../results/resumen.md). Las secciones 1 a 12 son
+espacios por llenar. Una sección se rellena solo a partir de archivos de
 `results/`, y cada cifra que contenga tiene que poder rastrearse hasta una
 semilla y una configuración.
 
@@ -141,9 +143,9 @@ de transporte de luz en capas.
    señal a ruido. Eso permite compararlo de verdad con la cifra in vitro de
    4 mg/dL de Vrančić et al. (2011).
 2. Pone a prueba el supuesto central del método, que dos profundidades
-   ópticas ven compartimentos con retrasos distintos. In vivo, la
-   espectroscopía fotoacústica en infrarrojo medio integra la absorción hasta
-   unos 40 a 50 µm (Pleitez et al., 2013). La unión dermo-epidérmica, donde
+   ópticas ven compartimentos con retrasos distintos. La luz infrarroja
+   media llega a unos 45 µm de profundidad en la piel (Kottmann et al., 2016),
+   y en general por debajo de 100 µm. La unión dermo-epidérmica, donde
    llegan los capilares, está a unos 50 a 100 µm en la mejilla (arXiv
    1802.01455). Si el modelo confirma que la luz no alcanza una segunda
    profundidad distinta, el método de dos profundidades no sirve en esa
@@ -189,7 +191,11 @@ humana con selección de profundidad.
 desplazamientos laterales que muestrean desde 0 a 270 µm hasta más de 620 µm.
 Tiene 230 participantes, 5.308 pares y un MARD de 14,6% en un conjunto de
 prueba independiente de 30 personas (Zhang et al., 2025). Los espectros se
-entregan a pedido a los autores, y el código está en Zenodo.
+entregan a pedido a los autores, y el código está en Zenodo. Los 5.308 pares, el
+conjunto de prueba de 30 personas y los desplazamientos de 270 a 620 µm no se
+pudieron verificar contra las fuentes reunidas en el
+[análisis de viabilidad](../../3-analisis-de-viabilidad/README.md), que solo
+registran 230 participantes y un MARD de 14,6 %.
 
 **Qué mejora promete.** Ver si dos desplazamientos muestran retrasos distintos
 en personas reales. Como es Raman y no infrarrojo medio, validaría el
@@ -229,11 +235,15 @@ cerebro y no depende del sudor.
 azar, y los de referencia en el otro lado lograron 90% o más de sensibilidad.
 Con electrodos en el cuero cabelludo se logró 96% de exactitud, pero dentro de
 cada sujeto. No hay datos para simular una segunda vía creíble. El análisis de
-viabilidad (`3-analisis-de-viabilidad/`) estimó que la alarma combinada con EEG
-del oído acierta 54 a 57 de cada 100 veces.
+viabilidad estimó que la alarma combinada con EEG del oído acierta 54 a 57 de
+cada 100 veces, con el error del sensor óptico lento (supuesto) y dependencia
+0,3 entre las vías. Con ruido blanco sería 100 %. Las reglas y sus cifras están
+en [`3-analisis-de-viabilidad/`](../../3-analisis-de-viabilidad/README.md#reglas-de-decisión-y-sus-cifras).
 
 **Qué mejora promete.** Atacar las falsas alarmas, que hundieron al
-GlucoWatch G2 (51% de falsas alarmas a 60 mg/dL en niños). Con dos vías
+GlucoWatch G2 (51 % de falsas alarmas con alarma a 60 mg/dL y 62 % con alarma
+y alerta de caída juntas, Tsalikian et al., 2004, según la
+[frase única del análisis de viabilidad](../../3-analisis-de-viabilidad/README.md#falsas-alarmas-de-glucowatch)). Con dos vías
 independientes y una regla que exige que ambas coincidan, la probabilidad de
 falsa alarma se multiplica entre ambas, pero la sensibilidad también. Con una
 sensibilidad de 80% en cada vía, la conjunta bajaría a 64%. El modelo tendría

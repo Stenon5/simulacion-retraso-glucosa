@@ -1,9 +1,9 @@
 # Barridos de mala especificación
 
 La simulación base genera los datos con el mismo modelo que supone el
-estimador. En esas condiciones al estimador se le pide resolver sus propias
-ecuaciones, así que recuperar el retraso es una verificación y no una
-validación. Este documento es el plan para romper ese supuesto a propósito.
+estimador, un límite de circularidad que explica la sección
+[Limitaciones](../README.md#limitaciones) del README. Este documento es el plan
+para romper ese supuesto a propósito.
 
 Escrito antes de ejecutar cualquier barrido. Nada de lo que aparece aquí tiene
 resultados.

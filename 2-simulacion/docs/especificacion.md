@@ -1,7 +1,7 @@
 # Especificación del modelo y del estimador
 
-Con detalle suficiente para implementar la simulación desde cero. Nada de lo
-que aparece aquí se ha ejecutado todavía dentro de este repositorio.
+Con detalle suficiente para implementar la simulación desde cero. Implementado
+en `src/glucose_delay/`. Resultados en [`results/resumen.md`](../results/resumen.md).
 
 ## 1. Planteamiento
 
@@ -103,7 +103,7 @@ futuras, porque un dispositivo no puede hacerlo.
 * A cada lectura de profundidad se le suma ruido gaussiano independiente, con
   el nivel de ruido del escenario, sin deriva y sin correlación entre
   profundidades. El generador base coincide a propósito con los supuestos del
-  estimador. Esa es la circularidad que los barridos existen para atacar.
+  estimador. Esa es la [circularidad](../README.md#limitaciones) que los barridos existen para atacar.
 * Cada corrida registra su semilla. Una semilla fija debe reproducir una
   corrida exactamente.
 

@@ -13,6 +13,9 @@
 #   criterio decía "igual o mayor", lo que se contradecía. Vale el criterio, y
 #   el enunciado ahora dice "como mínimo". Se corrigió porque todavía no existía
 #   ningún resultado.
+# - 2026-11-05. Se cambió solo meta.status, que anunciaba que no había
+#   resultados y quedó desactualizado desde la corrida del 2026-10-23. Es una corrección de
+#   la etiqueta de estado. No se tocó ningún criterio, regla ni umbral.
 #
 # Este archivo no se edita después de ver un resultado. Si un criterio resulta
 # estar mal o mal planteado, la enmienda va en un archivo NUEVO llamado
@@ -24,7 +27,7 @@ meta:
   version: 1
   committed: "2026-10-22"
   applies_to: datos sintéticos generados con el modelo de docs/especificacion.md
-  status: todavía sin resultados
+  status: con resultados, primera replicación del 2026-10-23
 
 reporting_rules:
   - id: bias_with_spread

@@ -8,7 +8,8 @@ va al final, en "Correcciones posteriores", con su razón, y también en
 `BITACORA_DE_AGENTES.md`.
 
 Ningún parámetro de este documento se eligió para acercarse a las cifras de la
-corrida exploratoria del 2026-10-16.
+corrida exploratoria del 2026-10-16, que se explica en el
+[README de la simulación](../README.md#la-pregunta-planteada-de-modo-que-pueda-fallar).
 
 ## 1. Registro sintético
 
@@ -43,7 +44,7 @@ corrida exploratoria del 2026-10-16.
   así que es la lectura más simple.
 * Razón. Así el error de generación es despreciable y, sin ruido, el
   estimador puede recuperar las constantes reales, que es lo que exige el
-  backlog.
+  [issue 3](https://github.com/Stenon5/simulacion-retraso-glucosa/issues/3).
 
 ## 3. Ruido y semillas
 
@@ -218,8 +219,8 @@ corrida exploratoria del 2026-10-16.
   rápida exploratoria (3 y 8 min) quedan fuera. Se agregan como
   `replica_persona_lenta` y `replica_persona_rapida`.
 * **El barrido explícito de la separación entre profundidades** que menciona la
-  sección 7 no se implementa en esta corrida. Es el barrido 6 de la fase 2 del
-  backlog.
+  sección 7 no se implementa en esta corrida. Es el barrido 6, que sigue pendiente en el
+  [issue 16](https://github.com/Stenon5/simulacion-retraso-glucosa/issues/16).
 
 ## 12. Figura
 
