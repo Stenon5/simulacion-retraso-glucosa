@@ -8,7 +8,7 @@ Lo que se evalúa del proyecto en el ramo Fisiología y Anatomía Humana. Vale 1
 
 | Hito | Fecha | Peso | Archivo | Estado |
 |---|---|---|---|---|
-| Entrega del problema | viernes 6 de noviembre, bloque 4, en clase | Formativa | [`01-problema.md`](01-problema.md) | Por hacer |
+| Entrega del problema | viernes 6 de noviembre, bloque 4, en clase | Formativa | [`01-problema.md`](01-problema.md) | Borrador listo, falta que el equipo lo revise |
 | Documento de una página | 4 de diciembre (por confirmar) | 5 % | [`02-documento-final.md`](02-documento-final.md) | Por hacer |
 | Pitch de 3 minutos | Feria del Challenge, 4 de diciembre (por confirmar) | 5 % | [`03-pitch.md`](03-pitch.md) | Por hacer |
 
