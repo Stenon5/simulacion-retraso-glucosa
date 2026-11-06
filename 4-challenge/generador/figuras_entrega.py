@@ -1,4 +1,4 @@
-"""Figuras del anexo de la Entrega del problema (2 paginas).
+"""Figuras del anexo de la Entrega del problema (se suman con ENTREGA_ANEXO=1).
 Estilo y paleta propios. Ancho 6,9 in a 300 dpi = 2070 px,
 sin bbox_inches tight, para que un pt de matplotlib sea un pt impreso.
 Correr con (desde cualquier carpeta): py -3.11 figuras_entrega.py [alto_fig1] [alto_fig2]
@@ -23,7 +23,7 @@ NEGRO = "#1b1b1b"
 AZUL_OSC = "#1F4E79"
 
 W = 6.9
-# Por defecto, los altos de la version entregada (2,0 y 2,4 in), con los que el docx cabe en 2 paginas.
+# Por defecto, los altos de la version entregada (2,0 y 2,4 in), con los que el docx con anexo cabe en 2 paginas.
 H1 = float(sys.argv[1]) if len(sys.argv) > 1 else 2.0
 H2 = float(sys.argv[2]) if len(sys.argv) > 2 else 2.4
 

@@ -1,12 +1,11 @@
-// Entrega del problema del Challenge, version de dos paginas (entrega + anexo con dos figuras), viernes 6 de noviembre de 2026.
+// Entrega del problema del Challenge, viernes 6 de noviembre de 2026. La version entregada es de una plana (secciones 1 a 5, tabla de la cadena y referencias, cuerpo de 10 pt).
 // Uso: node entrega_problema.js [cuerpoPagina1EnMediosPuntos] [cuerpoPagina2] [recortes, ej. R1,R2] [interlineado] [espaciadoP1] [espaciadoP2] [salida.docx]
-// Sin argumentos produce la version entregada (2 paginas exactas, verificada en Word, letra del cuerpo de 9,5 pt).
-// Todas las rutas son relativas a este archivo. Ver README.md de esta carpeta.
-//   py -3.11 figuras_entrega.py                  # dibuja fig1-modelo.png y fig2-algoritmo.png en ../figuras/
-//   node entrega_problema.js                     # escribe ../01-problema-entrega.docx
+// La version entregada se arma con (ENTREGA_SALIDA obligatoria, ruta completa del docx, o 8.o argumento):
+//   ENTREGA_SALIDA=<ruta del docx> node entrega_problema.js 20 20 ninguno 252 1 1
+// Con ENTREGA_ANEXO=1 suma una segunda pagina con el anexo de las dos figuras de ../figuras/ (antes: py -3.11 figuras_entrega.py).
 //   pwsh -File exportar_pdf.ps1 <docx>           # exporta el PDF con una instancia propia de Word
 //   py -3.11 verificar_pdf.py <pdf> <carpeta>    # paginas, primera y ultima linea, renders PNG
-// Para escribir en otra ruta: 7.o argumento o variable de entorno ENTREGA_SALIDA, con la ruta del docx.
+// Todas las rutas son relativas a este archivo. Ver README.md de esta carpeta.
 const path = require("path");
 const fs = require("fs");
 const {
@@ -15,18 +14,20 @@ const {
 } = require("docx");
 
 const SCRATCH = path.join(__dirname, "..", "figuras"); // carpeta de las figuras
-const SALIDA = path.resolve(process.argv[8] || process.env.ENTREGA_SALIDA || path.join(__dirname, "..", "01-problema-entrega.docx"));
+const SALIDA_ARG = process.argv[8] || process.env.ENTREGA_SALIDA; // obligatoria, sin ruta por defecto
+if (!SALIDA_ARG) { console.error("Falta la variable de entorno ENTREGA_SALIDA con la ruta del docx."); process.exit(1); }
+const SALIDA = path.resolve(SALIDA_ARG);
 const F = "Arial";
 const AZUL = "1F4E79";
 const GRIS = "404040";
 const ROJO = "C0392B";
-const C1 = Number(process.argv[2] || 19); // cuerpo de la pagina 1 en medios puntos
+const C1 = Number(process.argv[2] || 20); // cuerpo de la pagina 1 en medios puntos
 const C2 = Number(process.argv[3] || C1); // cuerpo de la pagina 2
 const CORTES = new Set((process.argv[4] || "ninguno").split(",").filter((x) => x && x !== "ninguno"));
 let C = C1;
-const LINEA = Number(process.argv[5] || 240);
-const ESP1 = Number(process.argv[6] || 0.1);
-const ESP2 = Number(process.argv[7] || 1);
+const LINEA = Number(process.argv[5] || 252);
+const ESP1 = Number(process.argv[6] || 1);
+const ESP2 = Number(process.argv[7] || ESP1);
 let ESP = ESP1; // factor de espaciado entre parrafos
 
 const t = (text, o = {}) => new TextRun({ text, font: F, size: C, ...o });
@@ -94,32 +95,28 @@ const pagina1 = [
     children: [t("Integrantes: Eddie Andrés Ríos Elgueta, Lucas Valdebenito Maldonado y Nicolás Frieri · Viernes 6 de noviembre de 2026", { size: C - 3, color: GRIS })] }),
 
   titulo("1. El problema"),
-  par(rich("La hipoglucemia nocturna en personas con diabetes que usan insulina. [[R1:Según el Atlas de Diabetes de la IDF, ]]" +
-    (CORTES.has("R1") ? "En" : "en") + " 2017 había unos 451 millones de adultos con diabetes en el mundo, y podrían llegar a 693 millones en 2045 (Cho et al., 2018). Mientras duerme, la persona no percibe los síntomas de una glucosa baja y depende de una alarma. Los monitores continuos (CGM) miden la glucosa del líquido intersticial, que va atrasada respecto de la sangre, así que la alarma puede sonar cuando la glucosa en sangre ya bajó. El primer monitor no invasivo aprobado por la FDA, GlucoWatch, retirado en 2007, fracasó en sus alarmas: con la alerta de caída activada, ⟦62 de cada 100 fueron falsas⟧ en niños y adolescentes (Tsalikian et al., 2004).")),
+  par(rich("La hipoglucemia nocturna en personas con diabetes que usan insulina. En 2017 había unos 451 millones de adultos con diabetes en el mundo (Cho et al., 2018). Mientras duerme, la persona no percibe los síntomas y depende de una alarma, pero los monitores continuos (CGM) miden el líquido intersticial, que va atrasado respecto de la sangre. El único monitor no invasivo aprobado por la FDA, GlucoWatch, fracasó en sus alarmas: ⟦62 de cada 100 fueron falsas⟧ en niños y adolescentes (Tsalikian et al., 2004).")),
 
   titulo("2. El mecanismo fisiológico"),
-  vineta(rich("**Falla del control (núcleo 2, homeostasis).** La glicemia se regula por retroalimentación negativa: las células del páncreas la detectan y el páncreas endocrino ajusta la insulina y el glucagón. La insulina inyectada queda fuera de ese bucle y sigue actuando aunque la glucosa baje.")),
-  vineta(rich("**Aviso que no llega (núcleo 6, sistema nervioso autónomo).** La glucosa baja activa una respuesta simpática, con sudor, temblor y taquicardia, que de día funciona como alarma natural. Durante el sueño esa señal puede pasar inadvertida.")),
-  vineta(rich("**Retraso por difusión (núcleo 3, membrana y transporte).** La glucosa sale del capilar al líquido intersticial a favor de su gradiente y entra a las células por los transportadores GLUT. Aplicando la ley de Fick a un volumen de tejido, la glucosa del tejido G sigue a la de la sangre G_{s} como un sistema de primer orden: dG/dt = (G_{s} − G)/τ, con τ = V/(P·A), donde P es la permeabilidad del capilar, A el área de intercambio y V el volumen del tejido. Por eso va con varios minutos de atraso (hasta 5 a 10 min según Rebrin et al., 2010)[[R4:, y en una caída rápida ese retraso es justo el tiempo que se pierde]].")),
+  vineta(rich("**Falla del control (núcleo 2, homeostasis).** La glicemia se regula por retroalimentación negativa: el páncreas la detecta y ajusta la insulina y el glucagón. La insulina inyectada queda fuera de ese bucle y sigue actuando aunque la glucosa baje.")),
+  vineta(rich("**Aviso que no llega (núcleo 6, sistema nervioso autónomo).** La respuesta simpática a la glucosa baja, con sudor, temblor y taquicardia, alerta de día, pero durante el sueño puede pasar inadvertida.")),
+  vineta(rich("**Retraso por difusión (núcleo 3, membrana y transporte).** La glucosa difunde del capilar al líquido intersticial y entra a las células por transportadores GLUT. Por la ley de Fick, la glucosa del tejido G sigue a la de la sangre G_{s} como un sistema de primer orden, dG/dt = (G_{s} − G)/τ, con τ = V/(P·A) (volumen de tejido sobre permeabilidad por área de intercambio), y llega con 5 a 10 min de atraso (Rebrin et al., 2010).")),
 
-  titulo("3. Lo que planteamos y lo que ya hicimos (detalle en la página 2)"),
-  par(rich("**Idea original.** Medir la glucosa con luz infrarroja media en dos capas de la piel. Como cada capa sigue a la sangre con su propio τ, comparar las dos lecturas permite estimar el retraso de cada persona sin pinchazos y adelantar la alarma. Una segunda vía, el EEG desde el oído, confirmaría la alarma para bajar las falsas[[R2:, porque la falta de glucosa altera la actividad del cerebro y no depende del sudor]].")),
-  vineta(rich("**Simulación reproducible, con código público.** Según el escenario, la alarma llega entre 5,2 y 14,8 min antes que midiendo una sola capa. En la persona típica, el método supera a una sola capa mientras el ruido del sensor sea menor a unos 5,9 mg/dL por lectura.")),
-  vineta(rich("**Análisis de viabilidad sin laboratorio, con criterios fijados antes de ver los datos.** La luz infrarroja media penetra solo unos 45 µm en la piel (Kottmann et al., 2016), y ⟦las capas a su alcance separan sus retrasos apenas 0,25 a 7,2 min, cuando el método necesita 9⟧. ⟦La alarma combinada con EEG del oído acertaría 54 a 57 de cada 100 veces, bajo las 70 que nos fijamos, si el error del sensor es lento, un supuesto que ningún estudio midió. Con ruido blanco llegaría a 100.⟧")),
-  vineta(rich("⟦**Veredicto.** Tal como está, el diseño no supera a GlucoWatch ni a los CGM actuales.⟧ [[R3:Lo presentamos como un resultado del trabajo: sabemos qué falla y por qué.]]")),
+  titulo("3. Lo que planteamos y dónde estamos"),
+  par(rich("Medir la glucosa con luz infrarroja media en dos capas de la piel que siguen a la sangre con retrasos distintos, estimar con un algoritmo (filtro de Kalman) la glucosa en sangre y adelantar la alarma, confirmándola con EEG del oído. En simulación, la alarma llegó 5,2 a 14,8 min antes. Pero esa luz penetra solo unos 45 µm (Kottmann et al., 2016), y ⟦las capas a su alcance difieren en apenas 0,25 a 7,2 min de retraso, cuando se necesitan 9⟧. ⟦Tal como está, el diseño no supera a GlucoWatch ni a los CGM actuales.⟧ El modelo, los algoritmos y los cálculos están en el repositorio.")),
 
-  titulo("4. Cadena de trazabilidad, estado actual"),
+  titulo("4. Cadena de trazabilidad"),
   new Table({ width: { size: ANCHO, type: WidthType.DXA }, columnWidths: [COL1, ANCHO - COL1], rows: [
     fila("01 · Problema de salud", "Hipoglucemia nocturna en personas con diabetes que usan insulina"),
-    fila("02 · Mecanismo", "Falla del bucle de control de la glicemia, aviso simpático que se pierde al dormir y retraso por difusión del capilar al líquido intersticial"),
-    fila("03 · Contenido", "Núcleo 2 (homeostasis), núcleo 3 (membrana y transporte) y núcleo 6 (sistema nervioso autónomo)"),
-    fila("04 · Variable medible", "Glucosa del líquido intersticial y su retraso respecto de la sangre, en forma continua durante la noche"),
-    fila("05 · Transducción", rich("En evaluación. ⟦El infrarrojo medio quedó descartado.⟧ Propuesta: partir de la medición electroquímica de un CGM y sumar señales no invasivas, como el pulso, para confirmar la alarma", { size: C - 2 })),
-    fila("06 · Salida esperada", "Alarma nocturna de hipoglucemia para la persona o su cuidador, más temprana y con menos falsas alarmas"),
+    fila("02 · Mecanismo", "Bucle de la glicemia sin freno, aviso simpático perdido al dormir y retraso por difusión"),
+    fila("03 · Contenido", "Núcleos 2 (homeostasis), 3 (membrana y transporte) y 6 (sistema nervioso autónomo)"),
+    fila("04 · Variable medible", "Glucosa intersticial y su retraso respecto de la sangre, continua durante la noche"),
+    fila("05 · Transducción", rich("En evaluación. ⟦Infrarrojo medio descartado.⟧ Propuesta: CGM electroquímico más señales no invasivas, como el pulso, que confirmen la alarma", { size: C - 2 })),
+    fila("06 · Salida esperada", "Alarma nocturna para la persona o su cuidador, más temprana y con menos falsas alarmas"),
   ] }),
 
-  titulo("5. Lo que nos serviría de su retroalimentación"),
-  par([t("¿Seguimos por anclar la alarma en un CGM y sumarle biomarcadores (opción B), corregimos el diseño no invasivo con espectroscopía Raman, que hoy tiene la mejor evidencia en personas (opción A), o un resultado negativo bien fundamentado cumple el objetivo del ramo (opción C)?")]),
+  titulo("5. Pregunta para su retroalimentación"),
+  par([t("¿Seguimos con un CGM más biomarcadores no invasivos (opción B), corregimos el diseño no invasivo con espectroscopía Raman (opción A), o un resultado negativo bien fundamentado cumple el objetivo del ramo (opción C)?")]),
 
   new Paragraph({ spacing: { before: Math.round(60 * ESP), after: 20 }, children: [b("Referencias", { size: REF + 1, color: AZUL })] }),
   ref([["Cho, N. H., Shaw, J. E., Karuranga, S., Huang, Y., da Rocha Fernandes, J. D., Ohlrogge, A. W., & Malanda, B. (2018). IDF Diabetes Atlas: Global estimates of diabetes prevalence for 2017 and projections for 2045. "], ["Diabetes Research and Clinical Practice, 138", 1], [", 271-281. https://doi.org/10.1016/j.diabres.2018.02.023"]]),
@@ -161,7 +158,7 @@ const doc = new Document({
     style: { paragraph: { indent: { left: 280, hanging: 200 } } } }] }] },
   sections: [{
     properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 900, bottom: 800, left: 1150, right: 1150 } } },
-    children: [...pagina1, ...pagina2],
+    children: [...pagina1, ...(process.env.ENTREGA_ANEXO === "1" ? pagina2 : [])],
   }],
 });
 
