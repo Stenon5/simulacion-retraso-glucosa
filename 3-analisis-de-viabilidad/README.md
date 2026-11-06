@@ -35,6 +35,8 @@ Cada regla se aplicó como se fijó el 29 de octubre de 2026. Las siglas: MARD e
 
 El rango de 54 a 57 % tiene una sola definición. El 57 % sale con un ruido del sensor óptico de σ = 13 mg/dL y el 54 % con σ = 18 mg/dL. En los dos casos el error es lento (supuesto) y la dependencia con el EEG es 0,3.
 
+La regla 0 comparada parámetro por parámetro, con todas las cifras publicadas del GlucoWatch, está en [`glucowatch.md`](glucowatch.md).
+
 ## Opciones si hay que cambiar de rumbo
 
 Si la retroalimentación de la profesora pide cambiar de rumbo, estas son las cuatro opciones que ve el equipo. Todas son propuesta y ninguna está decidida.
@@ -57,6 +59,8 @@ En cualquier caso se conservan la base fisiológica (la ley de Fick y el bucle d
 | `verificacion-fuentes-2026-10-29.json` | 22 afirmaciones, 19 contrastadas contra su fuente original (14 respaldan y 5 con matiz) y 3 que no se pudieron abrir |
 | `calculos_dry_lab.py` | Todos los cálculos: difusión, fusión de sensores, alarmas combinadas y comparación con GlucoWatch |
 | `resultados-calculos.json` | La salida del script. Cada cifra trae su fórmula, sus entradas y su fuente |
+| [`glucowatch.md`](glucowatch.md) | Ficha del GlucoWatch con sus cifras publicadas y la comparación con nuestra propuesta |
+| `glucowatch-cifras.json` | 202 cifras del GlucoWatch, cada una con su cita literal y su fuente. Los ids C y R que usa la ficha apuntan aquí |
 
 ### Cómo leer los códigos O, E, H y M
 
@@ -73,7 +77,7 @@ Por ejemplo, O14 es el hallazgo 14 de `opticas`, el de Kottmann et al. (2016) so
 
 ## Falsas alarmas de GlucoWatch
 
-Esta es la frase única que usan los demás archivos: 51 % de falsas alarmas con alarma a 60 mg/dL y 62 % con alarma y alerta de caída juntas (Tsalikian et al., 2004).
+Esta es la frase única que usan los demás archivos: 51 % de falsas alarmas con la alarma en 60 mg/dL (DirecNet, 2004) y 62 % con la alarma y la alerta de caída juntas (Tsalikian et al., 2004). Las dos cifras cuentan las falsas alarmas de forma distinta. El detalle y el resto de las cifras del GlucoWatch están en [`glucowatch.md`](glucowatch.md).
 
 ## Nota sobre una razón de las reglas
 
