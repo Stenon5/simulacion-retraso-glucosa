@@ -241,8 +241,8 @@ cada 100 veces, con el error del sensor óptico lento (supuesto) y dependencia
 en [`3-analisis-de-viabilidad/`](../../3-analisis-de-viabilidad/README.md#reglas-de-decisión-y-sus-cifras).
 
 **Qué mejora promete.** Atacar las falsas alarmas, que hundieron al
-GlucoWatch G2 (51 % de falsas alarmas con alarma a 60 mg/dL y 62 % con alarma
-y alerta de caída juntas, Tsalikian et al., 2004, según la
+GlucoWatch G2 (51 % de falsas alarmas con alarma a 60 mg/dL, DirecNet, 2004, y
+62 % con alarma y alerta de caída juntas, Tsalikian et al., 2004, según la
 [frase única del análisis de viabilidad](../../3-analisis-de-viabilidad/README.md#falsas-alarmas-de-glucowatch)). Con dos vías
 independientes y una regla que exige que ambas coincidan, la probabilidad de
 falsa alarma se multiplica entre ambas, pero la sensibilidad también. Con una
