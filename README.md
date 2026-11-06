@@ -31,7 +31,7 @@ Las guías para leer están en [`docs/`](docs/).
 | Si vienes por | Empieza en |
 |---|---|
 | **El Challenge del ramo**, lo que se entrega y cuándo | [`4-challenge/`](4-challenge/) |
-| **La entrega del problema**, con fecha en [`4-challenge/`](4-challenge/README.md) | En [PDF](4-challenge/01-problema-entrega.pdf), en [Word](4-challenge/01-problema-entrega.docx) o [para leer en GitHub](4-challenge/01-problema.md): el problema, su mecanismo, lo hecho y un anexo con el modelo y los algoritmos |
+| **La entrega del problema**, con fecha en [`4-challenge/`](4-challenge/README.md) | En [PDF](4-challenge/01-problema-entrega.pdf), en [Word](4-challenge/01-problema-entrega.docx) o [para leer en GitHub](4-challenge/01-problema.md): el problema, su mecanismo, lo hecho y la cadena de trazabilidad, en una plana con referencias |
 | **La revisión de la profesora**, unos 20 minutos | El resumen en [PDF](docs/resumen-para-la-profesora.pdf) o [Word](docs/resumen-para-la-profesora.docx): propuestas en evaluación, lo desarrollado y las opciones si hay que cambiar de rumbo |
 | **Sumarte al equipo** | La guía completa en [PDF](docs/guia-del-proyecto.pdf) o [Word](docs/guia-del-proyecto.docx), con el análisis de viabilidad y cómo colaborar |
 | **El veredicto y sus cálculos** | [`3-analisis-de-viabilidad/`](3-analisis-de-viabilidad/) |
