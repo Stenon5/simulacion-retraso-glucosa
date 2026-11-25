@@ -25,3 +25,16 @@ _Por repartir entre los integrantes del grupo 1._
 ## Preguntas que podría hacer el panel
 
 _Por preparar: el panel reúne a la jefatura de carrera y a docentes de Informática y Computación._
+
+## Cadena de trazabilidad para la diapositiva (25 de noviembre de 2026)
+
+Salió del documento de una página para que cupiera. Corresponde a la solución del borrador 1 de [`02-documento-final.md`](02-documento-final.md).
+
+| # | Casilla | Contenido |
+|---|---|---|
+| 01 | Problema | Hipoglucemia nocturna en diabetes tipo 1 (9,5 millones de personas) |
+| 02 | Mecanismo | Insulina inyectada que no se reduce, glucagón perdido y respuesta simpática atenuada por el sueño |
+| 03 | Contenido | Núcleos 2 (homeostasis), 6 (sistema autónomo) y 3 (transporte) |
+| 04 | Variable | Glucosa intersticial y su pendiente cada 5 min (medida) e insulina basal (modulada) |
+| 05 | Transducción | Sensor enzimático amperométrico (glucosa oxidasa, corriente en un electrodo) |
+| 06 | Salida | Suspensión de la insulina y alarma escalonada para la persona y su cuidador |

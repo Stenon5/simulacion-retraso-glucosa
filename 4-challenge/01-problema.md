@@ -56,4 +56,22 @@ Medir la glucosa con luz infrarroja media en dos capas de la piel que siguen a l
 
 ## Comentarios recibidos
 
-_Aquí se anotan los comentarios de la profesora cuando se devuelva._
+La entrega se envió por correo el 6 de noviembre, en una versión de media página (problema, mecanismo y tres referencias), distinta de la plana completa que está arriba. La profesora respondió el 10 de noviembre. Resumen con palabras propias:
+
+**Lo que está bien.** El problema es pertinente, y los tres mecanismos (control de la glicemia, respuesta autonómica e intercambio sangre a intersticio) son los correctos. Valoró en especial el modelo matemático del retraso.
+
+**Para precisar en el documento final**
+
+| # | Qué pide | Dónde va |
+|---|---|---|
+| 1 | Cómo responde el cuerpo sano a la glucosa baja, por qué la insulina inyectada sigue actuando y cómo falla la contrarregulación (glucagón y adrenalina) en quien usa insulina | Base fisiológica |
+| 2 | Qué produce el sudor, el temblor y la taquicardia, y por qué pasan inadvertidos de noche: las hipoglucemias repetidas atenúan la respuesta y el sueño la atenúa más | Base fisiológica |
+| 3 | Una cifra de la población real (personas tratadas con insulina) o de la frecuencia de hipoglucemia nocturna, con sus consecuencias, y del dato más reciente disponible | Problema |
+| 4 | Explicar cada variable de la ecuación, reconocer que el retraso no es solo difusión (consumo celular y procesamiento del sensor), explicar que en una caída rápida el sensor marca alto y la alarma llega tarde, y confirmar el rango de 5 a 10 min en la fuente | Base fisiológica |
+| 5 | Jerarquizar: el control y la percepción explican el origen, y el retraso es la limitación que toda solución debe superar | Base fisiológica |
+| 6 | **Definir la solución**: variable, principio de transducción, tecnología y qué entrega el dispositivo. Es la prioridad | Solución |
+| 7 | Elegir un solo objetivo: anticipar el descenso (exige medir glucosa), detectar la respuesta simpática (frecuencia cardíaca, conductancia de la piel o temperatura) o complementar los monitores actuales | Solución |
+| 8 | Sumar una referencia sobre hipoglucemia nocturna. Presentar el 62 % de GlucoWatch como un compromiso con la sensibilidad (las dos alarmas juntas la subieron de 23 % a 77 %), aclarar que fue un estudio hospitalario en niños de 2004 y no extrapolarlo a los monitores actuales. Respaldar o suavizar "el único no invasivo aprobado por la FDA". Revisar el estudio "Response to nocturnal alarms using a real-time glucose sensor", sobre el despertar ante las alarmas | Problema y referencias |
+| 9 | Un esquema de viabilidad: cómo se comprobaría que funciona y qué causaría lecturas erróneas o falsas alarmas | Solución |
+
+**Recordatorios.** Una página, pitch de tres minutos con una sola diapositiva, y los primeros 30 segundos deben decir a quién afecta, con qué magnitud y por qué importa. No se pide un dispositivo funcional, sino unir un mecanismo con una variable medible y un principio de transducción.
