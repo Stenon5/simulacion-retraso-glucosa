@@ -2,7 +2,7 @@
 
 Proyecto del grupo 1 del ramo Fisiología y Anatomía Humana (UTEM, Ingeniería Civil Biomédica, 2026). La pregunta: ¿se puede superar a GlucoWatch, el primer monitor no invasivo aprobado por la FDA, mezclando biomarcadores distintos?
 
-**Estado:** el análisis de viabilidad concluyó que el diseño propuesto, con infrarrojo medio, dos profundidades y EEG en el oído, no supera a GlucoWatch ni tiene sentido hoy frente a los monitores continuos (CGM). El equipo espera la retroalimentación de la profesora para elegir cómo seguir, y prepara el Challenge del ramo.
+**Estado:** el análisis de viabilidad concluyó que el diseño propuesto, con infrarrojo medio, dos profundidades y EEG en el oído, no supera a GlucoWatch ni tiene sentido hoy frente a los monitores continuos (CGM). El grupo cambió de propuesta, y el Challenge sigue en el repositorio [alarma-hipoglucemia-nocturna](https://github.com/Stenon5/alarma-hipoglucemia-nocturna).
 
 ## En 1 minuto
 
@@ -22,7 +22,7 @@ Proyecto del grupo 1 del ramo Fisiología y Anatomía Humana (UTEM, Ingeniería 
 | [`1-contexto/`](1-contexto/) | El problema de salud, el seminario del que nació el proyecto y la fe de erratas del paper |
 | [`2-simulacion/`](2-simulacion/) | La simulación del retraso entre sangre y tejido con dos profundidades: código, pruebas y resultados |
 | [`3-analisis-de-viabilidad/`](3-analisis-de-viabilidad/) | Criterios, fuentes y cálculos del veredicto, hechos sin laboratorio |
-| [`4-challenge/`](4-challenge/) | Lo que se entrega en el ramo: el problema, el documento de una página y el pitch |
+| [`4-challenge/`](4-challenge/) | La entrega del problema del Challenge. El documento final y el pitch están en el [repositorio nuevo](https://github.com/Stenon5/alarma-hipoglucemia-nocturna) |
 
 Las guías para leer están en [`docs/`](docs/).
 
@@ -30,8 +30,8 @@ Las guías para leer están en [`docs/`](docs/).
 
 | Si vienes por | Empieza en |
 |---|---|
-| **El Challenge del ramo**, lo que se entrega y cuándo | [`4-challenge/`](4-challenge/) |
-| **La entrega del problema**, con fecha en [`4-challenge/`](4-challenge/README.md) | En [PDF](4-challenge/01-problema-entrega.pdf), en [Word](4-challenge/01-problema-entrega.docx) o [para leer en GitHub](4-challenge/01-problema.md): el problema, su mecanismo, lo hecho y la cadena de trazabilidad, en una plana con referencias |
+| **El Challenge del ramo**, lo que se entrega y cuándo | [alarma-hipoglucemia-nocturna](https://github.com/Stenon5/alarma-hipoglucemia-nocturna) |
+| **La entrega del problema** | En [PDF](4-challenge/01-problema-entrega.pdf), en [Word](4-challenge/01-problema-entrega.docx) o [para leer en GitHub](4-challenge/01-problema.md): el problema, su mecanismo, lo hecho y la cadena de trazabilidad, en una plana con referencias |
 | **La revisión de la profesora**, unos 20 minutos | El resumen en [PDF](docs/resumen-para-la-profesora.pdf) o [Word](docs/resumen-para-la-profesora.docx): propuestas en evaluación, lo desarrollado y las opciones si hay que cambiar de rumbo |
 | **Sumarte al equipo** | La guía completa en [PDF](docs/guia-del-proyecto.pdf) o [Word](docs/guia-del-proyecto.docx), con el análisis de viabilidad y cómo colaborar |
 | **El veredicto y sus cálculos** | [`3-analisis-de-viabilidad/`](3-analisis-de-viabilidad/) |
